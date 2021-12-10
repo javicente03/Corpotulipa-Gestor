@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .head {
+            height: 50px;
+            border: solid 1px black;
+            font-weight: bold;
+        }
+
+        .h-n {
+            border-radius: .5em 0 0 0;
+        }
+
+        .h-f {
+            border-radius: 0 .5em 0 0;
+        }
+
+        .h-c {
+            border-radius: 0 0 0 .5em;
+        }
+
+        .h-g {
+            border-radius: 0 0 .5em 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 head h-n">Nombre y Apellido: Javier Vicente Gerardo Oliveros</div>
+                <div class="col s12 m6 head h-f">Fecha de la solicitud</div>
+                <div class="col s12 m6 head h-c">Cargo: </div>
+                <div class="col s12 m6 head h-g">Gerencia:</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row z-depth-4">
+
+                <div class="col s12 m6 input-field">
+                    <i class="material-icons prefix">priority_high</i>
+                    <select name="tipo" id="tipo">
+                        <option value="" selected disabled>Tipo de la actividad</option>
+                    </select>
+                </div>
+                <div class="col s12 m6 input-field">
+                    <i class="material-icons prefix">event</i>
+                    <label for="fecha">Fecha de la actividad</label>
+                    <input type="text" name="fecha" id="fecha" class="datepicker validate">
+                </div>
+                <div class="col s12 input-field">
+                    <i class="material-icons prefix">work</i>
+                    <label for="labor">Labor a realizar</label>
+                    <input type="text" name="labor" id="labor" class="validate">
+                </div>
+
+                <div class="col s12 input-field">
+                    <i class="material-icons prefix">more_vert</i>
+                    <label for="justificacion">Justificación</label>
+                    <textarea name="justificacion" id="justificacion" class="materialize-textarea"></textarea>
+                </div>
+
+                <!-- Gastos de Alojamiento y Alimentos -->
+                <div class="col s12">
+                    <ul class="tabs" style="display: flex; justify-content: center; font-weight: bold;">
+                        <li class="tab col s6"><a class="active btn btn-flat black-text" href="#alimentacion"><i class="material-icons left">local_dining</i>Alimentación</a></li>
+                        <li class="tab col s6"><a class="btn btn-flat black-text" href="#alojamiento"><i class="material-icons left">location_city</i>Alojamiento</a></li>
+                    </ul>
+                </div>
+                <div id="alimentacion" class="col s12">
+                    <div class="row">
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">supervisor_account</i>
+                            <label for="jerarquia">Nivel Jerárquico</label>
+                            <input type="text" id="jerarquia">
+                        </div>
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">account_balance_wallet</i>
+                            <label for="gasto">Gasto Diario/Medio Día</label>
+                            <input type="text" id="gasto">
+                        </div>
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">grain</i>
+                            <label for="tarifa">Tarifa</label>
+                            <input type="text" id="tarifa"> 
+                        </div>
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">event_note</i>
+                            <label for="dias">No. de Días</label>
+                            <input type="text" id="dias">
+                        </div>
+                        <div class="col s12  input-field center">
+                            <i class="material-icons prefix">local_dining</i>
+                            <label for="total">Gasto Total de Alimentación</label>
+                            <input type="text" id="total" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div id="alojamiento" class="col s12">
+                    <div class="row">
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">account_balance_wallet</i>
+                            <label for="reservacion">Costo Diario Según Reservación</label>
+                            <input type="text" id="reservacion">
+                        </div>
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">local_hotel</i>
+                            <label for="noches">No. de Noches</label>
+                            <input type="text" id="noches">
+                        </div>
+                        <div class="col s12  input-field center">
+                            <i class="material-icons prefix">location_city</i>
+                            <label for="total">Gasto Total de Alojamiento</label>
+                            <input type="text" id="total" disabled>
+                        </div>
+                        <div class="col s12 input-field">
+                            <i class="material-icons prefix">more_vert</i>
+                            <label for="datos_hotel">Datos del Hotel</label>
+                            <textarea name="" id="datos_hotel" class="materialize-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gastos de Transporte -->
+                <div class="col s12">
+                    <div class="row center">
+                        <div class="col s6">
+                            <label>
+                                <input type="checkbox" id="check1" onchange="transporte(1)" />
+                                <span class="black-text" style="font-weight: bold;">Transporte Propio</span>
+                            </label>
+                        </div>
+                        <div class="col s6">
+                            <label>
+                                <input type="checkbox" id="check2" onchange="transporte(2)"/>
+                                <span class="black-text" style="font-weight: bold;">Transporte Público / Corporación</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="propio" style="display: none;" class="col s12">
+                    <div class="row">
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">drive_eta</i>
+                            <label for="vehiculo">Vehículo</label>
+                            <input type="text" id="vehiculo">
+                        </div>
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">local_gas_station</i>
+                            <label for="costo_gasolina">Costos de Gasolina y Peaje</label>
+                            <input type="text" id="costo_gasolina">
+                        </div>
+                        <div class="col s12  input-field center">
+                            <i class="material-icons prefix">local_car_wash</i>
+                            <label for="total">Gasto Total Transporte con Vehículo</label>
+                            <input type="text" id="total" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div id="publico" style="display: none;" class="col s12">
+                    <div class="row">
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">drive_eta</i>
+                            <label for="vehiculo_corporacion">Vehículo de la Corporación</label>
+                            <input type="text" id="vehiculo">
+                        </div>
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">local_gas_station</i>
+                            <label for="costo_gasolina2">Costos de Gasolina y Peaje</label>
+                            <input type="text" id="costo_gasolina2">
+                        </div>
+                        <div class="col s12 m6 input-field">
+                            <i class="material-icons prefix">local_taxi</i>
+                            <label for="costo_gasolina2">Movilización Interna</label>
+                            <input type="text" id="costo_gasolina2">
+                        </div>
+                        <div class="col s12 m6 input-field center">
+                            <i class="material-icons prefix">airport_shuttle</i>
+                            <label for="total">Gasto Total Transporte Público</label>
+                            <input type="text" id="total" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <h6>Gasto Total de la actividad</h6>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/materialize.min.js"></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        let tabs = document.querySelector(".tabs")
+        var instance = M.Tabs.init(tabs);
+        // let tabs2 = document.querySelector(".tabs2")
+        // instance = M.Tabs.init(tabs2);
+
+        //Inicializacion de datepicker
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems,
+                options = {
+                    defaultDate: new Date(2021, 1, 3),
+                    setDefaultDate: true
+                }
+            );
+        });
+
+        //Inicializacion de select
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, options);
+        });
+
+        //Div de Transporte
+        function transporte(x){
+            if(x==1){
+                document.getElementById("propio").style = "display:block";
+                document.getElementById("publico").style = "display:none";
+                document.getElementById("check2").checked = false
+            } else {
+                document.getElementById("propio").style = "display:none";
+                document.getElementById("publico").style = "display:block";
+                document.getElementById("check1").checked = false
+            }
+        }
+    </script>
+</body>
+
+</html>

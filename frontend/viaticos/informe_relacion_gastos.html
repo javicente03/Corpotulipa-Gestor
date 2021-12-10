@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .head {
+            height: 50px;
+            border: solid 1px black;
+            font-weight: bold;
+        }
+
+        .h-n {
+            border-radius: .5em 0 0 0;
+        }
+
+        .h-f {
+            border-radius: 0 .5em 0 0;
+        }
+
+        .h-c {
+            border-radius: 0 0 0 .5em;
+        }
+
+        .h-g {
+            border-radius: 0 0 .5em 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container section">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 head h-n">Nombre y Apellido: Javier Vicente Gerardo Oliveros</div>
+                <div class="col s12 m6 head h-f">Cédula de Identidad</div>
+                <div class="col s12 m6 head">Fecha de presentación del informe</div>
+                <div class="col s12 m6 head">Cargo: </div>
+                <div class="col s12 m6 head h-c">Unidad:</div>
+                <div class="col s12 m6 head h-g">Tipo de Actividad</div>
+            </div>
+        </div>
+        <form action=" " ></form>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m4 input-field">
+                    <label for="destino">Lugar de Destino</label>
+                    <input type="text" id="destino">
+                </div>
+                <div class="col s12 m4 input-field">
+                    <label for="salida">Fecha de Salida</label>
+                    <input type="text" id="salida">
+                </div>
+                <div class="col s12 m4 input-field">
+                    <label for="regreso">Fecha de Regreso</label>
+                    <input type="text" id="regreso">
+                </div>
+                <div class="col s12 input-field">
+                    <label for="informe">Informe del Viaje</label>
+                    <textarea name="" id="informe" class="materialize-textarea"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 input-field">
+                    <i class="material-icons prefix">event</i>
+                    <label for="fecha">Fecha:</label>
+                    <input type="text" name="fecha" id="fecha" class="datepicker validate">
+                </div>
+                <div class="col s12 m6 input-field">
+                    <label for="nro_fact">Factura No</label>
+                    <input type="text" id="nro_fact">
+                </div>
+                <div class="col s12 m6 input-field">
+                    <label for="gasto">Especificación del Gasto</label>
+                    <input type="text" id="gasto">
+                </div>
+                <div class="col s12 m6 input-field">
+                    <label for="bs">Bs/US$</label>
+                    <input type="number" id="bs">
+                </div>
+                <div class="col s12 center"><button type="button" class="btn green"><i class="material-icons left">add</i>Añadir</button></div>
+                <div class="col s12">
+                    <table class="responsive-table striped">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Factura No</th>
+                                <th>Especificación del Gasto</th>
+                                <th>Bs/US$</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Saldo a favor del trabajador:</td>
+                                <td>0,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/materialize.min.js"></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        //Inicializacion de datepicker
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems,
+                options = {
+                    defaultDate: new Date(2021, 1, 3),
+                    setDefaultDate: true
+                }
+            );
+        });
+
+        //Inicializacion de select
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, options);
+        });
+    </script>
+</body>
+
+</html>
