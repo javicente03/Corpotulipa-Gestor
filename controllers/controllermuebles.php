@@ -94,6 +94,9 @@ class ControllersMueble{
                                             ON P.departamento_id=D.departamento_id WHERE aprobado = true AND 
                                             tramitado = false AND id_prestamo_bien = ".$router->getParam()))->fetch_assoc();
                     
+                    if(!$prestamo)
+                        header("Location: ../404");
+
                     $responsable = ($bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON B.responsable=U.id 
                                                 LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
                                                 ON P.departamento_id=D.departamento_id WHERE id_bien = ".$prestamo["id_bien"]))->fetch_assoc();
@@ -125,14 +128,27 @@ class ControllersMueble{
 
     public function bienesPrestados($router){
         include("backend/bd.php");
-        $prestamos = $bd->query("SELECT * FROM tramite_bienes R LEFT JOIN prestamo_bien T ON
-                                R.id_prestamo_bien=T.id_prestamo_bien LEFT JOIN bienes_publicos B ON 
-                                T.id_bien=B.id_bien LEFT JOIN usuario U ON B.responsable=U.id 
-                                LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
-                                ON P.departamento_id=D.departamento_id 
-                                WHERE fecha_fin_tramite IS NULL AND user4 = ".$_SESSION["id"]);
-        
-        
-        return include("frontend/bienes_publicos/bienes_prestados.php");
+        if(empty($router->getParam())){
+            $prestamos = $bd->query("SELECT * FROM tramite_bienes R LEFT JOIN prestamo_bien T ON
+                                    R.id_prestamo_bien=T.id_prestamo_bien LEFT JOIN bienes_publicos B ON 
+                                    T.id_bien=B.id_bien LEFT JOIN usuario U ON B.responsable=U.id 
+                                    LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
+                                    ON P.departamento_id=D.departamento_id 
+                                    WHERE fecha_fin_tramite IS NULL AND user4 = ".$_SESSION["id"]);
+            
+            return include("frontend/bienes_publicos/bienes_prestados.php");
+        } else {
+            $prestamo = ($bd->query("SELECT * FROM tramite_bienes R LEFT JOIN prestamo_bien T ON
+                                    R.id_prestamo_bien=T.id_prestamo_bien LEFT JOIN bienes_publicos B ON 
+                                    T.id_bien=B.id_bien LEFT JOIN usuario U ON B.responsable=U.id 
+                                    LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
+                                    ON P.departamento_id=D.departamento_id 
+                                    WHERE id_tramite_bien = ".$router->getParam()))->fetch_assoc();
+            if(!$prestamo)
+                header("Location: ../404");
+            if($prestamo["fecha_fin_tramite"] != null)
+                header("Location: ../404");
+            return include("frontend/bienes_publicos/bien_prestado.php");
+        }
     }
 }

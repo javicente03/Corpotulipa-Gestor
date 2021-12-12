@@ -13,7 +13,7 @@ if(isset($router)){
         echo "ok";
     } else {
         include("bd.php");
-        $texto = $_SESSION["nombre"]." ".$_SESSION["apellido"]." ha rechazado tu solicitud de prestamo del bien público $nombre_bien, motivo:".$motivo;
+        $texto = $_SESSION["nombre"]." ".$_SESSION["apellido"]." ha rechazado tu solicitud de prestamo del bien público $nombre_bien, motivo: ".$motivo;
         $rechazar = $bd->query("UPDATE prestamo_bien SET rechazado = true WHERE id_prestamo_bien = $prestamo");
         $notificacion = $bd->query("INSERT INTO notificaciones (id_usuario,texto,fecha) VALUES ('$solicitante','$texto','$date')");
         echo "ok";

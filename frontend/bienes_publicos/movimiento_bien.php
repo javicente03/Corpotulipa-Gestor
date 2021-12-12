@@ -55,6 +55,12 @@
         ?>
         </select>
         <input type="password" name="clave" placeholder="Ingrese su clave de seguridad">
+        <input type="text" name="razon">
+        <input type="text" name="rif">
+        <input type="text" name="direccion">
+        <input type="text" name="nombre_responsable">
+        <input type="text" name="telefono_fijo">
+        <input type="text" name="telefono_contacto">
         <button type="submit">Enviar</button>
     </form>
    

@@ -19,6 +19,7 @@
         <h4><?php echo $bien["descripcion"] ?></h4>
         <h4><?php echo $bien["nombre"]." ".$bien["apellido"] ?></h4>
         <h4><?php echo $bien["siglas"] ?></h4>
+        <input type="checkbox" value="Externo" name="externo">
         <textarea name="motivo" placeholder="Indique su solicitud"></textarea>
         <input type="number" name="duracion" placeholder="Duración, expresela en días">
         <button type="submit">Enviar</button>

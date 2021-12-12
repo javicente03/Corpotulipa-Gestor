@@ -30,11 +30,15 @@ if(isset($router)){
                     $tramiteNuevo["entregado"] && $tramiteNuevo["entregado2"] &&
                     $tramiteNuevo["recibido"] && $tramiteNuevo["recibido2"]){
                         $date = date("Y-m-d");
-                        $finalizar = $bd->query("UPDATE tramite_bienes SET fecha_fin_tramite = '$date'");
+                        $finalizar = $bd->query("UPDATE tramite_bienes SET fecha_fin_tramite = '$date' WHERE id_prestamo_bien = $prestamo");
                         $prestamoResponsable = ($bd->query("SELECT * FROM prestamo_bien T INNER JOIN bienes_publicos B
                                                             ON T.id_bien=B.id_bien WHERE id_prestamo_bien = $prestamo"))->fetch_assoc();
+                        $codigoAnterior = substr($prestamoResponsable["codigo"],3,strlen($prestamoResponsable["codigo"]));
+                        $solicitante = ($bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
+                                                    ON P.departamento_id=D.departamento_id WHERE id = ".$prestamoResponsable["solicitante"]))->fetch_assoc();
+                        $codigoNuevo = $solicitante["siglas"].$codigoAnterior;
                         $updateResponsable = $bd->query("UPDATE bienes_publicos SET responsable=".$tramite["user4"].
-                                                        " WHERE id_bien = ".$prestamoResponsable["id_bien"]);
+                                                        ", codigo='$codigoNuevo' WHERE id_bien = ".$prestamoResponsable["id_bien"]);
                     }
             } else {
             

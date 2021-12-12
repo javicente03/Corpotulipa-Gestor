@@ -578,11 +578,7 @@ switch ($router->getController()) {
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
             $controlmueble->bienesPrestados($router); //llama la funcion del controlador
         } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            if(isset($_POST['analista']))
-                include("backend/movimiento_bien_back.php");
-            else {
-                include("backend/tramite_bien_back.php");
-            }
+            include("backend/prorroga_bien_back.php");
         }
     } else
         header("Location: login");

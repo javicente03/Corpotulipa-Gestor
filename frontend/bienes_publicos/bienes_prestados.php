@@ -24,6 +24,12 @@
         <tbody>
         <?php
             while ($prestamo = $prestamos->fetch_assoc()) {
+                $date = date("Y-m-d");
+                $tramite = date_create($prestamo["fecha_tramite"]);
+                $date = date_create($date);
+                $interval = date_diff($tramite, $date);
+                $transcurridos = $interval->format('%a');
+                $restante = $prestamo["duracion"] - $transcurridos;
         ?>
             <tr>
                 <td><?php echo $prestamo["nombre_bien"] ?></td>
@@ -31,8 +37,8 @@
                 <td><?php echo $prestamo["nombre"]." ".$prestamo["apellido"] ?></td>
                 <td><?php echo $prestamo["fecha_tramite"] ?></td>
                 <td><?php echo $prestamo["duracion"] ?></td>
-                <td>restante</td>
-                <td><a href="movimiento_bienes/<?php echo $prestamo["id_prestamo_bien"] ?>">Revisar</a></td>
+                <td><?php echo $restante ?></td>
+                <td><a href="bienes_prestados/<?php echo $prestamo["id_tramite_bien"] ?>">Revisar</a></td>
             </tr>
         <?php
             }
