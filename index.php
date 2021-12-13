@@ -509,6 +509,18 @@ switch ($router->getController()) {
             header("Location: ../login");
         break;
 
+    case 'mis_bienes':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                $controlmueble->sumarBienes($router); //llama la funcion del controlador 
+            } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                include("backend/sumar_bienes_back.php");
+            }
+        } else
+            header("Location: ../login");
+        break;
+
     /******************** PRESTAMO ********************/
     case 'buscar_bien':
         if(isset($_SESSION['id'])){

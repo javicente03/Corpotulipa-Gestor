@@ -8,7 +8,7 @@ if(isset($router)){
     $texto1 = "Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.";
     $texto2 = "Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.";
     $texto3 = "Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.";
-    $link = "verificar_bien";
+    $link = "verificar_bien/$incorporacion";
 
     include("bd.php");
     $insertar = $bd->query("UPDATE verificacion_bienes SET user1='$revisado',user2='$verificado',user3='$validado' WHERE id_bien=$incorporacion");

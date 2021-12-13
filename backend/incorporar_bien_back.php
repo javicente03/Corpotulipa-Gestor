@@ -20,18 +20,18 @@ if(isset($router)){
     $user = $_SESSION["id"];
 
     if($tipo == "Mueble"){
-        if($organismo!="" && $departamento!="" && $dependencia!="" 
+        if($organismo!="" && $departamento!="" && $dependencia!="" && $valor!=""
             && $cantidad!="" && $mueble!="" && $descripcion!="" && $responsable!=""){
-            if(is_numeric($cantidad)){
+            if(is_numeric($cantidad) && is_numeric($valor)){
                 include("bd.php");
                 $len = ($bd->query("SELECT * FROM bienes_publicos"))->num_rows;
                 $len = ($len+1);
                 $siglas = ($bd->query("SELECT * FROM departamento WHERE departamento_id = $departamento"))->fetch_assoc();
                 $codigo = $siglas["siglas"]."-".$year."-".$len;
-                $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,cantidad,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor) VALUES ('$codigo','Mueble','$organismo','$denoOrga','$departamento','$denoDepa','$dependencia','$denoUsu','$cantidad','$mueble','$descripcion','$date','$user', '$responsable','$valor')");
+                $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,existencia,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor) VALUES ('$codigo','Mueble','$organismo','$denoOrga','$departamento','$denoDepa','$dependencia','$denoUsu','$cantidad','$mueble','$descripcion','$date','$user', '$responsable','$valor')");
                 $verificacion = $bd->query("INSERT INTO verificacion_bienes (id_bien) VALUES ('$len')");
-                
-                if($insertar)
+                $incorporar = $bd->query("INSERT INTO incorporacion_bien (id_bien,cantidad,fecha_incorporaciones) VALUES ('$len','$cantidad','$date')");
+                if($insertar && $verificacion && $incorporar)
                     echo "ok";
                 else
                     echo "¡Oh no! Ha ocurrido un error";

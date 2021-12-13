@@ -33,6 +33,7 @@
         <input type="number" placeholder="Valor Unitario" id="valor" name="valor">
 
 
+
         <!-- Muebles -->
         <input type="text" placeholder="Concepto del Movimiento" id="concepto" name="concepto">
         <input type="number" id="cantidad" placeholder="Cantidad" name="cantidad">

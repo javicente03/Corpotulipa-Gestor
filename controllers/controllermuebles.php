@@ -42,6 +42,14 @@ class ControllersMueble{
             header("Location: ../404");
     }
 
+    public function sumarBienes($router){
+        include("backend/bd.php");
+        if(empty($router->getParam())){
+            $bienes = $bd->query("SELECT * FROM bienes_publicos WHERE responsable = ".$_SESSION["id"]);
+            return include("frontend/bienes_publicos/mis_bienes.php");
+        }
+    }
+
     public function buscarBien($router){
         return include("frontend/bienes_publicos/busqueda_bien.php");
     }
