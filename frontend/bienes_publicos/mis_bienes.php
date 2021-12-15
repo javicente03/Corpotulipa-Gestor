@@ -15,6 +15,8 @@
         <thead>
             <th>Nombre del Bien</th>
             <th>Código</th>
+            <th>Nro Existencias</th>
+            <th>Tipo</th>
             <th></th>
         </thead>
         <tbody>
@@ -24,7 +26,14 @@
             <tr>
                 <td><?php echo $bien["nombre_bien"] ?></td>
                 <td><?php echo $bien["codigo"] ?></td>
-                <td><a href="mis_bienes/<?php echo $bien["id_bien"] ?>">Incorporar</a></td>
+                <td><?php echo $bien["existencia"] ?></td>
+                <td><?php echo $bien["tipo"] ?></td>
+                <?php
+                if($bien["tipo"] == "Mueble"){ ?>
+                    <td><a href="mis_bienes/<?php echo $bien["id_bien"] ?>">Incorporar</a></td>
+                <?php
+                }
+                ?>
             </tr>
         <?php
             }

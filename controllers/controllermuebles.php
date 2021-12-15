@@ -47,6 +47,15 @@ class ControllersMueble{
         if(empty($router->getParam())){
             $bienes = $bd->query("SELECT * FROM bienes_publicos WHERE responsable = ".$_SESSION["id"]);
             return include("frontend/bienes_publicos/mis_bienes.php");
+        } else {
+            $bien = ($bd->query("SELECT * FROM bienes_publicos WHERE id_bien = ".$router->getParam())->fetch_assoc());
+            if(!$bien)
+                header("Location: ../404");
+            if($bien["responsable"] != $_SESSION["id"])
+                header("Location: ../404");
+            if($bien["tipo"] != "Mueble")
+                header("Location: ../404");
+            return include("frontend/bienes_publicos/mi_bien.php");
         }
     }
 
