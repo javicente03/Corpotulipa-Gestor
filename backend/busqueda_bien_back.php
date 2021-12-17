@@ -2,7 +2,7 @@
 if(isset($router)){
     $bien = trim(addslashes($_POST["bien"]));
 
-    $resultados = $bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON B.responsable=U.id LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON P.departamento_id=D.departamento_id WHERE nombre_bien = '$bien'");
+    $resultados = $bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON B.responsable=U.id LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON P.departamento_id=D.departamento_id WHERE nombre_bien = '$bien' AND responsable IS NOT NULL");
     while ($resultado = $resultados->fetch_assoc()) {
     ?>
         <tr>

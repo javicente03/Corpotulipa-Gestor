@@ -68,6 +68,8 @@ class ControllersMueble{
         $bien = ($bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON B.responsable=U.id LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON P.departamento_id=D.departamento_id WHERE id_bien = ".$router->getParam()))->fetch_assoc();
         if(!$bien)
             header("Location: ../404");
+        if($bien["responsable"] == null)
+            header("Location: ../404"); 
         return include("frontend/bienes_publicos/prestamo_bien.php");
     }
 

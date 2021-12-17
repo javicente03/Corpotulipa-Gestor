@@ -3,6 +3,8 @@ if(isset($router)){
     $prestamo = $_POST["tramite"];
     $clave = trim(addslashes($_POST["clave"]));
     $observacion = trim(addslashes($_POST["observacion"]));
+    $year = date("Y");
+    $year = substr($year,2,4);
 
     if($clave != ""){
         include("bd.php");
@@ -33,13 +35,33 @@ if(isset($router)){
                         $finalizar = $bd->query("UPDATE tramite_bienes SET fecha_fin_tramite = '$date' WHERE id_prestamo_bien = $prestamo");
                         $prestamoResponsable = ($bd->query("SELECT * FROM prestamo_bien T INNER JOIN bienes_publicos B
                                                             ON T.id_bien=B.id_bien WHERE id_prestamo_bien = $prestamo"))->fetch_assoc();
-                        $codigoAnterior = substr($prestamoResponsable["codigo"],3,strlen($prestamoResponsable["codigo"]));
                         $solicitante = ($bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
                                                     ON P.departamento_id=D.departamento_id WHERE id = ".$prestamoResponsable["solicitante"]))->fetch_assoc();
-                        $codigoNuevo = $solicitante["siglas"].$codigoAnterior;
-                        $updateResponsable = $bd->query("UPDATE bienes_publicos SET responsable=".$tramite["user4"].
-                                                        ", codigo='$codigoNuevo' WHERE id_bien = ".$prestamoResponsable["id_bien"]);
-                    }
+                        
+                        $len = ($bd->query("SELECT * FROM bienes_publicos"))->num_rows;
+                        $len = ($len+1);
+                        $codigoNuevo = $solicitante["siglas"]."-".$year."-".$len;
+                        $organismoU = $prestamoResponsable['organismo'];
+                        $tipoU = $prestamoResponsable['tipo'];
+                        $denoOrgaU = $prestamoResponsable['denoOrga'];
+                        $depId = $solicitante['departamento_id'];
+                        $denoDepaU = $prestamoResponsable['denoDepa'];
+                        $dependenciaU = $prestamoResponsable['dependencia'];
+                        $denoUsuU = $prestamoResponsable['denoUsu'];
+                        $cantidadU = $prestamoResponsable['cantidad'];
+                        $muebleU = $prestamoResponsable['nombre_bien'];
+                        $descripcionU = $prestamoResponsable['descripcion'];
+                        $incorpoU = $prestamoResponsable['incorporado_por'];
+                        $solicitanteU = $solicitante['id'];
+                        $valorU = $prestamoResponsable['valor'];
+                        $catastroU = $prestamoResponsable['catastro'];
+                        $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,existencia,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor,catastro) 
+                                                VALUES ('$codigoNuevo','$tipoU','$organismoU','$denoOrgaU','$depId','$denoDepaU','$dependenciaU',
+                                                        '$denoUsuU','$cantidadU','$muebleU','$descripcionU','$date','$incorpoU', '$solicitanteU','$valorU','$catastroU')");
+
+                        // $updateResponsable = $bd->query("UPDATE bienes_publicos SET responsable=".$tramite["user4"].
+                                                        // ", codigo='$codigoNuevo' WHERE id_bien = ".$prestamoResponsable["id_bien"]);
+                }
             } else {
             
             if($_SESSION["id"]==$tramite["user1"]){

@@ -21,6 +21,7 @@
         <h4><?php echo $bien["siglas"] ?></h4>
         <input type="checkbox" value="Externo" name="externo">
         <textarea name="motivo" placeholder="Indique su solicitud"></textarea>
+        <input type="number" name="cantidad" id="cantidad">
         <input type="number" name="duracion" placeholder="Duración, expresela en días">
         <button type="submit">Enviar</button>
     </form>
