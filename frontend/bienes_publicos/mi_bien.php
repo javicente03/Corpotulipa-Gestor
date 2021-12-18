@@ -14,8 +14,6 @@
     <form id="form">
         <h4>Nombre: <?php echo $bien["nombre_bien"] ?></h4>
         <h4>Código: <?php echo $bien["codigo"] ?></h4>
-        <h4>Existencia: <?php echo $bien["existencia"] ?></h4>
-        <input type="number" placeholder="Nuevas Incorporaciones" name="cantidad">
         <input type="hidden" name="bien" value="<?php echo $bien["id_bien"] ?>">
         <button type="submit">Enviar</button>
     </form>

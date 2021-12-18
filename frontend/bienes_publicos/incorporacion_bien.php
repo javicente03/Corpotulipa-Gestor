@@ -36,7 +36,6 @@
 
         <!-- Muebles -->
         <input type="text" placeholder="Concepto del Movimiento" id="concepto" name="concepto">
-        <input type="number" id="cantidad" placeholder="Cantidad" name="cantidad">
         <input type="text" placeholder="Nombre del bien" id="mueble" name="mueble">
         <textarea placeholder="Descripción" id="descripcion" name="descripcion"></textarea>
 

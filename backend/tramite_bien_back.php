@@ -48,16 +48,15 @@ if(isset($router)){
                         $denoDepaU = $prestamoResponsable['denoDepa'];
                         $dependenciaU = $prestamoResponsable['dependencia'];
                         $denoUsuU = $prestamoResponsable['denoUsu'];
-                        $cantidadU = $prestamoResponsable['cantidad'];
                         $muebleU = $prestamoResponsable['nombre_bien'];
                         $descripcionU = $prestamoResponsable['descripcion'];
                         $incorpoU = $prestamoResponsable['incorporado_por'];
                         $solicitanteU = $solicitante['id'];
                         $valorU = $prestamoResponsable['valor'];
                         $catastroU = $prestamoResponsable['catastro'];
-                        $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,existencia,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor,catastro) 
+                        $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor,catastro) 
                                                 VALUES ('$codigoNuevo','$tipoU','$organismoU','$denoOrgaU','$depId','$denoDepaU','$dependenciaU',
-                                                        '$denoUsuU','$cantidadU','$muebleU','$descripcionU','$date','$incorpoU', '$solicitanteU','$valorU','$catastroU')");
+                                                        '$denoUsuU','$muebleU','$descripcionU','$date','$incorpoU', '$solicitanteU','$valorU','$catastroU')");
 
                         // $updateResponsable = $bd->query("UPDATE bienes_publicos SET responsable=".$tramite["user4"].
                                                         // ", codigo='$codigoNuevo' WHERE id_bien = ".$prestamoResponsable["id_bien"]);

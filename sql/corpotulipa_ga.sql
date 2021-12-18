@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2021 a las 03:24:40
+-- Tiempo de generación: 18-12-2021 a las 02:49:56
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -43,20 +43,21 @@ CREATE TABLE `bienes_publicos` (
   `valor` int(11) NOT NULL,
   `fecha_incorporacion` date DEFAULT NULL,
   `incorporado_por` int(11) DEFAULT NULL,
-  `responsable` int(11) DEFAULT NULL,
-  `existencia` int(11) NOT NULL
+  `responsable` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `bienes_publicos`
 --
 
-INSERT INTO `bienes_publicos` (`id_bien`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`, `existencia`) VALUES
-(1, 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, 9, NULL, 20, NULL, 0),
-(2, 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 0, NULL, 20, 20, 0),
-(3, 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, NULL, 20, 20, 0),
-(4, 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, 90, NULL, 20, 38, 0),
-(5, 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, 90, '2021-12-12', 20, 37, 30);
+INSERT INTO `bienes_publicos` (`id_bien`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`) VALUES
+(1, 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, 9, NULL, 20, NULL),
+(2, 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 0, NULL, 20, 20),
+(3, 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, NULL, 20, 20),
+(4, 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, 90, NULL, 20, 38),
+(5, 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, 90, '2021-12-12', 20, 37),
+(8, 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 0, '2021-12-17', 20, 20),
+(10, 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, '2021-12-18', 20, 20);
 
 -- --------------------------------------------------------
 
@@ -147,26 +148,6 @@ INSERT INTO `facturas_cc` (`id_factura_cc`, `id_sol_cc`, `factura`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `incorporacion_bien`
---
-
-CREATE TABLE `incorporacion_bien` (
-  `id_incorporacion_bien` int(11) NOT NULL,
-  `id_bien` int(11) DEFAULT NULL,
-  `cantidad` int(11) NOT NULL,
-  `fecha_incorporaciones` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `incorporacion_bien`
---
-
-INSERT INTO `incorporacion_bien` (`id_incorporacion_bien`, `id_bien`, `cantidad`, `fecha_incorporaciones`) VALUES
-(1, 5, 30, '2021-12-12');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `notificaciones`
 --
 
@@ -184,29 +165,15 @@ CREATE TABLE `notificaciones` (
 --
 
 INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`, `link`) VALUES
-(142, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-12', 0, 'movimiento_bienes/46'),
-(143, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-12', 0, 'movimiento_bienes/46'),
-(144, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-12', 0, 'movimiento_bienes/46'),
-(158, 20, 'ASSS', '2020-10-12', 0, 'sss'),
-(160, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: mueble 2.', '2021-12-12', 0, 'revisar_prestamo_bien/62'),
-(161, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: mueble 2.', '2021-12-12', 0, 'revisar_prestamo_bien/63'),
-(162, 20, 'javier gerardo ha reportado la solicitud de un prestamo del bien público: mueble 2. Por favor indique si esta procederá.', '2021-12-12', 0, 'revisar_prestamo_bien/64'),
-(163, 20, 'javier gerardo ha reportado la solicitud de un prestamo del bien público: mueble 2. Por favor indique si esta procederá.', '2021-12-12', 0, 'revisar_prestamo_bien/65'),
-(164, 20, 'javier gerardo ha reportado la solicitud de un prestamo del bien público: Mueble 2. Por favor indique si esta procederá.', '2021-12-12', 0, 'revisar_prestamo_bien/66'),
-(165, 20, 'javier gerardo ha reportado la solicitud de un prestamo del bien público: Mueble 2. Por favor indique si esta procederá.', '2021-12-12', 0, 'revisar_prestamo_bien/67'),
-(166, 20, 'javier gerardo ha reportado la solicitud de un prestamo del bien público: Mueble 2. Por favor indique si esta procederá.', '2021-12-12', 0, 'revisar_prestamo_bien/68'),
-(167, 20, 'Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(168, 20, 'Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(169, 38, 'Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(170, 20, 'Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(171, 20, 'Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(172, 38, 'Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(173, 20, 'Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(174, 20, 'Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(175, 37, 'Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien'),
-(176, 20, 'Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien/4'),
-(177, 20, 'Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien/4'),
-(178, 37, 'Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.', '2021-12-12', 0, 'verificar_bien/4');
+(184, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: Mueble 2.', '2021-12-16', 0, 'revisar_prestamo_bien/74'),
+(185, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: Mueble 2. La cantidad de unidades: 30. Por favor indique si esta procederá.', '2021-12-16', 0, 'revisar_prestamo_bien/75'),
+(189, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: KAMSA. La cantidad de unidades: 11. Por favor indique si esta procederá.', '2021-12-17', 0, 'revisar_prestamo_bien/76'),
+(190, 37, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
+(191, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
+(192, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
+(193, 37, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
+(194, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
+(195, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76');
 
 -- --------------------------------------------------------
 
@@ -225,13 +192,18 @@ CREATE TABLE `observaciones_prestamo` (
 --
 
 INSERT INTO `observaciones_prestamo` (`id_observacion_prestamo`, `id_prestamo_bien`, `texto`) VALUES
-(1, 7, 'ALAVERGA SHI'),
-(2, 7, 'PAPA'),
-(3, 7, 'JODASU'),
-(4, 7, 'JABANES'),
-(5, 7, 'QEU'),
-(6, 7, 'PAPS'),
-(7, 7, 'PAPS');
+(1, NULL, 'ALAVERGA SHI'),
+(2, NULL, 'PAPA'),
+(3, NULL, 'JODASU'),
+(4, NULL, 'JABANES'),
+(5, NULL, 'QEU'),
+(6, NULL, 'PAPS'),
+(7, NULL, 'PAPS'),
+(8, 74, 'JODAFUE'),
+(9, 74, 'HIJOLE'),
+(10, 74, 'AUJ'),
+(11, 74, 'AUJ'),
+(12, 76, 'VEREMOS');
 
 -- --------------------------------------------------------
 
@@ -309,13 +281,6 @@ CREATE TABLE `persona_juridica` (
   `telefono_contacto` varchar(11) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `persona_juridica`
---
-
-INSERT INTO `persona_juridica` (`id_presona_juridica`, `id_prestamo_bien`, `razon_social`, `rif`, `direccion_fiscal`, `telefono_fijo`, `persona_responsable`, `telefono_contacto`) VALUES
-(3, 46, 'Razon', 'Rif', 'Direccion', 'fijo', 'nombre', 'contacto');
-
 -- --------------------------------------------------------
 
 --
@@ -339,30 +304,9 @@ CREATE TABLE `prestamo_bien` (
 --
 
 INSERT INTO `prestamo_bien` (`id_prestamo_bien`, `id_bien`, `solicitante`, `fecha_prestamo`, `aprobado`, `rechazado`, `tramitado`, `duracion`, `motivo`) VALUES
-(7, 3, 20, '2021-12-09', 1, 0, 1, 3, 'JODA'),
-(46, 3, 20, '2021-12-11', 1, 0, 1, 40, 'PUTA MADRE'),
-(47, 1, 20, '2021-12-12', 0, 0, 0, 120, 'EXTERNO JODA'),
-(48, 1, 20, '2021-12-12', 0, 0, 0, 1111, 'qqqqq'),
-(49, 1, 20, '2021-12-12', 0, 0, 0, 2, 'AS232'),
-(50, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(51, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(52, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(53, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(54, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(55, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(56, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(57, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(58, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(59, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(60, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(61, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(62, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(63, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(64, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(65, 1, 20, '2021-12-12', 0, 0, 0, 29, 'AS232'),
-(66, 2, 20, '2021-12-12', 0, 0, 0, 90, 'AQUI AS'),
-(67, 2, 20, '2021-12-12', 0, 0, 0, 90, 'AQUI AS'),
-(68, 2, 20, '2021-12-12', 0, 0, 0, 90, 'AQUI AS');
+(74, 2, 20, '2021-12-16', 1, 0, 1, 20, 'JAJAJAJAJA'),
+(75, 2, 20, '2021-12-16', 0, 0, 0, 23, 'qaj'),
+(76, 3, 20, '2021-12-17', 1, 0, 1, 90, 'AUCHHHHH');
 
 -- --------------------------------------------------------
 
@@ -489,8 +433,9 @@ CREATE TABLE `tramite_bienes` (
 --
 
 INSERT INTO `tramite_bienes` (`id_tramite_bien`, `id_prestamo_bien`, `tipo`, `activo`, `concepto`, `analista`, `coordinador`, `entregado`, `recibido`, `analista2`, `coordinador2`, `entregado2`, `recibido2`, `user1`, `user2`, `user3`, `user4`, `fecha_tramite`, `fecha_fin_tramite`) VALUES
-(2, 7, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 37, 20, '2021-12-09', '2021-12-11'),
-(5, 46, 'Externo', 1, 'Reparacion', 1, 0, 0, 0, 0, 0, 0, 0, 20, 20, 20, 20, '2021-12-12', NULL);
+(2, NULL, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 37, 20, '2021-12-09', '2021-12-11'),
+(6, 74, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 20, 20, '2021-12-17', '2021-12-17'),
+(7, 76, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 20, 20, '2021-12-17', '2021-12-18');
 
 -- --------------------------------------------------------
 
@@ -600,13 +545,6 @@ ALTER TABLE `departamento`
 ALTER TABLE `facturas_cc`
   ADD PRIMARY KEY (`id_factura_cc`),
   ADD KEY `id_sol_cc` (`id_sol_cc`);
-
---
--- Indices de la tabla `incorporacion_bien`
---
-ALTER TABLE `incorporacion_bien`
-  ADD PRIMARY KEY (`id_incorporacion_bien`),
-  ADD KEY `id_bien` (`id_bien`);
 
 --
 -- Indices de la tabla `notificaciones`
@@ -720,7 +658,7 @@ ALTER TABLE `verificacion_bienes`
 -- AUTO_INCREMENT de la tabla `bienes_publicos`
 --
 ALTER TABLE `bienes_publicos`
-  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `caja_chica`
@@ -747,22 +685,16 @@ ALTER TABLE `facturas_cc`
   MODIFY `id_factura_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `incorporacion_bien`
---
-ALTER TABLE `incorporacion_bien`
-  MODIFY `id_incorporacion_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
 --
 ALTER TABLE `observaciones_prestamo`
-  MODIFY `id_observacion_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_observacion_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil`
@@ -786,7 +718,7 @@ ALTER TABLE `persona_juridica`
 -- AUTO_INCREMENT de la tabla `prestamo_bien`
 --
 ALTER TABLE `prestamo_bien`
-  MODIFY `id_prestamo_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_prestamo_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_password`
@@ -810,7 +742,7 @@ ALTER TABLE `solicitud_repo_cc`
 -- AUTO_INCREMENT de la tabla `tramite_bienes`
 --
 ALTER TABLE `tramite_bienes`
-  MODIFY `id_tramite_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tramite_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -841,12 +773,6 @@ ALTER TABLE `bienes_publicos`
 --
 ALTER TABLE `facturas_cc`
   ADD CONSTRAINT `facturas_cc_ibfk_1` FOREIGN KEY (`id_sol_cc`) REFERENCES `solicitud_cc` (`id_sol_cc`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `incorporacion_bien`
---
-ALTER TABLE `incorporacion_bien`
-  ADD CONSTRAINT `incorporacion_bien_ibfk_1` FOREIGN KEY (`id_bien`) REFERENCES `bienes_publicos` (`id_bien`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `notificaciones`
