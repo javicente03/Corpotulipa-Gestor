@@ -24,6 +24,8 @@
             <option value="Generar_Nota">Generar Nota de Entrega Muebles e Inmuebles</option>
             <option value="Prestar_Bien_Publico">Prestar Bienes Muebles e Inmuebles</option>
             <option value="Movimiento_Bienes">Efectuar Movimiento Muebles e Inmuebles</option>
+            <option value="Reporte_Bien">Revision de Reportes Muebles Faltantes</option>
+            <option value="Desincorporar_Bien">Desincorporar Bien</option>
 
         </select>
         <select name="cargo" id="cargo">

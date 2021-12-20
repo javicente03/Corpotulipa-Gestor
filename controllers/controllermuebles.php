@@ -42,18 +42,16 @@ class ControllersMueble{
             header("Location: ../404");
     }
 
-    public function sumarBienes($router){
+    public function misBienes($router){
         include("backend/bd.php");
         if(empty($router->getParam())){
-            $bienes = $bd->query("SELECT * FROM bienes_publicos WHERE responsable = ".$_SESSION["id"]);
+            $bienes = $bd->query("SELECT * FROM bienes_publicos WHERE responsable = ".$_SESSION["id"]." AND existente = true");
             return include("frontend/bienes_publicos/mis_bienes.php");
         } else {
             $bien = ($bd->query("SELECT * FROM bienes_publicos WHERE id_bien = ".$router->getParam())->fetch_assoc());
             if(!$bien)
                 header("Location: ../404");
             if($bien["responsable"] != $_SESSION["id"])
-                header("Location: ../404");
-            if($bien["tipo"] != "Mueble")
                 header("Location: ../404");
             return include("frontend/bienes_publicos/mi_bien.php");
         }
@@ -168,6 +166,60 @@ class ControllersMueble{
             if($prestamo["fecha_fin_tramite"] != null)
                 header("Location: ../404");
             return include("frontend/bienes_publicos/bien_prestado.php");
+        }
+    }
+
+    public function bienesFaltantes($router){
+        if(empty($router->getParam())){
+            include("backend/bd.php");
+            $reportes = $bd->query("SELECT * FROM reporte_bien R 
+                                    LEFT JOIN bienes_publicos B ON R.id_bien = B.id_bien
+                                    LEFT JOIN usuario U ON B.responsable=U.id 
+                                    LEFT JOIN perfil P ON U.id=P.id_usuario");
+            include("frontend/bienes_publicos/reportes_bienes.php");
+        } else {
+            include("backend/bd.php");
+
+            $bien = ($bd->query("SELECT * FROM reporte_bien R 
+            LEFT JOIN bienes_publicos B ON R.id_bien = B.id_bien
+            LEFT JOIN usuario U ON B.responsable=U.id 
+            LEFT JOIN perfil P ON U.id=P.id_usuario 
+            INNER JOIN departamento D ON P.departamento_id =D.departamento_id
+            INNER JOIN cargo C ON P.cargo_id=C.cargo_id
+            WHERE id_reporte_bien = ".$router->getParam()))->fetch_assoc();
+
+            if(!$bien)
+                header("Location: ../404");
+            $analista = ($bd->query("SELECT * FROM usuario U LEFT JOIN perfil P ON 
+                    U.id=P.id_usuario INNER JOIN cargo C ON P.cargo_id=C.cargo_id WHERE id = ".$bien["incorporado_por"]))->fetch_assoc();
+            include("frontend/bienes_publicos/bien_faltante.php");
+        }
+    }
+
+    public function desincorporarBien($router){
+        if(empty($router->getParam())){
+            include("backend/bd.php");
+            $reportes = $bd->query("SELECT * FROM reporte_bien R 
+                                    LEFT JOIN bienes_publicos B ON R.id_bien = B.id_bien
+                                    LEFT JOIN usuario U ON B.responsable=U.id 
+                                    LEFT JOIN perfil P ON U.id=P.id_usuario WHERE reporte_tramitado = true
+                                    AND desincorporado = false");
+            include("frontend/bienes_publicos/desincorporacion_bienes.php");
+        } else {
+            include("backend/bd.php");
+
+            $bien = ($bd->query("SELECT * FROM reporte_bien R 
+            LEFT JOIN bienes_publicos B ON R.id_bien = B.id_bien
+            LEFT JOIN usuario U ON B.responsable=U.id 
+            LEFT JOIN perfil P ON U.id=P.id_usuario 
+            INNER JOIN departamento D ON P.departamento_id =D.departamento_id
+            INNER JOIN cargo C ON P.cargo_id=C.cargo_id
+            WHERE id_reporte_bien = ".$router->getParam()))->fetch_assoc();
+
+            if(!$bien)
+                header("Location: ../404");
+            
+            include("frontend/bienes_publicos/desincorporar_bien.php");
         }
     }
 }

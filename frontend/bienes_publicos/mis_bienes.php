@@ -26,12 +26,8 @@
                 <td><?php echo $bien["nombre_bien"] ?></td>
                 <td><?php echo $bien["codigo"] ?></td>
                 <td><?php echo $bien["tipo"] ?></td>
-                <?php
-                if($bien["tipo"] == "Mueble"){ ?>
-                    <td><a href="mis_bienes/<?php echo $bien["id_bien"] ?>">Revisar</a></td>
-                <?php
-                }
-                ?>
+                <td><a href="mis_bienes/<?php echo $bien["id_bien"] ?>">Revisar</a></td>
+                
             </tr>
         <?php
             }

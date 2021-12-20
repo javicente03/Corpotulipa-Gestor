@@ -1,5 +1,6 @@
 <?php
 if(isset($router)){
+$cedula = trim(addslashes($_POST['cedula']));
 $nombre = trim(addslashes($_POST['nombre']));
 $apellido = trim(addslashes($_POST['apellido']));
 $email = trim(addslashes($_POST['email']));
@@ -11,9 +12,10 @@ if(isset($_POST['genero']))
     $genero = trim(addslashes($_POST['genero']));
 else
     $genero="";
-if($nombre != "" && $apellido != "" && $email != "" 
+if($cedula != "" && $nombre != "" && $apellido != "" && $email != "" 
     && $username != "" && $genero != "" && $departamento != "" 
     && $cargo != "" && $nacimiento != ""){
+        if(is_numeric($cedula)){
         include("validaciones.php");
         $email_valido = validar_email($email);
         if($email_valido){
@@ -28,12 +30,12 @@ if($nombre != "" && $apellido != "" && $email != ""
                             $other = trim(addslashes($_POST['other']));
                             if($other != ""){
                                 $genero = $other;
-                                generarUser($nombre,$apellido,$email,$username,$genero,$departamento,$cargo,$nacimiento,$router);
+                                generarUser($cedula,$nombre,$apellido,$email,$username,$genero,$departamento,$cargo,$nacimiento,$router);
                             } else {
                                 echo "Debe ingresar un género";
                             }
                         } else {
-                            generarUser($nombre,$apellido,$email,$username,$genero,$departamento,$cargo,$nacimiento,$router);
+                            generarUser($cedula,$nombre,$apellido,$email,$username,$genero,$departamento,$cargo,$nacimiento,$router);
                         }
                     } else {
                         echo "Género no válido";
@@ -47,13 +49,15 @@ if($nombre != "" && $apellido != "" && $email != ""
         } else {
             echo "Ingrese un correo Gmail valido";
         }
+    } else
+        echo "La cédula de identidad debe ser numérica";
 } else {
     echo "Debe completar todos los datos correctamente";
 }
 } else {
     header("Location: ../404");
 }
-function generarUser($nombre,$apellido,$email,$username,$genero,$departamento,$cargo,$nacimiento,$router){
+function generarUser($cedula,$nombre,$apellido,$email,$username,$genero,$departamento,$cargo,$nacimiento,$router){
     $password = bin2hex(random_bytes(5));
     include("bd.php");
     $sql = "SELECT * FROM departamento WHERE departamento_id = ".$departamento;
@@ -75,7 +79,7 @@ function generarUser($nombre,$apellido,$email,$username,$genero,$departamento,$c
                     $insercion = "INSERT INTO usuario (username,password,email) VALUES('$username','$hash','$email')";
                     $insertar = $bd->query($insercion);
                     if($insertar){
-                        $insercion1 = "INSERT INTO perfil (nombre,apellido,genero,departamento_id,cargo_id,fecha_nacimiento) VALUES('$nombre','$apellido','$genero', '$departamento','$cargo','$nacimiento')";
+                        $insercion1 = "INSERT INTO perfil (cedula,nombre,apellido,genero,departamento_id,cargo_id,fecha_nacimiento) VALUES('$cedula','$nombre','$apellido','$genero', '$departamento','$cargo','$nacimiento')";
                         $insertar1 = $bd->query($insercion1);
                         if($insertar1){
                             $asunto = "Bienvenido a Corpotulipa";

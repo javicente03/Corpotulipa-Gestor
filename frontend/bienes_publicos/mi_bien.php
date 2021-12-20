@@ -9,13 +9,26 @@
 <body>
     <?php
         if(!isset($router))
-            header("Location: ../404");
+            header("Location: ../404");   
     ?>
+
     <form id="form">
         <h4>Nombre: <?php echo $bien["nombre_bien"] ?></h4>
         <h4>Código: <?php echo $bien["codigo"] ?></h4>
+
+        <?php
+        if($bien["tipo"] =="Mueble"){ ?>
+        <input type="password" name="clave" id="clave" placeholder="Ingrese su clave de seguridad">
+        <textarea name="descripcion" placeholder="Ingrese el motivo"></textarea>
+        <label for="robo">Robo</label>
+        <input type="radio" name="motivo" value="Robo" id="robo">
+        <label for="hurto">Hurto</label>
+        <input type="radio" name="motivo" value="Hurto" id="hurto" >
+        <label for="extravio">Extravío</label>
+        <input type="radio" name="motivo" value="Extravío" id="extravio">
         <input type="hidden" name="bien" value="<?php echo $bien["id_bien"] ?>">
         <button type="submit">Enviar</button>
+        <?php } ?>
     </form>
     
    

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-12-2021 a las 02:49:56
+-- Tiempo de generación: 20-12-2021 a las 03:19:16
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -43,21 +43,22 @@ CREATE TABLE `bienes_publicos` (
   `valor` int(11) NOT NULL,
   `fecha_incorporacion` date DEFAULT NULL,
   `incorporado_por` int(11) DEFAULT NULL,
-  `responsable` int(11) DEFAULT NULL
+  `responsable` int(11) DEFAULT NULL,
+  `existente` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `bienes_publicos`
 --
 
-INSERT INTO `bienes_publicos` (`id_bien`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`) VALUES
-(1, 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, 9, NULL, 20, NULL),
-(2, 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 0, NULL, 20, 20),
-(3, 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, NULL, 20, 20),
-(4, 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, 90, NULL, 20, 38),
-(5, 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, 90, '2021-12-12', 20, 37),
-(8, 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 0, '2021-12-17', 20, 20),
-(10, 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, '2021-12-18', 20, 20);
+INSERT INTO `bienes_publicos` (`id_bien`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`, `existente`) VALUES
+(1, 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, 9, NULL, 20, NULL, 0),
+(2, 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 90, '2021-12-07', 20, 20, 0),
+(3, 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, NULL, 20, 20, 1),
+(4, 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, 90, NULL, 20, NULL, 1),
+(5, 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, 90, '2021-12-12', 20, 37, 1),
+(8, 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 0, '2021-12-17', 20, 20, 1),
+(10, 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, '2021-12-18', 20, 20, 1);
 
 -- --------------------------------------------------------
 
@@ -213,6 +214,7 @@ INSERT INTO `observaciones_prestamo` (`id_observacion_prestamo`, `id_prestamo_bi
 
 CREATE TABLE `perfil` (
   `id_usuario` int(11) NOT NULL,
+  `cedula` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `apellido` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `genero` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
@@ -227,10 +229,10 @@ CREATE TABLE `perfil` (
 -- Volcado de datos para la tabla `perfil`
 --
 
-INSERT INTO `perfil` (`id_usuario`, `nombre`, `apellido`, `genero`, `img`, `email_validado`, `fecha_nacimiento`, `cargo_id`, `departamento_id`) VALUES
-(20, 'javier', 'gerardo', 'Masculino', 'frontend/img/profile/javileon.jpg', 0, '2000-10-28', 1, 2),
-(37, 'Maria jesús', 'Cumare Trompiz', 'Femenino', 'frontend/img/profile/maria.jpg', 0, '1999-10-06', 4, 1),
-(38, 'Milimar', 'Cumare Trompiz', 'Femenino', 'frontend/img/profile/none.jpg', 0, '1999-11-26', 1, 1);
+INSERT INTO `perfil` (`id_usuario`, `cedula`, `nombre`, `apellido`, `genero`, `img`, `email_validado`, `fecha_nacimiento`, `cargo_id`, `departamento_id`) VALUES
+(20, '28039751', 'javier', 'gerardo', 'Masculino', 'frontend/img/profile/javileon.jpg', 0, '2000-10-28', 1, 2),
+(37, '', 'Maria jesús', 'Cumare Trompiz', 'Femenino', 'frontend/img/profile/maria.jpg', 0, '1999-10-06', 4, 1),
+(40, '28403870', 'Milimar', 'Cumare', 'Femenino', 'frontend/img/profile/none.jpg', 0, '1999-01-01', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -262,7 +264,9 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (32, 'Generar_Nota', 1),
 (33, 'Prestar_Bien_Publico', 1),
 (34, 'Editar_UT_Caja_Chica', 1),
-(35, 'Movimiento_Bienes', 1);
+(35, 'Movimiento_Bienes', 1),
+(36, 'Reporte_Bien', 1),
+(37, 'Desincorporar_Bien', 1);
 
 -- --------------------------------------------------------
 
@@ -329,6 +333,29 @@ INSERT INTO `relacion_solicitud_cc` (`id_solicitud_repo_cc`, `id_sol_cc`) VALUES
 (2, 4),
 (3, 5),
 (4, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reporte_bien`
+--
+
+CREATE TABLE `reporte_bien` (
+  `id_reporte_bien` int(11) NOT NULL,
+  `id_bien` int(11) DEFAULT NULL,
+  `motivo_reporte` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion_reporte` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `reporte_tramitado` tinyint(1) NOT NULL DEFAULT 0,
+  `desincorporado` tinyint(1) NOT NULL DEFAULT 0,
+  `fecha_desincorporacion` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reporte_bien`
+--
+
+INSERT INTO `reporte_bien` (`id_reporte_bien`, `id_bien`, `motivo_reporte`, `descripcion_reporte`, `reporte_tramitado`, `desincorporado`, `fecha_desincorporacion`) VALUES
+(2, 2, 'Extravío', 'Atraco', 1, 1, '2021-12-20');
 
 -- --------------------------------------------------------
 
@@ -459,7 +486,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `username`, `password`, `email`, `status`, `permisos`) VALUES
 (20, 'javileon', '$2y$12$yNvjs9xp6IBM40BPrMMWueflOttUhyBO49lJhm8ajarSIu1BJrpAq', 'javicentego@gmail.com', 'active', 'super'),
 (37, 'maria', '$2y$12$/FajvxQKj6q5xfkbfrRIIOf3KluvmyFftQlUzHFPi145nMc8puVcm', 'cocolisosleon@gmail.com', 'active', 'basic'),
-(38, 'mili03', '$2y$12$ICddcLMr5VqreSht8avNpuhEpmfkK4PEnMvpFKVRmYJbQOw0O5bXi', 'maryleon@gmail.com', 'active', 'basic');
+(40, 'mili', '$2y$12$Y1Zi.r52hyxQdedWZVNhxuSxMoh/uGDVdWL.Z./mjDpRUr1.vmnWW', 'lyabasta03@gmail.com', 'active', 'basic');
 
 -- --------------------------------------------------------
 
@@ -502,7 +529,7 @@ CREATE TABLE `verificacion_bienes` (
 --
 
 INSERT INTO `verificacion_bienes` (`x`, `id_bien`, `revisado`, `verificado`, `validado`, `user1`, `user2`, `user3`) VALUES
-(1, 1, 1, 1, 0, 20, 37, 38),
+(1, 1, 1, 1, 0, 20, 37, NULL),
 (2, 2, 0, 0, 0, NULL, NULL, NULL),
 (3, 3, 0, 0, 0, NULL, NULL, NULL),
 (4, 4, 0, 0, 0, 20, 20, 37),
@@ -596,6 +623,13 @@ ALTER TABLE `prestamo_bien`
 ALTER TABLE `relacion_solicitud_cc`
   ADD KEY `id_solicitud_repo_cc` (`id_solicitud_repo_cc`,`id_sol_cc`),
   ADD KEY `id_sol_cc` (`id_sol_cc`);
+
+--
+-- Indices de la tabla `reporte_bien`
+--
+ALTER TABLE `reporte_bien`
+  ADD PRIMARY KEY (`id_reporte_bien`),
+  ADD KEY `id_bien` (`id_bien`);
 
 --
 -- Indices de la tabla `reset_password`
@@ -700,13 +734,13 @@ ALTER TABLE `observaciones_prestamo`
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
@@ -719,6 +753,12 @@ ALTER TABLE `persona_juridica`
 --
 ALTER TABLE `prestamo_bien`
   MODIFY `id_prestamo_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+
+--
+-- AUTO_INCREMENT de la tabla `reporte_bien`
+--
+ALTER TABLE `reporte_bien`
+  MODIFY `id_reporte_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_password`
@@ -748,7 +788,7 @@ ALTER TABLE `tramite_bienes`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `verificacion_bienes`
@@ -819,6 +859,12 @@ ALTER TABLE `prestamo_bien`
 ALTER TABLE `relacion_solicitud_cc`
   ADD CONSTRAINT `relacion_solicitud_cc_ibfk_1` FOREIGN KEY (`id_sol_cc`) REFERENCES `solicitud_cc` (`id_sol_cc`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `relacion_solicitud_cc_ibfk_2` FOREIGN KEY (`id_solicitud_repo_cc`) REFERENCES `solicitud_repo_cc` (`id_solicitud_repo_cc`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `reporte_bien`
+--
+ALTER TABLE `reporte_bien`
+  ADD CONSTRAINT `reporte_bien_ibfk_1` FOREIGN KEY (`id_bien`) REFERENCES `bienes_publicos` (`id_bien`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `reset_password`

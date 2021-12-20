@@ -12,6 +12,7 @@
             header("Location: ../404");
     ?>
     <form id="form">
+        <input type="text" name="cedula" id="cedula">
         <input type="text" name="nombre" id="nombre">
         <input type="text" name="apellido" id="apellido">
         <input type="email" name="email" id="email">

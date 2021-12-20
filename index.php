@@ -513,9 +513,9 @@ switch ($router->getController()) {
         if(isset($_SESSION['id'])){
             include("backend/bd.php");
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                $controlmueble->sumarBienes($router); //llama la funcion del controlador 
+                $controlmueble->misBienes($router); //llama la funcion del controlador 
             } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                include("backend/sumar_bienes_back.php");
+                include("backend/reportar_bien_back.php");
             }
         } else
             header("Location: ../login");
@@ -595,6 +595,41 @@ switch ($router->getController()) {
     } else
         header("Location: login");
     break;
+
+    /************************* Reportes Bienes Faltantes **********************/ 
+    case 'bienes_faltantes':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'Reporte_Bien' AND cargo_id =".$_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if($query->num_rows > 0){
+                if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                    $controlmueble->bienesFaltantes($router); //llama la funcion del controlador
+                } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    include("frontend/bienes_publicos/reporte_bienes_pdf.php");
+                }
+            } else
+                header("Location: 404");
+        } else
+            header("Location: login");
+        break;
+
+    case 'desincorporacion_bien':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'Desincorporar_Bien' AND cargo_id =".$_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if($query->num_rows > 0){
+                if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                    $controlmueble->desincorporarBien($router); //llama la funcion del controlador
+                } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    include("backend/desincorporar_bien_back.php");
+                }
+            } else
+                header("Location: 404");
+        } else
+            header("Location: login");
+        break;
 
     default:
         include("frontend/404.php"); //Pagina de error 404 Page Not Found
