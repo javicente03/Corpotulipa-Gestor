@@ -631,6 +631,41 @@ switch ($router->getController()) {
             header("Location: login");
         break;
 
+    /******************** LEVANTAMIENTO DE INVENTARIO ***********************/
+    case 'programar_inventario':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'Programar_Inventario' AND cargo_id =".$_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if($query->num_rows > 0){
+                if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                    $controlmueble->programarInventario($router); //llama la funcion del controlador
+                } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    include("backend/programar_inventario_back.php");
+                }
+            } else
+                header("Location: 404");
+        } else
+            header("Location: login");
+        break;
+
+    case 'aprobar_inventario':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'Aprobar_Inventario' AND cargo_id =".$_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if($query->num_rows > 0){
+                if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                    $controlmueble->aprobarInventario($router); //llama la funcion del controlador
+                } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    include("backend/aprobar_inventario_back.php");
+                }
+            } else
+                header("Location: 404");
+        } else
+            header("Location: login");
+        break;
+
     default:
         include("frontend/404.php"); //Pagina de error 404 Page Not Found
         break;

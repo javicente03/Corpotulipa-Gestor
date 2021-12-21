@@ -26,6 +26,8 @@
             <option value="Movimiento_Bienes">Efectuar Movimiento Muebles e Inmuebles</option>
             <option value="Reporte_Bien">Revision de Reportes Muebles Faltantes</option>
             <option value="Desincorporar_Bien">Desincorporar Bien</option>
+            <option value="Programar_Inventario">Programar Levantamiento de Inventario</option>
+            <option value="Aprobar_Inventario">Aprobar Levantamiento de Inventario</option>
 
         </select>
         <select name="cargo" id="cargo">

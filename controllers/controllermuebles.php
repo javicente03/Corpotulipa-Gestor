@@ -222,4 +222,17 @@ class ControllersMueble{
             include("frontend/bienes_publicos/desincorporar_bien.php");
         }
     }
+
+    public function programarInventario($router){
+        include("backend/bd.php");
+        $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
+
+        include("frontend/bienes_publicos/programar_inventario.php");
+    }
+
+    public function aprobarInventario($router){
+        include("backend/bd.php");
+        $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
+        include("frontend/bienes_publicos/aprobar_inventario.php");
+    }
 }

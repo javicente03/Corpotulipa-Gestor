@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-12-2021 a las 03:19:16
+-- Tiempo de generación: 21-12-2021 a las 04:53:44
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -149,6 +149,30 @@ INSERT INTO `facturas_cc` (`id_factura_cc`, `id_sol_cc`, `factura`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `inventario`
+--
+
+CREATE TABLE `inventario` (
+  `id_inventario` int(11) NOT NULL,
+  `solicitante` int(11) DEFAULT NULL,
+  `respuesta` int(11) DEFAULT NULL,
+  `motivo` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_inventario` date NOT NULL,
+  `aprobado` tinyint(1) NOT NULL DEFAULT 0,
+  `rechazado` tinyint(1) NOT NULL DEFAULT 0,
+  `razon_rechazo` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`id_inventario`, `solicitante`, `respuesta`, `motivo`, `fecha_inventario`, `aprobado`, `rechazado`, `razon_rechazo`) VALUES
+(1, 20, NULL, 'Inventario', '2021-12-21', 0, 0, '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `notificaciones`
 --
 
@@ -266,7 +290,9 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (34, 'Editar_UT_Caja_Chica', 1),
 (35, 'Movimiento_Bienes', 1),
 (36, 'Reporte_Bien', 1),
-(37, 'Desincorporar_Bien', 1);
+(37, 'Desincorporar_Bien', 1),
+(38, 'Programar_Inventario', 1),
+(39, 'Aprobar_Inventario', 1);
 
 -- --------------------------------------------------------
 
@@ -574,6 +600,14 @@ ALTER TABLE `facturas_cc`
   ADD KEY `id_sol_cc` (`id_sol_cc`);
 
 --
+-- Indices de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD PRIMARY KEY (`id_inventario`),
+  ADD KEY `solicitante` (`solicitante`),
+  ADD KEY `incorporado_por` (`respuesta`);
+
+--
 -- Indices de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
@@ -719,6 +753,12 @@ ALTER TABLE `facturas_cc`
   MODIFY `id_factura_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
@@ -740,7 +780,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
@@ -813,6 +853,13 @@ ALTER TABLE `bienes_publicos`
 --
 ALTER TABLE `facturas_cc`
   ADD CONSTRAINT `facturas_cc_ibfk_1` FOREIGN KEY (`id_sol_cc`) REFERENCES `solicitud_cc` (`id_sol_cc`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD CONSTRAINT `inventario_ibfk_1` FOREIGN KEY (`solicitante`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `inventario_ibfk_2` FOREIGN KEY (`respuesta`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `notificaciones`
