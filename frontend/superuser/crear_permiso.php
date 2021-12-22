@@ -28,6 +28,7 @@
             <option value="Desincorporar_Bien">Desincorporar Bien</option>
             <option value="Programar_Inventario">Programar Levantamiento de Inventario</option>
             <option value="Aprobar_Inventario">Aprobar Levantamiento de Inventario</option>
+            <option value="Levantar_Inventario">Levantar Inventario de la Unidad</option>
 
         </select>
         <select name="cargo" id="cargo">

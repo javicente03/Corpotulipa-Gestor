@@ -235,4 +235,21 @@ class ControllersMueble{
         $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
         include("frontend/bienes_publicos/aprobar_inventario.php");
     }
+
+    public function levantarInventario($router){
+        include("backend/bd.php");
+        $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
+        if($ultimo["aprobado"] && $ultimo["fecha_fin_inventario"] ==null){
+            $inventario = $bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON
+                        B.responsable=U.id LEFT JOIN perfil P ON U.id=P.id_usuario
+                        LEFT JOIN departamento D ON P.departamento_id = D.departamento_id 
+                        WHERE existente =true AND D.departamento_id = ".$_SESSION["departamento_id"]);
+            $inventario2 = $bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON
+                B.responsable=U.id LEFT JOIN perfil P ON U.id=P.id_usuario
+                LEFT JOIN departamento D ON P.departamento_id = D.departamento_id 
+                WHERE existente =true AND D.departamento_id = ".$_SESSION["departamento_id"]);
+        }
+        
+        include("frontend/bienes_publicos/levantar_inventario.php");
+    }
 }

@@ -34,7 +34,7 @@
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: 'programar_inventario',
+                url: 'aprobar_inventario',
                 data: $(this).serialize(),
                 enctype:'application/x-www-form-urlencoded',
                 success: function(response)
