@@ -10,6 +10,7 @@
     <?php
         if(!isset($router))
             header("Location: ../404");       
+        if(isset($inventario)){
     ?>
     
     <table>
@@ -23,6 +24,7 @@
         </thead>
         <tbody>
             <?php
+                
                 $total = 0;
                 while ($i = $inventario->fetch_assoc()) {
                 
@@ -46,7 +48,14 @@
             <td><?php echo $total ?></td>
         </tbody>
     </table>
-    
+    <form id="form">
+        <input type="text" name="clave" placeholder="Ingrese su clave de seguridad">
+        <button type="submit">Enviar</button>
+    </form>
+    <?php
+        } else
+            echo "No hay inventarios pendientes";
+    ?>
     <script src="frontend/js/jquery-3.6.0.min.js"></script>
     <script>
         var array = Array()
@@ -68,12 +77,16 @@
 
 
         $('#form').submit(function(e) {
+            var formData = new FormData(document.getElementById("form"));
+            formData.append('array', JSON.stringify(array));
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: 'aprobar_inventario',
-                data: $(this).serialize(),
+                url: 'levantar_inventario',
+                data: formData,
                 enctype:'application/x-www-form-urlencoded',
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,
                 success: function(response)
                 {
                     if(response=="ok" || response.substring(0, 15) == "<!DOCTYPE html>"){

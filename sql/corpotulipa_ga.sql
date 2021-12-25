@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-12-2021 a las 04:53:44
+-- Tiempo de generación: 25-12-2021 a las 02:27:07
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bienes_publicos` (
   `id_bien` int(11) NOT NULL,
+  `catalogo` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `codigo` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `tipo` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `organismo` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE `bienes_publicos` (
   `nombre_bien` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `descripcion` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
   `catastro` int(11) NOT NULL,
-  `valor` int(11) NOT NULL,
+  `valor` decimal(11,2) NOT NULL,
   `fecha_incorporacion` date DEFAULT NULL,
   `incorporado_por` int(11) DEFAULT NULL,
   `responsable` int(11) DEFAULT NULL,
@@ -51,14 +52,17 @@ CREATE TABLE `bienes_publicos` (
 -- Volcado de datos para la tabla `bienes_publicos`
 --
 
-INSERT INTO `bienes_publicos` (`id_bien`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`, `existente`) VALUES
-(1, 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, 9, NULL, 20, NULL, 0),
-(2, 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 90, '2021-12-07', 20, 20, 0),
-(3, 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, NULL, 20, 20, 1),
-(4, 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, 90, NULL, 20, NULL, 1),
-(5, 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, 90, '2021-12-12', 20, 37, 1),
-(8, 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, 0, '2021-12-17', 20, 20, 1),
-(10, 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, 12, '2021-12-18', 20, 20, 1);
+INSERT INTO `bienes_publicos` (`id_bien`, `catalogo`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`, `existente`) VALUES
+(1, '', 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, '9.00', NULL, 20, 20, 1),
+(2, '', 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '90.00', '2021-12-07', 20, 20, 0),
+(3, '', 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.04', NULL, 20, 20, 1),
+(4, '', 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, '90.00', NULL, 20, NULL, 1),
+(5, '', 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, '90.00', '2021-12-12', 20, 40, 1),
+(8, '', 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '0.00', '2021-12-17', 20, 20, 1),
+(10, '', 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.00', '2021-12-18', 20, 40, 1),
+(14, 'coño', 'ORH-21-8', 'Mueble', 'Coño', 'coño', 2, 'coño', 'coño', 'coño', 'coño', 'coño', 0, '900.00', '2021-12-24', 20, 20, 1),
+(15, 'coño', 'OAF-21-9', 'Mueble', 'Nuevecito', 'AAAA', 1, 'coño', 'coño', 'coño', 'coño', 'coño', 0, '80.00', '2021-12-24', 20, 20, 1),
+(16, 'coño', 'OAF-21-16', 'Mueble', 'Codeado', 'codeado', 1, 'coño', 'CLICK', 'SUPUTA', 'Mueble', 'AAAAA', 0, '10.00', '2021-12-24', 20, 20, 1);
 
 -- --------------------------------------------------------
 
@@ -158,6 +162,7 @@ CREATE TABLE `inventario` (
   `respuesta` int(11) DEFAULT NULL,
   `motivo` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_inventario` date NOT NULL,
+  `fecha_fin_inventario` date DEFAULT NULL,
   `aprobado` tinyint(1) NOT NULL DEFAULT 0,
   `rechazado` tinyint(1) NOT NULL DEFAULT 0,
   `razon_rechazo` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
@@ -167,8 +172,60 @@ CREATE TABLE `inventario` (
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` (`id_inventario`, `solicitante`, `respuesta`, `motivo`, `fecha_inventario`, `aprobado`, `rechazado`, `razon_rechazo`) VALUES
-(1, 20, NULL, 'Inventario', '2021-12-21', 0, 0, '');
+INSERT INTO `inventario` (`id_inventario`, `solicitante`, `respuesta`, `motivo`, `fecha_inventario`, `fecha_fin_inventario`, `aprobado`, `rechazado`, `razon_rechazo`) VALUES
+(1, 20, 20, 'Inventario', '2021-12-21', NULL, 1, 0, 'Porque me da la gana'),
+(3, 20, 20, 'Por favor please', '2021-12-22', NULL, 1, 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inventario_data`
+--
+
+CREATE TABLE `inventario_data` (
+  `id_inventario_data` int(11) NOT NULL,
+  `id_inventario_departamento` int(11) DEFAULT NULL,
+  `id_bien` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `inventario_data`
+--
+
+INSERT INTO `inventario_data` (`id_inventario_data`, `id_inventario_departamento`, `id_bien`) VALUES
+(1, 1, 1),
+(2, 1, 3),
+(3, 1, 8),
+(4, 1, 14),
+(5, 1, 15),
+(6, 1, 16),
+(7, 1, 1),
+(8, 1, 3),
+(9, 1, 8),
+(10, 1, 14),
+(11, 1, 15),
+(12, 1, 16);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inventario_departamento`
+--
+
+CREATE TABLE `inventario_departamento` (
+  `id_inventario_departamento` int(11) NOT NULL,
+  `id_inventario` int(11) DEFAULT NULL,
+  `gerente` int(11) DEFAULT NULL,
+  `fecha_inventario_dep` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `inventario_departamento`
+--
+
+INSERT INTO `inventario_departamento` (`id_inventario_departamento`, `id_inventario`, `gerente`, `fecha_inventario_dep`) VALUES
+(1, 3, 20, '2021-12-25'),
+(2, 1, 20, '2021-12-25');
 
 -- --------------------------------------------------------
 
@@ -198,7 +255,10 @@ INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`
 (192, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
 (193, 37, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
 (194, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
-(195, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76');
+(195, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
+(196, 20, 'Ha sido rechazada tu solicitud más reciente de toma de inventario. Revisa el motivo.', '2021-12-22', 0, 'programar_inventario'),
+(197, 37, 'Ha sido programado una toma de inventario físico, por favor prepare su unidad.', '2021-12-22', 0, 'levantar_inventario'),
+(198, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-22', 0, 'programar_inventario');
 
 -- --------------------------------------------------------
 
@@ -255,7 +315,7 @@ CREATE TABLE `perfil` (
 
 INSERT INTO `perfil` (`id_usuario`, `cedula`, `nombre`, `apellido`, `genero`, `img`, `email_validado`, `fecha_nacimiento`, `cargo_id`, `departamento_id`) VALUES
 (20, '28039751', 'javier', 'gerardo', 'Masculino', 'frontend/img/profile/javileon.jpg', 0, '2000-10-28', 1, 2),
-(37, '', 'Maria jesús', 'Cumare Trompiz', 'Femenino', 'frontend/img/profile/maria.jpg', 0, '1999-10-06', 4, 1),
+(37, '', 'Maria jesús', 'Cumare Trompiz', 'Femenino', 'frontend/img/profile/maria.jpg', 0, '1999-10-06', 4, 2),
 (40, '28403870', 'Milimar', 'Cumare', 'Femenino', 'frontend/img/profile/none.jpg', 0, '1999-01-01', 1, 1);
 
 -- --------------------------------------------------------
@@ -292,7 +352,8 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (36, 'Reporte_Bien', 1),
 (37, 'Desincorporar_Bien', 1),
 (38, 'Programar_Inventario', 1),
-(39, 'Aprobar_Inventario', 1);
+(39, 'Aprobar_Inventario', 1),
+(40, 'Levantar_Inventario', 1);
 
 -- --------------------------------------------------------
 
@@ -559,7 +620,11 @@ INSERT INTO `verificacion_bienes` (`x`, `id_bien`, `revisado`, `verificado`, `va
 (2, 2, 0, 0, 0, NULL, NULL, NULL),
 (3, 3, 0, 0, 0, NULL, NULL, NULL),
 (4, 4, 0, 0, 0, 20, 20, 37),
-(5, 5, 1, 1, 0, 20, 20, 37);
+(5, 5, 1, 1, 0, 20, 20, 37),
+(8, 8, 0, 0, 0, NULL, NULL, NULL),
+(9, 8, 0, 0, 0, NULL, NULL, NULL),
+(10, 15, 0, 0, 0, NULL, NULL, NULL),
+(11, 16, 0, 0, 0, NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -606,6 +671,22 @@ ALTER TABLE `inventario`
   ADD PRIMARY KEY (`id_inventario`),
   ADD KEY `solicitante` (`solicitante`),
   ADD KEY `incorporado_por` (`respuesta`);
+
+--
+-- Indices de la tabla `inventario_data`
+--
+ALTER TABLE `inventario_data`
+  ADD PRIMARY KEY (`id_inventario_data`),
+  ADD KEY `id_inventario_departamento` (`id_inventario_departamento`),
+  ADD KEY `id_bien` (`id_bien`);
+
+--
+-- Indices de la tabla `inventario_departamento`
+--
+ALTER TABLE `inventario_departamento`
+  ADD PRIMARY KEY (`id_inventario_departamento`),
+  ADD KEY `id_inventario` (`id_inventario`),
+  ADD KEY `gerente` (`gerente`);
 
 --
 -- Indices de la tabla `notificaciones`
@@ -726,7 +807,7 @@ ALTER TABLE `verificacion_bienes`
 -- AUTO_INCREMENT de la tabla `bienes_publicos`
 --
 ALTER TABLE `bienes_publicos`
-  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `caja_chica`
@@ -756,13 +837,25 @@ ALTER TABLE `facturas_cc`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `inventario_data`
+--
+ALTER TABLE `inventario_data`
+  MODIFY `id_inventario_data` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `inventario_departamento`
+--
+ALTER TABLE `inventario_departamento`
+  MODIFY `id_inventario_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
@@ -780,7 +873,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
@@ -834,7 +927,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `verificacion_bienes`
 --
 ALTER TABLE `verificacion_bienes`
-  MODIFY `x` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `x` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -860,6 +953,20 @@ ALTER TABLE `facturas_cc`
 ALTER TABLE `inventario`
   ADD CONSTRAINT `inventario_ibfk_1` FOREIGN KEY (`solicitante`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `inventario_ibfk_2` FOREIGN KEY (`respuesta`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Filtros para la tabla `inventario_data`
+--
+ALTER TABLE `inventario_data`
+  ADD CONSTRAINT `inventario_data_ibfk_1` FOREIGN KEY (`id_inventario_departamento`) REFERENCES `inventario_departamento` (`id_inventario_departamento`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `inventario_data_ibfk_2` FOREIGN KEY (`id_bien`) REFERENCES `bienes_publicos` (`id_bien`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Filtros para la tabla `inventario_departamento`
+--
+ALTER TABLE `inventario_departamento`
+  ADD CONSTRAINT `inventario_departamento_ibfk_1` FOREIGN KEY (`id_inventario`) REFERENCES `inventario` (`id_inventario`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `inventario_departamento_ibfk_2` FOREIGN KEY (`gerente`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `notificaciones`

@@ -13,6 +13,7 @@ if(isset($router)){
     $inmueble = trim(addslashes($_POST['inmueble']));
     $valor = trim(addslashes($_POST['valor']));
     $responsable = trim(addslashes($_POST['responsable']));
+    $catalogo = trim(addslashes($_POST['catalogo']));
     $date = date("Y-m-d");
     $year = date("Y");
     $year = substr($year,2,4);
@@ -20,17 +21,17 @@ if(isset($router)){
 
     if($tipo == "Mueble"){
         if($organismo!="" && $departamento!="" && $dependencia!="" && $valor!=""
-            && $mueble!="" && $descripcion!="" && $responsable!=""){
+            && $mueble!="" && $descripcion!="" && $responsable!="" && $catalogo!=""){
             if(is_numeric($valor)){
                 include("bd.php");
-                $len = ($bd->query("SELECT * FROM bienes_publicos"))->num_rows;
-                $len = ($len+1);
                 $siglas = ($bd->query("SELECT * FROM departamento WHERE departamento_id = $departamento"))->fetch_assoc();
-                $codigo = $siglas["siglas"]."-".$year."-".$len;
-                $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor) VALUES ('$codigo','Mueble','$organismo','$denoOrga','$departamento','$denoDepa','$dependencia','$denoUsu','$mueble','$descripcion','$date','$user', '$responsable','$valor')");
-                $verificacion = $bd->query("INSERT INTO verificacion_bienes (id_bien) VALUES ('$len')");
-                $incorporar = $bd->query("INSERT INTO incorporacion_bien (id_bien,fecha_incorporaciones) VALUES ('$len','$date')");
-                if($insertar && $verificacion && $incorporar)
+                $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,catalogo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor) VALUES ('','$catalogo','Mueble','$organismo','$denoOrga','$departamento','$denoDepa','$dependencia','$denoUsu','$mueble','$descripcion','$date','$user', '$responsable','$valor')");
+                $anterior = ($bd->query("SELECT * FROM bienes_publicos ORDER BY id_bien DESC LIMIT 1")->fetch_assoc());
+                $anterior_id = $anterior["id_bien"];
+                $codigo = $siglas["siglas"]."-".$year."-".$anterior_id;
+                $indicar_codigo = $bd->query("UPDATE bienes_publicos SET codigo = '$codigo' WHERE id_bien = $anterior_id");
+                $verificacion = $bd->query("INSERT INTO verificacion_bienes (id_bien) VALUES ('$anterior_id')");
+                if($insertar && $verificacion)
                     echo "ok";
                 else
                     echo "¡Oh no! Ha ocurrido un error";

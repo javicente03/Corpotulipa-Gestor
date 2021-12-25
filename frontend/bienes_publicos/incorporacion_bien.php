@@ -31,8 +31,7 @@
         <input type="text" placeholder="Dependencia Usuaria" id="dependencia" name="dependencia">
         <input type="text" placeholder="Denominación" id="denoUsu"  name="denoUsu">
         <input type="number" placeholder="Valor Unitario" id="valor" name="valor">
-
-
+        <input type="text" placeholder="Catálogo de SUDEBIP" name="catalogo">
 
         <!-- Muebles -->
         <input type="text" placeholder="Concepto del Movimiento" id="concepto" name="concepto">
