@@ -252,4 +252,48 @@ class ControllersMueble{
         
         include("frontend/bienes_publicos/levantar_inventario.php");
     }
+
+    public function dataInventario($router){
+        include("backend/bd.php");
+        if(!empty($router->getParam())){
+            $id_data = $router->getParam();
+            $inventario = ($bd->query("SELECT * FROM inventario_departamento I LEFT JOIN departamento D
+                ON I.departamento_id = D.departamento_id LEFT JOIN usuario U ON
+                I.gerente=U.id LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN inventario IV
+                ON I.id_inventario=IV.id_inventario WHERE id_inventario_departamento = $id_data"))->fetch_assoc();
+            if(!$inventario)
+                header("Location: ../404"); 
+            $data = $bd->query("SELECT * FROM inventario_data ID LEFT JOIN bienes_publicos B
+                ON ID.id_bien = B.id_bien WHERE id_inventario_departamento = $id_data");
+
+            include("frontend/bienes_publicos/inventario_data.php");
+        } else{
+            $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
+            if($ultimo["aprobado"] && $ultimo["fecha_fin_inventario"] ==null){
+                $inventarios = $bd->query("SELECT * FROM inventario_departamento I LEFT JOIN departamento D
+                    ON I.departamento_id = D.departamento_id WHERE id_inventario = ".$ultimo["id_inventario"]);
+                
+            }
+            include("frontend/bienes_publicos/inventarios_data.php");
+        }
+    }
+
+    public function dataInventarioPDF($router){
+        if(!empty($router->getParam())){
+            include("backend/bd.php");
+            $id_data = $router->getParam();
+            $inventario = ($bd->query("SELECT * FROM inventario_departamento I LEFT JOIN departamento D
+                ON I.departamento_id = D.departamento_id LEFT JOIN usuario U ON
+                I.gerente=U.id LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN inventario IV
+                ON I.id_inventario=IV.id_inventario WHERE id_inventario_departamento = $id_data"))->fetch_assoc();
+            if(!$inventario)
+                header("Location: ../404"); 
+            $data = $bd->query("SELECT * FROM inventario_data ID LEFT JOIN bienes_publicos B
+                ON ID.id_bien = B.id_bien WHERE id_inventario_departamento = $id_data");
+
+            include("frontend/bienes_publicos/inventario_data_pdf.php");
+        } else{
+            header("Location: 404");
+        }
+    }
 }

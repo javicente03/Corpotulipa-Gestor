@@ -683,6 +683,34 @@ switch ($router->getController()) {
             header("Location: login");
         break;
 
+    case 'inventario_data':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'Programar_Inventario' AND cargo_id =".$_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if($query->num_rows > 0){
+                if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                    $controlmueble->dataInventario($router); //llama la funcion del controlador
+                } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    include("backend/inventario_data_back.php");
+                }
+            } else
+                header("Location: 404");
+        } else
+            header("Location: login");
+        break;
+
+    case 'inventario_data_pdf':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                $controlmueble->dataInventarioPDF($router); //llama la funcion del controlador
+            } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                include("backend/inventario_data_back.php");
+            }
+        } else
+            header("Location: login");
+        break;
     default:
         include("frontend/404.php"); //Pagina de error 404 Page Not Found
         break;

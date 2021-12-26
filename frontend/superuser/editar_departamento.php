@@ -14,6 +14,10 @@
     <form id="form">
         <input type="text" name="siglas" id="siglas" value="<?php echo $siglas ?>">
         <input type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>">
+        <select name="sede" id="sede">
+            <option value="Pueblo Nuevo" <?php if($sede=="Pueblo Nuevo") echo "selected" ?>>Pueblo Nuevo</option>
+            <option value="Punto Fijo" <?php if($sede=="Punto Fijo") echo "selected" ?>>Punto Fijo</option>
+        </select>
         <input type="hidden" name="id" value="<?php echo $data['departamento_id'] ?>">
         <button type="submit" >Editar</button>        
     </form>

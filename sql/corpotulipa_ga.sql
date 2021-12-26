@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-12-2021 a las 02:27:07
+-- Tiempo de generación: 26-12-2021 a las 02:32:54
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -114,16 +114,20 @@ INSERT INTO `cargo` (`cargo_id`, `cargo`, `rango`) VALUES
 CREATE TABLE `departamento` (
   `departamento_id` int(11) NOT NULL,
   `departamento` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `siglas` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `siglas` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `sede` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `departamento`
 --
 
-INSERT INTO `departamento` (`departamento_id`, `departamento`, `siglas`) VALUES
-(1, 'OFICINA', 'OAF'),
-(2, 'RECURSOS', 'ORH');
+INSERT INTO `departamento` (`departamento_id`, `departamento`, `siglas`, `sede`) VALUES
+(1, 'OFICINA', 'OAF', 'Punto Fijo'),
+(2, 'RECURSOS', 'ORH', 'Pueblo Nuevo'),
+(3, 'AVE', 'Nuevo', 'Pueblo Nuevo'),
+(5, 'EL CUARTO', '4TO', 'Pueblo Nuevo'),
+(6, 'EL CUARTO', '4TO', 'Punto Fijo');
 
 -- --------------------------------------------------------
 
@@ -193,18 +197,10 @@ CREATE TABLE `inventario_data` (
 --
 
 INSERT INTO `inventario_data` (`id_inventario_data`, `id_inventario_departamento`, `id_bien`) VALUES
-(1, 1, 1),
-(2, 1, 3),
-(3, 1, 8),
-(4, 1, 14),
-(5, 1, 15),
-(6, 1, 16),
-(7, 1, 1),
-(8, 1, 3),
-(9, 1, 8),
-(10, 1, 14),
-(11, 1, 15),
-(12, 1, 16);
+(61, 12, 3),
+(62, 12, 8),
+(64, 12, 15),
+(65, 12, 16);
 
 -- --------------------------------------------------------
 
@@ -216,16 +212,19 @@ CREATE TABLE `inventario_departamento` (
   `id_inventario_departamento` int(11) NOT NULL,
   `id_inventario` int(11) DEFAULT NULL,
   `gerente` int(11) DEFAULT NULL,
-  `fecha_inventario_dep` date NOT NULL
+  `departamento_id` int(11) DEFAULT NULL,
+  `fecha_inventario_dep` date NOT NULL,
+  `valor_total` decimal(11,2) NOT NULL DEFAULT 0.00,
+  `pdf_inventario` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `verificado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `inventario_departamento`
 --
 
-INSERT INTO `inventario_departamento` (`id_inventario_departamento`, `id_inventario`, `gerente`, `fecha_inventario_dep`) VALUES
-(1, 3, 20, '2021-12-25'),
-(2, 1, 20, '2021-12-25');
+INSERT INTO `inventario_departamento` (`id_inventario_departamento`, `id_inventario`, `gerente`, `departamento_id`, `fecha_inventario_dep`, `valor_total`, `pdf_inventario`, `verificado`) VALUES
+(12, 3, 20, 2, '2021-12-25', '102.04', 'inventario_data/12', 1);
 
 -- --------------------------------------------------------
 
@@ -686,7 +685,8 @@ ALTER TABLE `inventario_data`
 ALTER TABLE `inventario_departamento`
   ADD PRIMARY KEY (`id_inventario_departamento`),
   ADD KEY `id_inventario` (`id_inventario`),
-  ADD KEY `gerente` (`gerente`);
+  ADD KEY `gerente` (`gerente`),
+  ADD KEY `departamento_id` (`departamento_id`);
 
 --
 -- Indices de la tabla `notificaciones`
@@ -825,7 +825,7 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT de la tabla `departamento`
 --
 ALTER TABLE `departamento`
-  MODIFY `departamento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `departamento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas_cc`
@@ -843,13 +843,13 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `inventario_data`
 --
 ALTER TABLE `inventario_data`
-  MODIFY `id_inventario_data` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_inventario_data` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario_departamento`
 --
 ALTER TABLE `inventario_departamento`
-  MODIFY `id_inventario_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_inventario_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `notificaciones`
@@ -966,7 +966,8 @@ ALTER TABLE `inventario_data`
 --
 ALTER TABLE `inventario_departamento`
   ADD CONSTRAINT `inventario_departamento_ibfk_1` FOREIGN KEY (`id_inventario`) REFERENCES `inventario` (`id_inventario`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `inventario_departamento_ibfk_2` FOREIGN KEY (`gerente`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+  ADD CONSTRAINT `inventario_departamento_ibfk_2` FOREIGN KEY (`gerente`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `inventario_departamento_ibfk_3` FOREIGN KEY (`departamento_id`) REFERENCES `departamento` (`departamento_id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `notificaciones`

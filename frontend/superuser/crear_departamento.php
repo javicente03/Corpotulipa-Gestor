@@ -14,12 +14,17 @@
     <form id="form">
         <input type="text" name="siglas" id="siglas">
         <input type="text" name="nombre" id="nombre">
+        <select name="sede" id="sede">
+            <option value="Pueblo Nuevo">Pueblo Nuevo</option>
+            <option value="Punto Fijo">Punto Fijo</option>
+        </select>
         <button type="submit" id="crear" >Crear</button>        
     </form>
     <table id="tabla">
         <thead>
             <th>Siglas</th>
             <th>Nombre</th>
+            <th>Sede</th>
             <th>Editar</th>
             <th>Eliminar</th>
         </thead>
@@ -30,6 +35,7 @@
 		    <tr>
             <td><?php echo $data["siglas"]?></td>
             <td><?php echo $data["departamento"]?></td>
+            <td><?php echo $data["sede"]?></td>
             <td><a href="editar_departamento/<?php echo $data["departamento_id"];?>">Editar</a></td>
             <td><button type="button" onclick="eliminar(<?php echo $data['departamento_id']?>)">Eliminar</button></td>
             </tr>
@@ -49,7 +55,7 @@
                 {
                     var jsonData = JSON.parse(response);
                     if(jsonData.texto=="ok"){
-                        var fila = "<tr><td>"+$('#siglas').val()+"</td><td>"+$('#nombre').val()+"</td><td><a href='editar_departamento/"+jsonData.id+"'>Editar</a></td><td><button onclick='eliminar("+jsonData.id+")'>Eliminar</button></td></tr>"
+                        var fila = "<tr><td>"+$('#siglas').val()+"</td><td>"+$('#nombre').val()+"</td><td>"+$('#sede').val()+"</td><td><a href='editar_departamento/"+jsonData.id+"'>Editar</a></td><td><button onclick='eliminar("+jsonData.id+")'>Eliminar</button></td></tr>"
                         var tr = document.createElement("TR")
                             tr.innerHTML = fila;
                             document.getElementById("tabla").appendChild(tr);

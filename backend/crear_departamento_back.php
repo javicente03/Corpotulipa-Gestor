@@ -3,15 +3,10 @@
 if(isset($router)){
 $siglas = trim(addslashes($_POST['siglas']));
 $nombre = trim(addslashes($_POST['nombre']));
-if($siglas!="" && $nombre!=""){
+$sede = trim(addslashes($_POST['sede']));
+if($siglas!="" && $nombre!="" && $sede!=""){
     include("bd.php");
-
-	$sql="SELECT * FROM departamento WHERE departamento='$nombre'";
-	$proceso=$bd->query($sql);
-    $len=$proceso->num_rows;
-
-    if($len==0){
-        $sql1="INSERT INTO departamento (siglas,departamento) VALUES ('$siglas','$nombre')";
+        $sql1="INSERT INTO departamento (siglas,departamento,sede) VALUES ('$siglas','$nombre','$sede')";
 		$proceso1=$bd->query($sql1);
         if($proceso1){
             $sql2 = "SELECT departamento_id FROM departamento ORDER BY departamento_id DESC LIMIT 1";
@@ -23,10 +18,6 @@ if($siglas!="" && $nombre!=""){
             $json = json_encode(array('texto' => '¡Oh no, ocurrió un error inesperado!'));
             echo $json;
         }
-    } else {
-        $json = json_encode(array('texto' => 'Este nombre de departamento ya existe'));
-        echo $json;
-    }
 } else {
     $json = json_encode(array('texto' => 'Debe completar todos los campos'));
     echo $json;

@@ -48,6 +48,7 @@ class ControllersSuperuser{
         if ($data = $proceso->fetch_assoc()) {
             $siglas = $data['siglas'];
             $nombre = $data['departamento'];
+            $sede = $data['sede'];
         } else {
             return header("Location: ../404");
         }
