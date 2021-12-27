@@ -226,7 +226,6 @@ class ControllersMueble{
     public function programarInventario($router){
         include("backend/bd.php");
         $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
-
         include("frontend/bienes_publicos/programar_inventario.php");
     }
 
@@ -294,6 +293,23 @@ class ControllersMueble{
             include("frontend/bienes_publicos/inventario_data_pdf.php");
         } else{
             header("Location: 404");
+        }
+    }
+
+    public function desincorporarBienes($router){
+        include("backend/bd.php");
+        if(!empty($router->getParam())){
+            $bien = ($bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON
+            B.responsable=U.id LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON
+            B.departamento_id=D.departamento_id WHERE id_bien = ".$router->getParam()))->fetch_assoc();
+            
+            include("frontend/bienes_publicos/desincorporacion_bien_existente.php");
+        } else{
+            $bienes = $bd->query("SELECT * FROM bienes_publicos B LEFT JOIN usuario U ON
+            B.responsable=U.id LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON
+            B.departamento_id=D.departamento_id WHERE existente = true");
+            
+            include("frontend/bienes_publicos/desincorporar_bienes.php");
         }
     }
 }

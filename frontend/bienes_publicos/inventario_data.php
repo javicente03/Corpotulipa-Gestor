@@ -16,7 +16,7 @@
     <h4>Gerente: <?php echo $inventario["nombre"]." ".$inventario["apellido"] ?></h4>
     <h4>Departamento: <?php echo $inventario["departamento"]." - ".$inventario["siglas"] ?></h4>
     <h4>Fecha de Toma: <?php echo $inventario["fecha_inventario_dep"] ?></h4>
-    <a href="?pdf=1">Ver Reporte PDF</a>
+    <a href="../inventario_data_pdf/<?php echo $id_data ?>" target="_blank">Ver Reporte PDF</a>
     <table>
         <thead>
             <th>Nombre</th>

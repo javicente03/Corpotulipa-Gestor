@@ -24,7 +24,7 @@
         <button type="submit">Enviar</button>
     </form>
     <?php } else
-        echo "No puede solicitar, hay una en proceso";
+        echo "No hay ninguna toma de inventario pendiente";
     
     ?>
    

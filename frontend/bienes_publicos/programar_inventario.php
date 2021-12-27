@@ -11,7 +11,7 @@
         if(!isset($router))
             header("Location: ../404");
 
-        if($ultimo["aprobado"] || $ultimo["rechazado"]){
+        if(($ultimo["aprobado"] && $ultimo["fecha_fin_inventario"] != null) || $ultimo["rechazado"]){
     ?>
 
     <form id="form">

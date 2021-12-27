@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2021 a las 02:32:54
+-- Tiempo de generación: 27-12-2021 a las 01:45:11
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -55,7 +55,7 @@ CREATE TABLE `bienes_publicos` (
 INSERT INTO `bienes_publicos` (`id_bien`, `catalogo`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`, `existente`) VALUES
 (1, '', 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, '9.00', NULL, 20, 20, 1),
 (2, '', 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '90.00', '2021-12-07', 20, 20, 0),
-(3, '', 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.04', NULL, 20, 20, 1),
+(3, '', 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.04', NULL, 20, 20, 0),
 (4, '', 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, '90.00', NULL, 20, NULL, 1),
 (5, '', 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, '90.00', '2021-12-12', 20, 40, 1),
 (8, '', 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '0.00', '2021-12-17', 20, 20, 1),
@@ -178,7 +178,10 @@ CREATE TABLE `inventario` (
 
 INSERT INTO `inventario` (`id_inventario`, `solicitante`, `respuesta`, `motivo`, `fecha_inventario`, `fecha_fin_inventario`, `aprobado`, `rechazado`, `razon_rechazo`) VALUES
 (1, 20, 20, 'Inventario', '2021-12-21', NULL, 1, 0, 'Porque me da la gana'),
-(3, 20, 20, 'Por favor please', '2021-12-22', NULL, 1, 0, '');
+(3, 20, 20, 'Por favor please', '2021-12-22', '2021-12-26', 1, 0, ''),
+(4, 20, 20, 'Quiero', '2021-12-26', NULL, 0, 1, 'No quiero'),
+(5, 20, 20, 'Vamos', '2021-12-26', '2021-12-26', 1, 0, ''),
+(6, 20, 20, 'Polfis', '2021-12-26', NULL, 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -200,7 +203,11 @@ INSERT INTO `inventario_data` (`id_inventario_data`, `id_inventario_departamento
 (61, 12, 3),
 (62, 12, 8),
 (64, 12, 15),
-(65, 12, 16);
+(65, 12, 16),
+(66, 13, 1),
+(67, 13, 3),
+(68, 13, 8),
+(69, 13, 14);
 
 -- --------------------------------------------------------
 
@@ -224,7 +231,8 @@ CREATE TABLE `inventario_departamento` (
 --
 
 INSERT INTO `inventario_departamento` (`id_inventario_departamento`, `id_inventario`, `gerente`, `departamento_id`, `fecha_inventario_dep`, `valor_total`, `pdf_inventario`, `verificado`) VALUES
-(12, 3, 20, 2, '2021-12-25', '102.04', 'inventario_data/12', 1);
+(12, 3, 20, 2, '2021-12-25', '102.04', 'inventario_data/12', 1),
+(13, 5, 20, 2, '2021-12-26', '921.04', 'inventario_data_pdf/13', 1);
 
 -- --------------------------------------------------------
 
@@ -257,7 +265,12 @@ INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`
 (195, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
 (196, 20, 'Ha sido rechazada tu solicitud más reciente de toma de inventario. Revisa el motivo.', '2021-12-22', 0, 'programar_inventario'),
 (197, 37, 'Ha sido programado una toma de inventario físico, por favor prepare su unidad.', '2021-12-22', 0, 'levantar_inventario'),
-(198, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-22', 0, 'programar_inventario');
+(198, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-22', 0, 'programar_inventario'),
+(199, 20, 'Ha sido rechazada tu solicitud más reciente de toma de inventario. Revisa el motivo.', '2021-12-26', 0, 'programar_inventario'),
+(200, 37, 'Ha sido programado una toma de inventario físico, por favor prepare su unidad.', '2021-12-26', 0, 'levantar_inventario'),
+(201, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-26', 0, 'programar_inventario'),
+(202, 37, 'Ha sido programado una toma de inventario físico, por favor prepare su unidad.', '2021-12-26', 0, 'levantar_inventario'),
+(203, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-26', 0, 'programar_inventario');
 
 -- --------------------------------------------------------
 
@@ -433,15 +446,18 @@ CREATE TABLE `reporte_bien` (
   `descripcion_reporte` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   `reporte_tramitado` tinyint(1) NOT NULL DEFAULT 0,
   `desincorporado` tinyint(1) NOT NULL DEFAULT 0,
-  `fecha_desincorporacion` date DEFAULT NULL
+  `fecha_desincorporacion` date DEFAULT NULL,
+  `img1` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `img2` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `reporte_bien`
 --
 
-INSERT INTO `reporte_bien` (`id_reporte_bien`, `id_bien`, `motivo_reporte`, `descripcion_reporte`, `reporte_tramitado`, `desincorporado`, `fecha_desincorporacion`) VALUES
-(2, 2, 'Extravío', 'Atraco', 1, 1, '2021-12-20');
+INSERT INTO `reporte_bien` (`id_reporte_bien`, `id_bien`, `motivo_reporte`, `descripcion_reporte`, `reporte_tramitado`, `desincorporado`, `fecha_desincorporacion`, `img1`, `img2`) VALUES
+(2, 2, 'Extravío', 'Atraco', 1, 1, '2021-12-20', NULL, NULL),
+(10, 3, 'Desuso', 'AAAA', 1, 1, '2021-12-27', 'frontend/img/bienes/bien_3_1.jpg', 'frontend/img/bienes/bien_3_2.png');
 
 -- --------------------------------------------------------
 
@@ -837,25 +853,25 @@ ALTER TABLE `facturas_cc`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario_data`
 --
 ALTER TABLE `inventario_data`
-  MODIFY `id_inventario_data` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_inventario_data` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario_departamento`
 --
 ALTER TABLE `inventario_departamento`
-  MODIFY `id_inventario_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_inventario_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
@@ -891,7 +907,7 @@ ALTER TABLE `prestamo_bien`
 -- AUTO_INCREMENT de la tabla `reporte_bien`
 --
 ALTER TABLE `reporte_bien`
-  MODIFY `id_reporte_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_reporte_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_password`

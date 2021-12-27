@@ -18,6 +18,12 @@
     <h4>Motivo del Reporte: <?php echo $bien["motivo_reporte"] ?></h4>
     <h4>Descripción del Reporte: <?php echo $bien["descripcion_reporte"] ?></h4>
     
+    <?php
+        if($bien["img1"]!=null)
+            echo "<img src='../".$bien["img1"]."'>";
+        if($bien["img2"]!=null)
+            echo "<img src='../".$bien["img2"]."'>";
+    ?>
     
     <form id="form">
         <input type="text" name="clave" id="clave" placeholder="Ingrese su clave de seguridad">
