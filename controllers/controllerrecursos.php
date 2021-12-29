@@ -33,4 +33,14 @@ class ControllersRecursos
         } else
             header("Location: 404");
     }
+
+    public function solicitarPermiso($router){
+        if(empty($router->getParam())){
+            include("backend/bd.php");
+            $responsables = $bd->query("SELECT * from usuario U INNER JOIN perfil P ON
+                            U.id=P.id_usuario LEFT JOIN cargo C ON P.cargo_id=C.cargo_id
+                            WHERE C.rango = 1 AND P.departamento_id = ".$_SESSION["departamento_id"]);
+            include("frontend/recursos_humanos/solicitar_permiso.php");
+        }
+    }
 }
