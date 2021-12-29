@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-12-2021 a las 01:45:11
+-- Tiempo de generación: 29-12-2021 a las 03:23:57
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -57,7 +57,7 @@ INSERT INTO `bienes_publicos` (`id_bien`, `catalogo`, `codigo`, `tipo`, `organis
 (2, '', 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '90.00', '2021-12-07', 20, 20, 0),
 (3, '', 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.04', NULL, 20, 20, 0),
 (4, '', 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, '90.00', NULL, 20, NULL, 1),
-(5, '', 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, '90.00', '2021-12-12', 20, 40, 1),
+(5, '', 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, '90.00', '2021-12-12', 20, 40, 0),
 (8, '', 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '0.00', '2021-12-17', 20, 20, 1),
 (10, '', 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.00', '2021-12-18', 20, 40, 1),
 (14, 'coño', 'ORH-21-8', 'Mueble', 'Coño', 'coño', 2, 'coño', 'coño', 'coño', 'coño', 'coño', 0, '900.00', '2021-12-24', 20, 20, 1),
@@ -153,6 +153,31 @@ INSERT INTO `facturas_cc` (`id_factura_cc`, `id_sol_cc`, `factura`) VALUES
 (5, 4, 'frontend/img/facturas_cc/sol4n1.png'),
 (6, 5, 'frontend/img/facturas_cc/sol5n1.png'),
 (7, 6, 'frontend/img/facturas_cc/sol6n1.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `induccion`
+--
+
+CREATE TABLE `induccion` (
+  `id_induccion` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `fecha_induccion` date NOT NULL,
+  `responsable` int(11) DEFAULT NULL,
+  `cuadernillo` tinyint(1) NOT NULL DEFAULT 0,
+  `descripcion` tinyint(1) NOT NULL DEFAULT 0,
+  `politica` tinyint(1) NOT NULL DEFAULT 0,
+  `fecha_respuesta` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `induccion`
+--
+
+INSERT INTO `induccion` (`id_induccion`, `id_usuario`, `fecha_induccion`, `responsable`, `cuadernillo`, `descripcion`, `politica`, `fecha_respuesta`) VALUES
+(4, 20, '2022-10-03', 40, 0, 1, 0, '2021-12-29'),
+(5, 37, '2022-10-03', 40, 0, 1, 1, '2021-12-29');
 
 -- --------------------------------------------------------
 
@@ -254,23 +279,10 @@ CREATE TABLE `notificaciones` (
 --
 
 INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`, `link`) VALUES
-(184, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: Mueble 2.', '2021-12-16', 0, 'revisar_prestamo_bien/74'),
-(185, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: Mueble 2. La cantidad de unidades: 30. Por favor indique si esta procederá.', '2021-12-16', 0, 'revisar_prestamo_bien/75'),
-(189, 20, 'javier gerardo ha solicitado un prestamo del bien público a su responsabilidad: KAMSA. La cantidad de unidades: 11. Por favor indique si esta procederá.', '2021-12-17', 0, 'revisar_prestamo_bien/76'),
-(190, 37, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
-(191, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
-(192, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
-(193, 37, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
-(194, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
-(195, 20, 'Se ha iniciado el tramite de un bien público: KAMSA, por favor indique su confirmación', '2021-12-17', 0, 'movimiento_bienes/76'),
-(196, 20, 'Ha sido rechazada tu solicitud más reciente de toma de inventario. Revisa el motivo.', '2021-12-22', 0, 'programar_inventario'),
-(197, 37, 'Ha sido programado una toma de inventario físico, por favor prepare su unidad.', '2021-12-22', 0, 'levantar_inventario'),
-(198, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-22', 0, 'programar_inventario'),
-(199, 20, 'Ha sido rechazada tu solicitud más reciente de toma de inventario. Revisa el motivo.', '2021-12-26', 0, 'programar_inventario'),
-(200, 37, 'Ha sido programado una toma de inventario físico, por favor prepare su unidad.', '2021-12-26', 0, 'levantar_inventario'),
-(201, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-26', 0, 'programar_inventario'),
-(202, 37, 'Ha sido programado una toma de inventario físico, por favor prepare su unidad.', '2021-12-26', 0, 'levantar_inventario'),
-(203, 20, 'Ha sido aprobada tu solicitud más reciente de toma de inventario.', '2021-12-26', 0, 'programar_inventario');
+(206, 40, 'Has sido invitado a recibir una charla de inducción el dia 2022-02-20, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/1'),
+(207, 20, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/1'),
+(208, 20, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/4'),
+(209, 37, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/5');
 
 -- --------------------------------------------------------
 
@@ -457,7 +469,7 @@ CREATE TABLE `reporte_bien` (
 
 INSERT INTO `reporte_bien` (`id_reporte_bien`, `id_bien`, `motivo_reporte`, `descripcion_reporte`, `reporte_tramitado`, `desincorporado`, `fecha_desincorporacion`, `img1`, `img2`) VALUES
 (2, 2, 'Extravío', 'Atraco', 1, 1, '2021-12-20', NULL, NULL),
-(10, 3, 'Desuso', 'AAAA', 1, 1, '2021-12-27', 'frontend/img/bienes/bien_3_1.jpg', 'frontend/img/bienes/bien_3_2.png');
+(12, 5, 'Desuso', 'Quien sabe', 1, 1, '2021-12-27', 'frontend/img/bienes/bien_5_1.png', 'frontend/img/bienes/bien_5_2.png');
 
 -- --------------------------------------------------------
 
@@ -680,6 +692,14 @@ ALTER TABLE `facturas_cc`
   ADD KEY `id_sol_cc` (`id_sol_cc`);
 
 --
+-- Indices de la tabla `induccion`
+--
+ALTER TABLE `induccion`
+  ADD PRIMARY KEY (`id_induccion`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `responsable` (`responsable`);
+
+--
 -- Indices de la tabla `inventario`
 --
 ALTER TABLE `inventario`
@@ -850,6 +870,12 @@ ALTER TABLE `facturas_cc`
   MODIFY `id_factura_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `induccion`
+--
+ALTER TABLE `induccion`
+  MODIFY `id_induccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
@@ -871,7 +897,7 @@ ALTER TABLE `inventario_departamento`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
@@ -889,7 +915,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
@@ -907,7 +933,7 @@ ALTER TABLE `prestamo_bien`
 -- AUTO_INCREMENT de la tabla `reporte_bien`
 --
 ALTER TABLE `reporte_bien`
-  MODIFY `id_reporte_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_reporte_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_password`
@@ -962,6 +988,13 @@ ALTER TABLE `bienes_publicos`
 --
 ALTER TABLE `facturas_cc`
   ADD CONSTRAINT `facturas_cc_ibfk_1` FOREIGN KEY (`id_sol_cc`) REFERENCES `solicitud_cc` (`id_sol_cc`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `induccion`
+--
+ALTER TABLE `induccion`
+  ADD CONSTRAINT `induccion_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `induccion_ibfk_2` FOREIGN KEY (`responsable`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `inventario`

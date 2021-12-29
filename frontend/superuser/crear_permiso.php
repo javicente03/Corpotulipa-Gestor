@@ -29,7 +29,7 @@
             <option value="Programar_Inventario">Programar Levantamiento de Inventario</option>
             <option value="Aprobar_Inventario">Aprobar Levantamiento de Inventario</option>
             <option value="Levantar_Inventario">Levantar Inventario de la Unidad</option>
-
+            <option value="Recursos_Humanos">Recursos Humanos</option>
         </select>
         <select name="cargo" id="cargo">
             <?php

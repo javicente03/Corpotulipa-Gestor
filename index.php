@@ -5,12 +5,14 @@ require 'controllers/controller.php';
 require 'controllers/controlleruser.php';
 require 'controllers/controllercaja.php';
 require 'controllers/controllermuebles.php';
+require 'controllers/controllerrecursos.php';
 
 $router = new Router();
 $controlsuper = new ControllersSuperuser();
 $controluser = new ControllersUser();
 $controlcaja = new ControllersCaja();
 $controlmueble = new ControllersMueble();
+$controlrecursos = new ControllersRecursos();
 
 session_start();
 
@@ -726,6 +728,36 @@ switch ($router->getController()) {
         } else
             header("Location: login");
         break;
+
+    
+    /*********************************************************
+     *********************************************************
+     ************************* ORH ***************************
+     *********************************************************
+     *********************************************************/
+
+    case 'charla_induccion':
+        if(isset($_SESSION['id'])){
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'RECURSOS_HUMANOS' AND cargo_id =".$_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if($query->num_rows > 0){
+                if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                    $controlrecursos->crearInduccion($router); //llama la funcion del controlador
+                } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    include("backend/crear_induccion_back.php");
+                }
+            } else{
+                if($_SERVER['REQUEST_METHOD'] == 'GET'){
+                    $controlrecursos->asistirInduccion($router); //llama la funcion del controlador
+                } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    include("backend/induccion_back.php");
+                }
+            }
+        } else
+            header("Location: login");
+        break;
+    
         
     default:
         include("frontend/404.php"); //Pagina de error 404 Page Not Found
