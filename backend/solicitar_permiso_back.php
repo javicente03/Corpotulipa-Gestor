@@ -17,7 +17,7 @@ if(isset($router)){
                 $hoy = date('Y-m-d');
                 if($fecha_valida1 && $fecha_valida2 && $inicio >= $hoy && $fin >= $hoy && $inicio <= $fin){
                     $user = $_SESSION["id"];
-                    $bd->query("INSERT INTO solicitud_permiso (id_usuario,fecha_solicitud,hora_solicitud,
+                    $bd->query("INSERT INTO solicitud_permiso (id_usuario,fecha_solicitud,
                     fecha_inicio,fecha_fin,motivo,descripcion,responsable) 
                     VALUES ('$user','$hoy','$inicio','$fin','$motivo','$descripcion','$responsable')");
                     $ultimo = ($bd->query("SELECT * FROM solicitud_permiso 
@@ -25,7 +25,7 @@ if(isset($router)){
                     $link = "solicitud_permiso/".$ultimo["id_solicitud_permiso"];
                     $texto = $_SESSION["nombre"]." ".$_SESSION["apellido"]." ha solicitado un permiso, por favor indique su respuesta";
                     $bd->query("INSERT INTO notificaciones (id_usuario,texto,fecha,link)
-                                VALUES ('$value','$texto','$hoy','$link')");
+                                VALUES ('$responsable','$texto','$hoy','$link')");
                     echo "ok";
                 } else
                     echo "Error en las fechas escogidas";

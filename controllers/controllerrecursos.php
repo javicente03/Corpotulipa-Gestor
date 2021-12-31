@@ -37,10 +37,20 @@ class ControllersRecursos
     public function solicitarPermiso($router){
         if(empty($router->getParam())){
             include("backend/bd.php");
-            $responsables = $bd->query("SELECT * from usuario U INNER JOIN perfil P ON
+            $responsables = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON
                             U.id=P.id_usuario LEFT JOIN cargo C ON P.cargo_id=C.cargo_id
                             WHERE C.rango = 1 AND P.departamento_id = ".$_SESSION["departamento_id"]);
             include("frontend/recursos_humanos/solicitar_permiso.php");
+        } else {
+            include("backend/bd.php");
+            $permiso = ($bd->query("SELECT * FROM solicitud_permiso S LEFT JOIN usuario U 
+                        ON S.id_usuario=U.id INNER JOIN perfil P ON
+                        U.id=P.id_usuario WHERE id_solicitud_permiso = ".$router->getParam()))->fetch_assoc();
+            if(!$permiso)
+                header("Location: ../404");
+            if($permiso["responsable"] != $_SESSION["id"])
+                header("Location: ../404");
+            include("frontend/recursos_humanos/aprobar_permiso.php");    
         }
     }
 }

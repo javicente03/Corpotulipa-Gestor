@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-12-2021 a las 03:23:57
+-- Tiempo de generación: 31-12-2021 a las 02:32:43
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -268,7 +268,7 @@ INSERT INTO `inventario_departamento` (`id_inventario_departamento`, `id_inventa
 CREATE TABLE `notificaciones` (
   `id_noti` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `texto` varchar(3000) COLLATE utf8_unicode_ci NOT NULL,
+  `texto` varchar(10000) COLLATE utf8_unicode_ci NOT NULL,
   `fecha` date NOT NULL,
   `leido` tinyint(1) NOT NULL DEFAULT 0,
   `link` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL
@@ -282,7 +282,16 @@ INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`
 (206, 40, 'Has sido invitado a recibir una charla de inducción el dia 2022-02-20, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/1'),
 (207, 20, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/1'),
 (208, 20, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/4'),
-(209, 37, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/5');
+(209, 37, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/5'),
+(211, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/2'),
+(212, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/3'),
+(213, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/4'),
+(214, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/5'),
+(215, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/6'),
+(216, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/7'),
+(217, 37, 'Ha sido aprobado tu solicitud de permiso laboral del día 2021-12-31. Quien sabe xdxdxd', '2021-12-31', 0, NULL),
+(218, 37, 'Ha sido rechazada tu solicitud de permiso laboral del día 2021-12-31. Porlqee', '2021-12-31', 0, NULL),
+(219, 37, 'Ha sido aprobado tu solicitud de permiso laboral del día 2021-12-31. Porlqee', '2021-12-31', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -512,6 +521,38 @@ INSERT INTO `solicitud_cc` (`id_sol_cc`, `id_usuario`, `fecha`, `bs`, `ut_pedido
 (4, 20, '2021-11-21', '4540.00', '5.04', 'QQQQ', 1, 1, 1),
 (5, 20, '2021-11-22', '4010.00', '4.46', 'LLALALA', 1, 1, 1),
 (6, 20, '2021-12-07', '800.00', '0.89', 'Nueva laptop', 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `solicitud_permiso`
+--
+
+CREATE TABLE `solicitud_permiso` (
+  `id_solicitud_permiso` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `fecha_solicitud` date NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `motivo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `responsable` int(11) DEFAULT NULL,
+  `aprobado` tinyint(1) NOT NULL DEFAULT 0,
+  `fecha_respuesta` date DEFAULT NULL,
+  `remunerado` tinyint(1) NOT NULL DEFAULT 0,
+  `observacion` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `solicitud_permiso`
+--
+
+INSERT INTO `solicitud_permiso` (`id_solicitud_permiso`, `id_usuario`, `fecha_solicitud`, `fecha_inicio`, `fecha_fin`, `motivo`, `descripcion`, `responsable`, `aprobado`, `fecha_respuesta`, `remunerado`, `observacion`) VALUES
+(3, 37, '2021-12-31', '2021-12-31', '2022-01-01', 'on', 'Necesito esta vaina', 20, 0, NULL, 0, ''),
+(4, 37, '2021-12-31', '2022-02-01', '2022-10-03', 'Salud', 'Que te importa', 20, 0, NULL, 0, ''),
+(5, 37, '2021-12-31', '2022-02-01', '2022-10-03', 'Salud', 'Que te importa', 20, 0, NULL, 0, ''),
+(6, 37, '2021-12-31', '2022-02-12', '2022-02-13', 'Trámite Legal', 'AAAA', 20, 0, NULL, 0, ''),
+(7, 37, '2021-12-31', '2022-03-14', '2022-03-28', 'Siniestro', 'AAAASSS', 20, 1, '2021-12-31', 1, 'Porlqee');
 
 -- --------------------------------------------------------
 
@@ -797,6 +838,14 @@ ALTER TABLE `solicitud_cc`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
+-- Indices de la tabla `solicitud_permiso`
+--
+ALTER TABLE `solicitud_permiso`
+  ADD PRIMARY KEY (`id_solicitud_permiso`),
+  ADD KEY `responsable` (`responsable`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
 -- Indices de la tabla `solicitud_repo_cc`
 --
 ALTER TABLE `solicitud_repo_cc`
@@ -897,7 +946,7 @@ ALTER TABLE `inventario_departamento`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
@@ -946,6 +995,12 @@ ALTER TABLE `reset_password`
 --
 ALTER TABLE `solicitud_cc`
   MODIFY `id_sol_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `solicitud_permiso`
+--
+ALTER TABLE `solicitud_permiso`
+  MODIFY `id_solicitud_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_repo_cc`
@@ -1081,6 +1136,13 @@ ALTER TABLE `reset_password`
 --
 ALTER TABLE `solicitud_cc`
   ADD CONSTRAINT `solicitud_cc_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `solicitud_permiso`
+--
+ALTER TABLE `solicitud_permiso`
+  ADD CONSTRAINT `solicitud_permiso_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `solicitud_permiso_ibfk_2` FOREIGN KEY (`responsable`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `tramite_bienes`

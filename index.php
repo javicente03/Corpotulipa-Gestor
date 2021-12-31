@@ -763,7 +763,10 @@ switch ($router->getController()) {
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $controlrecursos->solicitarPermiso($router); //llama la funcion del controlador
             } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                include("backend/solicitar_permiso_back.php");
+                if(isset($_POST["permiso"]))
+                    include("backend/aprobar_permiso_back.php");
+                else
+                    include("backend/solicitar_permiso_back.php");
             }
         } else
             header("Location: login");

@@ -16,19 +16,19 @@
     <form id="form">
         <h4>Tipo</h4>
         <label for="academico">Academico</label>
-        <input type="radio" name="motivo" id="academico">
+        <input type="radio" name="motivo" id="academico" value="Académico">
         <label for="salud">Salud</label>
-        <input type="radio" name="motivo" id="salud">
+        <input type="radio" name="motivo" id="salud" value="Salud">
         <label for="personal">Asunto Personal</label>
-        <input type="radio" name="motivo" id="personal">
+        <input type="radio" name="motivo" id="personal" value="Asunto Personal">
         <label for="legal">Trámite Legal</label>
-        <input type="radio" name="motivo" id="legal">
+        <input type="radio" name="motivo" id="legal" value="Trámite Legal">
         <label for="familiar">Fallecimiento Familiar</label>
-        <input type="radio" name="motivo" id="familiar">
+        <input type="radio" name="motivo" id="familiar" value="Fallecimiento Familiar">
         <label for="siniestro">Siniestro</label>
-        <input type="radio" name="motivo" id="siniestro">
+        <input type="radio" name="motivo" id="siniestro" value="Siniestro">
         <label for="matrimonio">Matrimonio</label>
-        <input type="radio" name="motivo" id="matrimonio">
+        <input type="radio" name="motivo" id="matrimonio" value="Matrimonio">
         <select name="responsable">
             <?php
             while ($r = $responsables->fetch_assoc()) {
@@ -54,7 +54,7 @@
                 enctype: 'application/x-www-form-urlencoded',
                 success: function(response) {
                     if (response == "ok" || response.substring(0, 15) == "<!DOCTYPE html>") {
-                        location.href = "../sesion";
+                        location.href = "sesion";
                     } else {
                         alert(response)
                     }
