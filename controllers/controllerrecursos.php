@@ -22,11 +22,11 @@ class ControllersRecursos
 
     public function asistirInduccion($router)
     {
-        if(!empty($router->getParam())){
+        if (!empty($router->getParam())) {
             include("backend/bd.php");
             $induccion = ($bd->query("SELECT * FROM induccion 
-                        WHERE id_induccion = ".$router->getParam()))->fetch_assoc();
-            if($induccion["id_usuario"] == $_SESSION["id"]){
+                        WHERE id_induccion = " . $router->getParam()))->fetch_assoc();
+            if ($induccion["id_usuario"] == $_SESSION["id"]) {
                 include("frontend/recursos_humanos/induccion.php");
             } else
                 header("Location: ../404");
@@ -34,23 +34,73 @@ class ControllersRecursos
             header("Location: 404");
     }
 
-    public function solicitarPermiso($router){
-        if(empty($router->getParam())){
+    public function solicitarPermiso($router)
+    {
+        if (empty($router->getParam())) {
             include("backend/bd.php");
             $responsables = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON
                             U.id=P.id_usuario LEFT JOIN cargo C ON P.cargo_id=C.cargo_id
-                            WHERE C.rango = 1 AND P.departamento_id = ".$_SESSION["departamento_id"]);
+                            WHERE C.rango = 1 AND P.departamento_id = " . $_SESSION["departamento_id"]);
             include("frontend/recursos_humanos/solicitar_permiso.php");
         } else {
             include("backend/bd.php");
             $permiso = ($bd->query("SELECT * FROM solicitud_permiso S LEFT JOIN usuario U 
                         ON S.id_usuario=U.id INNER JOIN perfil P ON
-                        U.id=P.id_usuario WHERE id_solicitud_permiso = ".$router->getParam()))->fetch_assoc();
-            if(!$permiso)
+                        U.id=P.id_usuario WHERE id_solicitud_permiso = " . $router->getParam()))->fetch_assoc();
+            if (!$permiso)
                 header("Location: ../404");
-            if($permiso["responsable"] != $_SESSION["id"])
+            if ($permiso["responsable"] != $_SESSION["id"])
                 header("Location: ../404");
-            include("frontend/recursos_humanos/aprobar_permiso.php");    
+            include("frontend/recursos_humanos/aprobar_permiso.php");
         }
     }
+
+    public function solicitudAdiestramiento($router)
+    {
+        include("backend/bd.php");
+        $sql = "SELECT * FROM permisos WHERE accion = 'Solicitud_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
+        $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+        if ($query->num_rows > 0) {
+            $participantes = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON
+                                    U.id=P.id_usuario LEFT JOIN cargo C ON P.cargo_id=C.cargo_id
+                                    WHERE P.departamento_id = " . $_SESSION["departamento_id"]);
+            include("frontend/recursos_humanos/solicitar_adiestramiento.php");
+        } else
+            header("Location: 404");
+    }
+
+    public function solicitudesAdiestramiento($router)
+    {
+        include("backend/bd.php");
+        $sql = "SELECT * FROM permisos WHERE accion = 'Revisar_Solicitud_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
+        $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+        if ($query->num_rows > 0) {
+            if(empty($router->getParam())){
+                $solicitudes = $bd->query("SELECT * FROM adiestramiento A LEFT JOIN 
+                usuario U ON A.solicitante=U.id INNER JOIN perfil P ON U.id=P.id_usuario 
+                LEFT JOIN departamento D ON P.departamento_id=D.departamento_id 
+                WHERE fecha_adiestramiento is NULL");
+                include("frontend/recursos_humanos/solicitudes_adiestramiento.php");
+            } else{
+                $solicitud = ($bd->query("SELECT * FROM adiestramiento A LEFT JOIN 
+                usuario U ON A.solicitante=U.id INNER JOIN perfil P ON U.id=P.id_usuario 
+                LEFT JOIN departamento D ON P.departamento_id=D.departamento_id 
+                WHERE id_adiestramiento = ".$router->getParam()))->fetch_assoc();
+
+                if(!$solicitud)
+                    header("Location: ../404");
+                if($solicitud["fecha_adiestramiento"] !=null)
+                    header("Location: ../404");
+                $participantes = $bd->query("SELECT * FROM participante_adiestramiento PA
+                                    LEFT JOIN usuario U ON PA.participante=U.id 
+                                    INNER JOIN perfil P ON U.id=P.id_usuario 
+                                    LEFT JOIN cargo C ON P.cargo_id=C.cargo_id 
+                                    WHERE id_adiestramiento = ".$solicitud["id_adiestramiento"]);
+                include("frontend/recursos_humanos/pautar_adiestramiento.php");
+            }
+        } else
+            header("Location: 404");
+    }
+
+
 }

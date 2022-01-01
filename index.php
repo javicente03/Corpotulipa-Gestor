@@ -771,6 +771,30 @@ switch ($router->getController()) {
         } else
             header("Location: login");
         break;
+
+    case 'solicitar_adiestramiento':
+        if (isset($_SESSION['id'])) {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $controlrecursos->solicitudAdiestramiento($router); //llama la funcion del controlador
+            } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                include("backend/solicitar_adiestramiento_back.php");
+            }
+        } else
+            header("Location: login");
+        break;
+
+    case 'solicitudes_adiestramiento':
+        if (isset($_SESSION['id'])) {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $controlrecursos->solicitudesAdiestramiento($router); //llama la funcion del controlador
+            } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                include("backend/pautar_adiestramiento_back.php");
+            }
+        } else
+            header("Location: login");
+        break;
+
+
     default:
         include("frontend/404.php"); //Pagina de error 404 Page Not Found
         break;
