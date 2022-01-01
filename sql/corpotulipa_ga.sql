@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-12-2021 a las 02:32:43
+-- Tiempo de generación: 01-01-2022 a las 00:29:35
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -20,6 +20,42 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `corpotulipa_ga`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `adiestramiento`
+--
+
+CREATE TABLE `adiestramiento` (
+  `id_adiestramiento` int(11) NOT NULL,
+  `solicitante` int(11) DEFAULT NULL,
+  `fecha_solicitud` date NOT NULL,
+  `denominacion` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `metodo` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_asociada` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `area_conocimiento` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_adiestramiento` date DEFAULT NULL,
+  `institucion` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `lugar_evento` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `duracion` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `costo_unitario` int(11) NOT NULL,
+  `telefono` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `disponibilidad_presupuestaria` tinyint(1) NOT NULL,
+  `partida` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `recomendaciones` text COLLATE utf8_unicode_ci NOT NULL,
+  `aprobado` tinyint(1) NOT NULL DEFAULT 0,
+  `rechazo` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `adiestramiento`
+--
+
+INSERT INTO `adiestramiento` (`id_adiestramiento`, `solicitante`, `fecha_solicitud`, `denominacion`, `metodo`, `meta_asociada`, `area_conocimiento`, `fecha_adiestramiento`, `institucion`, `lugar_evento`, `duracion`, `costo_unitario`, `telefono`, `disponibilidad_presupuestaria`, `partida`, `recomendaciones`, `aprobado`, `rechazo`) VALUES
+(1, 20, '2021-12-31', '', 'on', '8', 'bien', NULL, '', '', '', 0, '', 0, '', '', 0, 0),
+(2, 20, '2021-12-31', '', 'Curso', 'Orale', 'Orale', NULL, '', '', '', 0, '', 0, '', '', 0, 0),
+(3, 20, '2021-12-31', 'Orale', 'Taller', 'Orale', 'Orale', NULL, '', '', '', 0, '', 0, '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -326,6 +362,39 @@ INSERT INTO `observaciones_prestamo` (`id_observacion_prestamo`, `id_prestamo_bi
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `participante_adiestramiento`
+--
+
+CREATE TABLE `participante_adiestramiento` (
+  `id_participante_adiestramiento` int(11) NOT NULL,
+  `participante` int(11) DEFAULT NULL,
+  `nivel_actual` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `nivel_requerido` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `id_adiestramiento` int(11) DEFAULT NULL,
+  `pregunta1` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pregunta2` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pregunta3` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pregunta4` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pregunta5` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pregunta6` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pregunta7` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `conocimientos_adquiridos` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `recomendaciones` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `participante_adiestramiento`
+--
+
+INSERT INTO `participante_adiestramiento` (`id_participante_adiestramiento`, `participante`, `nivel_actual`, `nivel_requerido`, `id_adiestramiento`, `pregunta1`, `pregunta2`, `pregunta3`, `pregunta4`, `pregunta5`, `pregunta6`, `pregunta7`, `conocimientos_adquiridos`, `recomendaciones`) VALUES
+(1, 37, 'Domina', 'Avanzado', 1, '', '', '', '', '', '', '', '', ''),
+(2, 20, 'Aplica', 'Conoce', 2, '', '', '', '', '', '', '', '', ''),
+(3, 20, 'Avanzado', 'Domina', 3, '', '', '', '', '', '', '', '', ''),
+(4, 37, 'Experto', 'Experto', 3, '', '', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `perfil`
 --
 
@@ -386,7 +455,9 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (37, 'Desincorporar_Bien', 1),
 (38, 'Programar_Inventario', 1),
 (39, 'Aprobar_Inventario', 1),
-(40, 'Levantar_Inventario', 1);
+(40, 'Levantar_Inventario', 1),
+(42, 'Solicitud_Adiestramiento', 1),
+(43, 'Revisar_Solicitud_Adiestramiento', 1);
 
 -- --------------------------------------------------------
 
@@ -699,6 +770,13 @@ INSERT INTO `verificacion_bienes` (`x`, `id_bien`, `revisado`, `verificado`, `va
 --
 
 --
+-- Indices de la tabla `adiestramiento`
+--
+ALTER TABLE `adiestramiento`
+  ADD PRIMARY KEY (`id_adiestramiento`),
+  ADD KEY `solicitante` (`solicitante`);
+
+--
 -- Indices de la tabla `bienes_publicos`
 --
 ALTER TABLE `bienes_publicos`
@@ -778,6 +856,14 @@ ALTER TABLE `notificaciones`
 ALTER TABLE `observaciones_prestamo`
   ADD PRIMARY KEY (`id_observacion_prestamo`),
   ADD KEY `id_prestamo_bien` (`id_prestamo_bien`);
+
+--
+-- Indices de la tabla `participante_adiestramiento`
+--
+ALTER TABLE `participante_adiestramiento`
+  ADD PRIMARY KEY (`id_participante_adiestramiento`),
+  ADD KEY `id_adiestramiento` (`id_adiestramiento`),
+  ADD KEY `participante` (`participante`);
 
 --
 -- Indices de la tabla `perfil`
@@ -889,6 +975,12 @@ ALTER TABLE `verificacion_bienes`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `adiestramiento`
+--
+ALTER TABLE `adiestramiento`
+  MODIFY `id_adiestramiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `bienes_publicos`
 --
 ALTER TABLE `bienes_publicos`
@@ -955,6 +1047,12 @@ ALTER TABLE `observaciones_prestamo`
   MODIFY `id_observacion_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT de la tabla `participante_adiestramiento`
+--
+ALTER TABLE `participante_adiestramiento`
+  MODIFY `id_participante_adiestramiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
@@ -964,7 +1062,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
@@ -1031,6 +1129,12 @@ ALTER TABLE `verificacion_bienes`
 --
 
 --
+-- Filtros para la tabla `adiestramiento`
+--
+ALTER TABLE `adiestramiento`
+  ADD CONSTRAINT `adiestramiento_ibfk_1` FOREIGN KEY (`solicitante`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
 -- Filtros para la tabla `bienes_publicos`
 --
 ALTER TABLE `bienes_publicos`
@@ -1084,6 +1188,13 @@ ALTER TABLE `notificaciones`
 --
 ALTER TABLE `observaciones_prestamo`
   ADD CONSTRAINT `observaciones_prestamo_ibfk_1` FOREIGN KEY (`id_prestamo_bien`) REFERENCES `prestamo_bien` (`id_prestamo_bien`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Filtros para la tabla `participante_adiestramiento`
+--
+ALTER TABLE `participante_adiestramiento`
+  ADD CONSTRAINT `participante_adiestramiento_ibfk_1` FOREIGN KEY (`participante`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `participante_adiestramiento_ibfk_2` FOREIGN KEY (`id_adiestramiento`) REFERENCES `adiestramiento` (`id_adiestramiento`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `perfil`
