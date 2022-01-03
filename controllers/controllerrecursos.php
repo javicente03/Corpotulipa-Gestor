@@ -79,7 +79,7 @@ class ControllersRecursos
                 $solicitudes = $bd->query("SELECT * FROM adiestramiento A LEFT JOIN 
                 usuario U ON A.solicitante=U.id INNER JOIN perfil P ON U.id=P.id_usuario 
                 LEFT JOIN departamento D ON P.departamento_id=D.departamento_id 
-                WHERE fecha_adiestramiento is NULL");
+                WHERE fecha_adiestramiento IS NULL");
                 include("frontend/recursos_humanos/solicitudes_adiestramiento.php");
             } else{
                 $solicitud = ($bd->query("SELECT * FROM adiestramiento A LEFT JOIN 
@@ -102,5 +102,50 @@ class ControllersRecursos
             header("Location: 404");
     }
 
+    public function aprobarAdiestramiento($router){
+        include("backend/bd.php");
+        $sql = "SELECT * FROM permisos WHERE accion = 'Aprobar_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
+        $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+        if ($query->num_rows > 0) {
+            if(empty($router->getParam())){
+                $solicitudes = $bd->query("SELECT * FROM adiestramiento A LEFT JOIN 
+                usuario U ON A.solicitante=U.id INNER JOIN perfil P ON U.id=P.id_usuario 
+                LEFT JOIN departamento D ON P.departamento_id=D.departamento_id 
+                WHERE fecha_adiestramiento IS NOT NULL AND aprobado=false");
+                include("frontend/recursos_humanos/adiestramientos_por_aprobar.php");
+            } else{
+                $solicitud = ($bd->query("SELECT * FROM adiestramiento A LEFT JOIN 
+                usuario U ON A.solicitante=U.id INNER JOIN perfil P ON U.id=P.id_usuario 
+                LEFT JOIN departamento D ON P.departamento_id=D.departamento_id WHERE
+                fecha_adiestramiento IS NOT NULL AND aprobado=false AND id_adiestramiento = ".$router->getParam()))->fetch_assoc();
 
+                if(!$solicitud)
+                    header("Location: ../404");
+                $participantes = $bd->query("SELECT * FROM participante_adiestramiento PA
+                                    LEFT JOIN usuario U ON PA.participante=U.id 
+                                    INNER JOIN perfil P ON U.id=P.id_usuario 
+                                    LEFT JOIN cargo C ON P.cargo_id=C.cargo_id 
+                                    WHERE id_adiestramiento = ".$solicitud["id_adiestramiento"]);
+                include("frontend/recursos_humanos/aprobar_adiestramiento.php");
+            }
+        } else
+            header("Location: 404");
+    }
+
+    public function verAdiestramiento($router){
+        if(!empty($router->getParam())){
+            include("backend/bd.php");
+            
+            $participante = ($bd->query("SELECT * FROM participante_adiestramiento PA
+                                    LEFT JOIN adiestramiento A ON PA.id_adiestramiento=A.id_adiestramiento
+                                    WHERE pregunta1='none'AND participante = ".$_SESSION["id"]." AND PA.id_adiestramiento = ".$router->getParam()))->fetch_assoc();
+            
+
+            if(!$participante)
+                header("Location: ../404");
+            else
+                include("frontend/recursos_humanos/ver_adiestramiento.php");
+        } else
+            header("Location: 404");
+    }
 }

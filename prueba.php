@@ -1,5 +1,4 @@
 <?php
-$router=0;
-include("backend/bd.php");
-echo date("h:i:s");
-echo "AA";
+for ($i=0; $i <= 10; $i++) { 
+    echo "Feliz Navidad<br>";
+}

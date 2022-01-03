@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-01-2022 a las 00:29:35
+-- Tiempo de generación: 03-01-2022 a las 18:19:48
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -45,17 +45,16 @@ CREATE TABLE `adiestramiento` (
   `partida` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `recomendaciones` text COLLATE utf8_unicode_ci NOT NULL,
   `aprobado` tinyint(1) NOT NULL DEFAULT 0,
-  `rechazo` tinyint(1) NOT NULL DEFAULT 0
+  `observaciones` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `adiestramiento`
 --
 
-INSERT INTO `adiestramiento` (`id_adiestramiento`, `solicitante`, `fecha_solicitud`, `denominacion`, `metodo`, `meta_asociada`, `area_conocimiento`, `fecha_adiestramiento`, `institucion`, `lugar_evento`, `duracion`, `costo_unitario`, `telefono`, `disponibilidad_presupuestaria`, `partida`, `recomendaciones`, `aprobado`, `rechazo`) VALUES
-(1, 20, '2021-12-31', '', 'on', '8', 'bien', NULL, '', '', '', 0, '', 0, '', '', 0, 0),
-(2, 20, '2021-12-31', '', 'Curso', 'Orale', 'Orale', NULL, '', '', '', 0, '', 0, '', '', 0, 0),
-(3, 20, '2021-12-31', 'Orale', 'Taller', 'Orale', 'Orale', NULL, '', '', '', 0, '', 0, '', '', 0, 0);
+INSERT INTO `adiestramiento` (`id_adiestramiento`, `solicitante`, `fecha_solicitud`, `denominacion`, `metodo`, `meta_asociada`, `area_conocimiento`, `fecha_adiestramiento`, `institucion`, `lugar_evento`, `duracion`, `costo_unitario`, `telefono`, `disponibilidad_presupuestaria`, `partida`, `recomendaciones`, `aprobado`, `observaciones`) VALUES
+(1, 20, '2021-12-31', '', 'on', '8', 'bien', NULL, '', '', '', 0, '', 0, '', '', 0, '0'),
+(2, 20, '2021-12-31', '', 'Curso', 'Orale', 'Orale', '2022-01-01', 'Las', 'LasL', 'sasasas', 9000, 'asasasasasa', 1, 'sdsdsdsd', 'SASASASAS', 1, 'SASASAS');
 
 -- --------------------------------------------------------
 
@@ -315,19 +314,10 @@ CREATE TABLE `notificaciones` (
 --
 
 INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`, `link`) VALUES
-(206, 40, 'Has sido invitado a recibir una charla de inducción el dia 2022-02-20, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/1'),
-(207, 20, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/1'),
-(208, 20, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/4'),
-(209, 37, 'Has sido invitado a recibir una charla de inducción el dia 2022-10-03, por favor completa el test luego de asistir', '2021-12-29', 0, 'charla_induccion/5'),
-(211, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/2'),
-(212, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/3'),
-(213, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/4'),
-(214, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/5'),
-(215, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/6'),
-(216, 20, 'Maria jesús Cumare Trompiz ha solicitado un permiso, por favor indique su respuesta', '2021-12-31', 0, 'solicitud_permiso/7'),
-(217, 37, 'Ha sido aprobado tu solicitud de permiso laboral del día 2021-12-31. Quien sabe xdxdxd', '2021-12-31', 0, NULL),
-(218, 37, 'Ha sido rechazada tu solicitud de permiso laboral del día 2021-12-31. Porlqee', '2021-12-31', 0, NULL),
-(219, 37, 'Ha sido aprobado tu solicitud de permiso laboral del día 2021-12-31. Porlqee', '2021-12-31', 0, NULL);
+(220, 20, 'Has sido invitado a un adiestramiento el día 2022-01-06, pulsa para obtener más información', '2022-01-02', 0, 'ver_adiestramiento/3'),
+(221, 37, 'Has sido invitado a un adiestramiento el día 2022-01-06, pulsa para obtener más información', '2022-01-02', 0, 'ver_adiestramiento/3'),
+(222, 20, 'Tu solicitud de adiestramiento al personal ha sido rechazada. Motivo: Pudrete', '2022-01-02', 0, NULL),
+(223, 20, 'Has sido invitado a un adiestramiento el día 2022-01-10, pulsa para obtener más información', '2022-01-02', 0, 'ver_adiestramiento/2');
 
 -- --------------------------------------------------------
 
@@ -371,13 +361,13 @@ CREATE TABLE `participante_adiestramiento` (
   `nivel_actual` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `nivel_requerido` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `id_adiestramiento` int(11) DEFAULT NULL,
-  `pregunta1` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `pregunta2` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `pregunta3` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `pregunta4` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `pregunta5` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `pregunta6` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `pregunta7` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pregunta1` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
+  `pregunta2` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
+  `pregunta3` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
+  `pregunta4` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
+  `pregunta5` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
+  `pregunta6` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
+  `pregunta7` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
   `conocimientos_adquiridos` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   `recomendaciones` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -387,10 +377,8 @@ CREATE TABLE `participante_adiestramiento` (
 --
 
 INSERT INTO `participante_adiestramiento` (`id_participante_adiestramiento`, `participante`, `nivel_actual`, `nivel_requerido`, `id_adiestramiento`, `pregunta1`, `pregunta2`, `pregunta3`, `pregunta4`, `pregunta5`, `pregunta6`, `pregunta7`, `conocimientos_adquiridos`, `recomendaciones`) VALUES
-(1, 37, 'Domina', 'Avanzado', 1, '', '', '', '', '', '', '', '', ''),
-(2, 20, 'Aplica', 'Conoce', 2, '', '', '', '', '', '', '', '', ''),
-(3, 20, 'Avanzado', 'Domina', 3, '', '', '', '', '', '', '', '', ''),
-(4, 37, 'Experto', 'Experto', 3, '', '', '', '', '', '', '', '', '');
+(1, 37, 'Domina', 'Avanzado', 1, 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', ''),
+(2, 20, 'Aplica', 'Conoce', 2, 'Poco', 'Moderado', 'Mucho', 'Malo', 'Regular', 'Bueno', 'Malo', 'ZZZZZZZZZZZZZZZZZZZZZZZZA', 'AAAAAAAAAAAAAAAAAAAAAABBBBBBBBBB');
 
 -- --------------------------------------------------------
 
@@ -457,7 +445,8 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (39, 'Aprobar_Inventario', 1),
 (40, 'Levantar_Inventario', 1),
 (42, 'Solicitud_Adiestramiento', 1),
-(43, 'Revisar_Solicitud_Adiestramiento', 1);
+(43, 'Revisar_Solicitud_Adiestramiento', 1),
+(44, 'Aprobar_Adiestramiento', 1);
 
 -- --------------------------------------------------------
 
@@ -563,6 +552,13 @@ CREATE TABLE `reset_password` (
   `token` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_reset` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reset_password`
+--
+
+INSERT INTO `reset_password` (`id_reset_password`, `user_reset`, `token`, `fecha_reset`) VALUES
+(51, 20, 'c075c76ef0', '2022-01-03');
 
 -- --------------------------------------------------------
 
@@ -1038,7 +1034,7 @@ ALTER TABLE `inventario_departamento`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
@@ -1062,7 +1058,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
@@ -1086,7 +1082,7 @@ ALTER TABLE `reporte_bien`
 -- AUTO_INCREMENT de la tabla `reset_password`
 --
 ALTER TABLE `reset_password`
-  MODIFY `id_reset_password` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_reset_password` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_cc`
@@ -1194,7 +1190,7 @@ ALTER TABLE `observaciones_prestamo`
 --
 ALTER TABLE `participante_adiestramiento`
   ADD CONSTRAINT `participante_adiestramiento_ibfk_1` FOREIGN KEY (`participante`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `participante_adiestramiento_ibfk_2` FOREIGN KEY (`id_adiestramiento`) REFERENCES `adiestramiento` (`id_adiestramiento`) ON DELETE SET NULL ON UPDATE SET NULL;
+  ADD CONSTRAINT `participante_adiestramiento_ibfk_2` FOREIGN KEY (`id_adiestramiento`) REFERENCES `adiestramiento` (`id_adiestramiento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `perfil`

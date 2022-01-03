@@ -38,19 +38,11 @@
         </tbody>
     </table>
     <form id="form">
-        <input type="date" name="fecha">
-        <input type="text" placeholder="Institución" name="institucion">
-        <input type="text" placeholder="Lugar del evento" name="lugar">
-        <input type="text" placeholder="Duración" name="duracion">
-        <input type="number" placeholder="Costo Unitario" name="costo">
-        <input type="text" placeholder="Telf de contacto" name="telf">
-        <h6>Disponibilidad Presupuestaria</h6>
         <label for="si">Si</label>
-        <input type="radio" name="presupuesto" id="si" value="Si">
+        <input type="radio" name="respuesta" value="Si" id="si">
         <label for="no">No</label>
-        <input type="radio" name="presupuesto" id="no" value="No">
-        <input type="text" name="partida" placeholder="Partida Presupuestaria">
-        <textarea name="recomendaciones" placeholder="Recomendaciones"></textarea>
+        <input type="radio" name="respuesta" value="No" id="no">
+        <textarea name="observaciones" placeholder="Observación"></textarea>
         <input type="text" placeholder="Clave" name="clave">
         <input type="hidden" name="solicitud" value="<?php echo $router->getParam() ?>">
         <button type="submit">Enviar</button>
@@ -61,7 +53,7 @@
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: 'solicitudes_adiestramiento',
+                url: 'aprobar_adiestramiento',
                 data: $(this).serialize(),
                 enctype: 'application/x-www-form-urlencoded',
                 success: function(response) {

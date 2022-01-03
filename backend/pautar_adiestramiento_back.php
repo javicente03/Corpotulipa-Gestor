@@ -18,18 +18,20 @@ if(isset($router)){
                 $solicitud = $_POST["solicitud"];
                 if($institucion!="" && $lugar!="" && $duracion!="" && $costo!="" 
                     && $telf!="" && isset($_POST["presupuesto"]) && $partida!="" && $recomendaciones!=""){
-                    $p = false;
+                    if(is_numeric($costo)){
+                        $p = false;
                     if($_POST["presupuesto"] =="Si")
                         $p = true;
 
-                    $bd->query("UPDATE adiestramiento SET fecha_adiestramiento='$fecha',
-                    institucion='$institucion',lugar_evento='$lugar',duracion='$duracion',
-                    costo_unitario='$costo',telefono='$telf',disponibilidad_presupuestaria='$p',
-                    partida='$partida',recomendaciones='$recomendaciones' 
-                    WHERE id_adiestramiento = $solicitud");
+                        $bd->query("UPDATE adiestramiento SET fecha_adiestramiento='$fecha',
+                        institucion='$institucion',lugar_evento='$lugar',duracion='$duracion',
+                        costo_unitario='$costo',telefono='$telf',disponibilidad_presupuestaria='$p',
+                        partida='$partida',recomendaciones='$recomendaciones' 
+                        WHERE id_adiestramiento = $solicitud");
 
-                    echo "ok";
-
+                        echo "ok";
+                    } else
+                        echo "El costo debe ser numérico";
                 } else
                     echo "Debe completar todos los datos solicitados";
             } else

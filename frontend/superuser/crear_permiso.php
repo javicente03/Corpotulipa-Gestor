@@ -32,6 +32,7 @@
             <option value="Recursos_Humanos">Recursos Humanos</option>
             <option value="Solicitud_Adiestramiento">Solicitar Adiestramiento</option>
             <option value="Revisar_Solicitud_Adiestramiento">Revisar Solicitudes de Adiestramiento</option>
+            <option value="Aprobar_Adiestramiento">Aprobar Adiestramiento</option>
         </select>
         <select name="cargo" id="cargo">
             <?php

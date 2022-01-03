@@ -9,7 +9,7 @@ if(isset($router)){
             if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{8,12}$/', $password)) {
                 reset_pass($token,$password,$router);
             } else {
-                echo "La contraseña solo debe contener letras y números con una longitud de 12 caracteres";
+                echo "La contraseña solo debe contener letras y números con una longitud de entre 8 y 12 caracteres";
             }
         } else {
             echo "Las contraseñas no coinciden";

@@ -17,7 +17,7 @@
         <thead>
             <th>Unidad Solicitante</th>
             <th>Gerente</th>
-            <th>Fecha de la solicitud</th>
+            <th>Fecha Pautada</th>
             <th>Método</th>
             <th>Denominación</th>
             <th>Número de Participantes</th>
@@ -32,11 +32,11 @@
                 <tr>
                     <td><?php echo $s["departamento"] ?></td>
                     <td><?php echo $s["nombre"]." ".$s["apellido"] ?></td>
-                    <td><?php echo $s["fecha_solicitud"] ?></td>
+                    <td><?php echo $s["fecha_adiestramiento"] ?></td>
                     <td><?php echo $s["metodo"] ?></td>
                     <td><?php echo $s["denominacion"] ?></td>
                     <td><?php echo $participantes ?></td>
-                    <td><a href="solicitudes_adiestramiento/<?php echo $s["id_adiestramiento"] ?>">Ir</a></td>
+                    <td><a href="aprobar_adiestramiento/<?php echo $s["id_adiestramiento"] ?>">Ir</a></td>
                 </tr>
             <?php
             }
@@ -46,6 +46,7 @@
 
     <script src="frontend/js/jquery-3.6.0.min.js"></script>
     <script>
+
     </script>
 </body>
 
