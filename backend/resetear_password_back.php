@@ -32,11 +32,9 @@ function reset_pass($token,$password,$router){
         if($data['fecha_reset'] == $hoy){
             $pos1 = stripos($data['nombre'], $password);
             $pos2 = stripos($data['apellido'], $password);
-            $pos3 = stripos($data['username'], $password);
             $pos4 = stripos($data['email'], $password);
             $pos5 = stripos($password, $data['nombre']);
             $pos6 = stripos($password, $data['apellido']);
-            $pos7 = stripos($password, $data['username']);
             $pos8 = stripos($password, $data['email']);
 
             if($pos1 !== false || $pos2 !== false || $pos3 !== false || $pos4 !== false 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-01-2022 a las 18:19:48
+-- Tiempo de generación: 04-01-2022 a las 03:20:49
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -92,9 +92,9 @@ INSERT INTO `bienes_publicos` (`id_bien`, `catalogo`, `codigo`, `tipo`, `organis
 (2, '', 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '90.00', '2021-12-07', 20, 20, 0),
 (3, '', 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.04', NULL, 20, 20, 0),
 (4, '', 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, '90.00', NULL, 20, NULL, 1),
-(5, '', 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, '90.00', '2021-12-12', 20, 40, 0),
+(5, '', 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, '90.00', '2021-12-12', 20, NULL, 0),
 (8, '', 'ORH-21-6', 'Mueble', 'Probando2', 'Aja2', 2, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '0.00', '2021-12-17', 20, 20, 1),
-(10, '', 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.00', '2021-12-18', 20, 40, 1),
+(10, '', 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.00', '2021-12-18', 20, NULL, 1),
 (14, 'coño', 'ORH-21-8', 'Mueble', 'Coño', 'coño', 2, 'coño', 'coño', 'coño', 'coño', 'coño', 0, '900.00', '2021-12-24', 20, 20, 1),
 (15, 'coño', 'OAF-21-9', 'Mueble', 'Nuevecito', 'AAAA', 1, 'coño', 'coño', 'coño', 'coño', 'coño', 0, '80.00', '2021-12-24', 20, 20, 1),
 (16, 'coño', 'OAF-21-16', 'Mueble', 'Codeado', 'codeado', 1, 'coño', 'CLICK', 'SUPUTA', 'Mueble', 'AAAAA', 0, '10.00', '2021-12-24', 20, 20, 1);
@@ -158,7 +158,7 @@ CREATE TABLE `departamento` (
 --
 
 INSERT INTO `departamento` (`departamento_id`, `departamento`, `siglas`, `sede`) VALUES
-(1, 'OFICINA', 'OAF', 'Punto Fijo'),
+(1, 'Oficina de Administración y Finanzas', 'OAF', 'Punto Fijo'),
 (2, 'RECURSOS', 'ORH', 'Pueblo Nuevo'),
 (3, 'AVE', 'Nuevo', 'Pueblo Nuevo'),
 (5, 'EL CUARTO', '4TO', 'Pueblo Nuevo'),
@@ -211,8 +211,8 @@ CREATE TABLE `induccion` (
 --
 
 INSERT INTO `induccion` (`id_induccion`, `id_usuario`, `fecha_induccion`, `responsable`, `cuadernillo`, `descripcion`, `politica`, `fecha_respuesta`) VALUES
-(4, 20, '2022-10-03', 40, 0, 1, 0, '2021-12-29'),
-(5, 37, '2022-10-03', 40, 0, 1, 1, '2021-12-29');
+(4, 20, '2022-10-03', NULL, 0, 1, 0, '2021-12-29'),
+(5, 37, '2022-10-03', NULL, 0, 1, 1, '2021-12-29');
 
 -- --------------------------------------------------------
 
@@ -404,9 +404,9 @@ CREATE TABLE `perfil` (
 --
 
 INSERT INTO `perfil` (`id_usuario`, `cedula`, `nombre`, `apellido`, `genero`, `img`, `email_validado`, `fecha_nacimiento`, `cargo_id`, `departamento_id`) VALUES
-(20, '28039751', 'javier', 'gerardo', 'Masculino', 'frontend/img/profile/javileon.jpg', 0, '2000-10-28', 1, 2),
+(20, '28039751', 'javier', 'gerardo', 'Masculino', 'frontend/img/profile/javileon.jpg', 0, '2000-10-28', 1, 1),
 (37, '', 'Maria jesús', 'Cumare Trompiz', 'Femenino', 'frontend/img/profile/maria.jpg', 0, '1999-10-06', 4, 2),
-(40, '28403870', 'Milimar', 'Cumare', 'Femenino', 'frontend/img/profile/none.jpg', 0, '1999-01-01', 1, 1);
+(44, '19880194', 'Milimar', 'Cumare', 'Prueba', 'frontend/img/profile/none.jpg', 0, '2002-01-03', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -553,13 +553,6 @@ CREATE TABLE `reset_password` (
   `fecha_reset` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `reset_password`
---
-
-INSERT INTO `reset_password` (`id_reset_password`, `user_reset`, `token`, `fecha_reset`) VALUES
-(51, 20, 'c075c76ef0', '2022-01-03');
-
 -- --------------------------------------------------------
 
 --
@@ -694,7 +687,6 @@ INSERT INTO `tramite_bienes` (`id_tramite_bien`, `id_prestamo_bien`, `tipo`, `ac
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'active',
@@ -705,10 +697,10 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `username`, `password`, `email`, `status`, `permisos`) VALUES
-(20, 'javileon', '$2y$12$yNvjs9xp6IBM40BPrMMWueflOttUhyBO49lJhm8ajarSIu1BJrpAq', 'javicentego@gmail.com', 'active', 'super'),
-(37, 'maria', '$2y$12$/FajvxQKj6q5xfkbfrRIIOf3KluvmyFftQlUzHFPi145nMc8puVcm', 'cocolisosleon@gmail.com', 'active', 'basic'),
-(40, 'mili', '$2y$12$Y1Zi.r52hyxQdedWZVNhxuSxMoh/uGDVdWL.Z./mjDpRUr1.vmnWW', 'lyabasta03@gmail.com', 'active', 'basic');
+INSERT INTO `usuario` (`id`, `password`, `email`, `status`, `permisos`) VALUES
+(20, '$2y$12$xWahJaj6cKj89gdFJuSmOe3tvndi2KVuHRKsrT/g/ImzgsZYJAdsi', 'javicentego@gmail.com', 'active', 'super'),
+(37, '$2y$12$/FajvxQKj6q5xfkbfrRIIOf3KluvmyFftQlUzHFPi145nMc8puVcm', 'cocolisosleon@gmail.com', 'active', 'basic'),
+(44, '$2y$12$oOOm5MHzyUkh/bPbKOzcAOM4TC4nZbWSGcq/59y5rW9Lf/fX/T.ca', 'lyabasta03@gmail.com', 'active', 'basic');
 
 -- --------------------------------------------------------
 
@@ -1052,7 +1044,7 @@ ALTER TABLE `participante_adiestramiento`
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -1082,7 +1074,7 @@ ALTER TABLE `reporte_bien`
 -- AUTO_INCREMENT de la tabla `reset_password`
 --
 ALTER TABLE `reset_password`
-  MODIFY `id_reset_password` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_reset_password` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_cc`
@@ -1112,7 +1104,7 @@ ALTER TABLE `tramite_bienes`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `verificacion_bienes`

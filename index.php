@@ -94,6 +94,8 @@ switch ($router->getController()) {
             if ($_SESSION['permisos'] == "super") { //Requiere permisos de superusuario
                 if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     include("backend/suspender_usuario_back.php");
+                else
+                    header("Location: 404");
             } else
                 header("Location: 404");
         } else

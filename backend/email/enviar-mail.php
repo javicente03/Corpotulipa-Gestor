@@ -11,12 +11,11 @@ include('SMTP.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-function sendMail($email,$asunto,$nombre,$apellido,$username,$password){
+function sendMail($email,$asunto,$nombre,$apellido,$password){
     if($asunto == 'Bienvenido a Corpotulipa'){
         $message = file_get_contents('backend/email/templates/welcome.html'); 
         $message = str_replace('%Nombre%', $nombre, $message); 
-        $message = str_replace('%Apellido%', $apellido, $message); 
-        $message = str_replace('%Username%', $username, $message); 
+        $message = str_replace('%Apellido%', $apellido, $message);
         $message = str_replace('%Password%', $password, $message);
     } else if($asunto == 'Corpotulipa Resetee su contrasena'){
         $message = file_get_contents('backend/email/templates/reset_password.html'); 

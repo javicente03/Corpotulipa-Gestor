@@ -60,9 +60,9 @@ function editarUser($nombre,$apellido,$email,$genero,$nacimiento,$router){
         include("imagenes/ajuste_img.php");
         $tipo = $_FILES["img"]["type"];
         $archivo = $_FILES["img"]["tmp_name"];
-        $upload = subir_imagen($tipo,$archivo,$_SESSION['username']);
+        $upload = subir_imagen($tipo,$archivo,$_SESSION['nombre'].$_SESSION['apellido']);
         if($upload)
-            $thumb = "frontend/img/profile/".$_SESSION['username'].$upload;
+            $thumb = "frontend/img/profile/".$_SESSION['email'].$_SESSION['apellido'].$upload;
         else
             $thumb = "fail";
     }

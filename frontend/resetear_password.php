@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="frontend/css/materialize.min.css">
-    <link rel="stylesheet" href="frontend/css/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>CORPOTULIPA - Resetee su contraseña</title>
-    </heads>
-
-<body>
+<?php
+    include("frontend/modularizacion/encabezado_html.php");
+?>
     <?php
     if (!isset($router))
         header("Location: ../404");
@@ -19,13 +8,17 @@
     <nav>
         <div class="nav-wrapper indigo darken-4">
             <div class="container">
-                <a href="#!" class="brand-logo">CORPOTULIPA</a>
+                <a href="login" class="brand-logo"><img src="frontend/img/resources/logo.jpg" class="img-logo" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="login"><i class="material-icons left">person</i>Ingresar</a></li>
                 </ul>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             </div>
         </div>
+        <ul class="sidenav" id="mobile-demo">
+            <li style="display: flex;justify-content: center;"><img src="frontend/img/resources/logo.jpg" class="img-logo" alt=""></li>
+            <li><a href="login"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
+        </ul>
     </nav>
 
     <div class="section container contenedor">
@@ -39,7 +32,7 @@
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix" onclick="visualizar()" id="icon-password" style="cursor: pointer;">visibility</i>
-                    <input type="password" name="password" id="password" >
+                    <input type="password" name="password" id="password">
                     <label for="password">Ingrese su nueva contraseña</label>
                 </div>
                 <div class="input-field">
@@ -57,6 +50,7 @@
 
     <script src="frontend/js/jquery-3.6.0.min.js"></script>
     <script src="frontend/js/materialize.min.js"></script>
+    <script src="frontend/js/elementos-materialize.js"></script>
     <script>
         $('#form').submit(function(e) {
             $("#progress").css("display", "block")
@@ -73,7 +67,7 @@
                             classes: 'rounded green'
                         })
                         setTimeout(() => {
-                            location.href = "login"                            
+                            location.href = "login"
                         }, 3000);
                     } else {
                         M.toast({
@@ -105,10 +99,10 @@
             }
         }
 
-        function patron(){
+        function patron() {
             alert("AAA")
         }
     </script>
-</body>
-
-</html>
+<?php
+    include("frontend/modularizacion/cierre_html.php");
+?>

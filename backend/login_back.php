@@ -1,19 +1,19 @@
 <?php
 if(isset($router)){
-$username = trim(addslashes($_POST['username']));
+$email = trim(addslashes($_POST['email']));
 $password = trim(addslashes($_POST['password']));
 
-if($username != "" && $password != ""){
+if($email != "" && $password != ""){
     include("bd.php");
-    $sql = "SELECT * FROM usuario INNER JOIN perfil ON usuario.id = perfil.id_usuario LEFT JOIN cargo ON perfil.cargo_id = cargo.cargo_id LEFT JOIN departamento ON perfil.departamento_id = departamento.departamento_id WHERE username = '$username'";
+    $sql = "SELECT * FROM usuario INNER JOIN perfil ON usuario.id = perfil.id_usuario LEFT JOIN cargo ON perfil.cargo_id = cargo.cargo_id LEFT JOIN departamento ON perfil.departamento_id = departamento.departamento_id WHERE email = '$email'";
     $proceso = $bd->query($sql);
     if($data = $proceso->fetch_assoc()){
         if(password_verify($password, $data['password'])){
             if($data['status'] == "active"){
                 $_SESSION['id'] = $data['id'];
-                $_SESSION['username'] = $data['username'];
                 $_SESSION['nombre'] = $data['nombre'];
                 $_SESSION['apellido'] = $data['apellido'];
+                $_SESSION['cedula'] = $data['cedula'];
                 $_SESSION['email'] = $data['email'];
                 $_SESSION['permisos'] = $data['permisos'];
                 $_SESSION['departamento_id'] = $data['departamento_id'];

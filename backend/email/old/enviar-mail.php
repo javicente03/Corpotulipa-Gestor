@@ -1,11 +1,10 @@
 <?php
-function sendMail($para,$asunto,$nombre,$apellido,$username,$password){
+function sendMail($para,$asunto,$nombre,$apellido,$password){
 
 if($asunto == "Bienvenido a Corpotulipa"){
 	$mensaje = "<div style='background-color: rgb(26, 23, 23); width: 250px; padding: 0px; border-radius: .5em; height: 550px;'>
 <h1 style='color: rgb(250, 225, 112); font-size: 2em; text-align: center;'>Bienvenido a Corpotulipa</h1>
 <h1 style='color: rgb(250, 225, 112); text-align: center;' margin-left: 80px;'>".$nombre." ".$apellido."</h1>
-<p style='color: rgb(250, 225, 112); text-align: center;'>Usuario: ".$username."</p>
 <p style='color: rgb(250, 225, 112); text-align: center;'>Contraseña: ".$password."</p>
 <a href='' style='background-color: rgb(250, 225, 112); color: black; padding: 10px; border-radius: .5em; margin-left: 80px; text-decoration: none; font-weight: bold; position: absolute;'>Ingresa Aquí</a>
 </div>";

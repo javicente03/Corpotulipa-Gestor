@@ -1,36 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="frontend/css/materialize.min.css">
-    <link rel="stylesheet" href="frontend/css/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>CORPOTULIPA - Iniciar Sesión</title>
-</head>
-
-<body>
+<?php
+    include("frontend/modularizacion/encabezado_html.php");
+?>
     <?php
     if (!isset($router))
-        header("Location: 404.php");
+        header("Location: ../404");
     ?>
 
     <nav>
         <div class="nav-wrapper indigo darken-4">
             <div class="container">
-                <a href="#!" class="brand-logo">CORPOTULIPA</a>
+                <a href="login" class="brand-logo"><img src="frontend/img/resources/logo.jpg" class="img-logo" alt=""></a>
             </div>
         </div>
     </nav>
-
-    <!-- <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-    </ul> -->
 
     <div class="section container contenedor">
         <div class="cont-login">
@@ -38,8 +20,8 @@
                 <h4 class="title">Inicio de Sesión</h4>
                 <div class="input-field">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" name="username" id="username">
-                    <label for="username">Ingrese su usuario</label>
+                    <input type="text" name="email" id="email">
+                    <label for="email">Ingrese su correo</label>
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix" onclick="visualizar()" id="icon-password" style="cursor: pointer;">visibility</i>
@@ -75,7 +57,7 @@
                         setTimeout(() => {
                             location.href = "sesion"
                         }, 3000);
-                    } else{
+                    } else {
                         M.toast({
                             html: response,
                             classes: 'rounded red'
@@ -99,6 +81,6 @@
             }
         }
     </script>
-</body>
-
-</html>
+<?php
+    include("frontend/modularizacion/cierre_html.php");
+?>

@@ -27,7 +27,7 @@
             while($data = $ejecutar->fetch_assoc()){
             ?>
             <tr>
-                <td><?php echo $data['username'] ?></td>
+                <td><?php echo $data['nombre'] ?></td>
                 <td><?php echo $data['bs'] ?></td>
                 <td><?php echo $data['ut_pedido'] ?></td>
                 <td><?php echo $data['fecha'] ?></td>

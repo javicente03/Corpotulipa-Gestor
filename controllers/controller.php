@@ -17,13 +17,11 @@ class ControllersSuperuser{
     // Editar usuario
     public function editarUser($router){
         include('backend/bd.php');
-        $sql = "SELECT * FROM usuario INNER JOIN perfil ON usuario.id = perfil.id_usuario LEFT JOIN cargo ON perfil.cargo_id = cargo.cargo_id LEFT JOIN departamento ON perfil.departamento_id = departamento.departamento_id WHERE id_usuario = ".$router->getParam();
-        $proceso=$bd->query($sql);
-        if($usuario = $proceso->fetch_assoc()){
-            echo $usuario['nombre'];
-            echo $usuario['apellido'];
-            echo $usuario['email'];
-        } else
+        $usuario = ($bd->query("SELECT * FROM usuario INNER JOIN perfil ON usuario.id = perfil.id_usuario 
+                    LEFT JOIN cargo ON perfil.cargo_id = cargo.cargo_id LEFT JOIN departamento 
+                    ON perfil.departamento_id = departamento.departamento_id 
+                    WHERE id_usuario = ".$router->getParam()))->fetch_assoc();
+        if(!$usuario)
             return header("Location: ../404");
         $sql2="SELECT * FROM departamento";
         $proceso2=$bd->query($sql2);
