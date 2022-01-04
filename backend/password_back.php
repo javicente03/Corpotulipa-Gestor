@@ -35,8 +35,8 @@ function reset_pass($old,$password,$router){
             $pos6 = stripos($password, $data['apellido']);
             $pos8 = stripos($password, $data['email']);
 
-            if($pos1 !== false || $pos2 !== false || $pos3 !== false || $pos4 !== false 
-            || $pos5 !== false || $pos6 !== false || $pos7 !== false || $pos8 !== false)
+            if($pos1 !== false || $pos2 !== false || $pos4 !== false 
+            || $pos5 !== false || $pos6 !== false || $pos8 !== false)
                 echo "Su contraseña no puede ser similar a sus datos de usuario";
             else{
                 $opciones = [

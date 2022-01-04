@@ -62,7 +62,7 @@ function editarUser($nombre,$apellido,$email,$genero,$nacimiento,$router){
         $archivo = $_FILES["img"]["tmp_name"];
         $upload = subir_imagen($tipo,$archivo,$_SESSION['nombre'].$_SESSION['apellido']);
         if($upload)
-            $thumb = "frontend/img/profile/".$_SESSION['email'].$_SESSION['apellido'].$upload;
+            $thumb = "frontend/img/profile/".$_SESSION['nombre'].$_SESSION['apellido'].$upload;
         else
             $thumb = "fail";
     }
