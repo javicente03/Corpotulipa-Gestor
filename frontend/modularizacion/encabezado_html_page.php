@@ -1,6 +1,6 @@
 <?php
     if (!isset($router))
-        header("Location: ../404");
+        header("Location: ../../404");
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -72,8 +72,18 @@
     font-weight: bold;
 }
 
+.title-table{
+    margin-bottom: -50px;
+}
+
 #form>.input-field>label{
     font-weight: bold;
+}
+
+@media (max-width:670px) {
+    .title-table{
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width:600px) {
@@ -83,4 +93,18 @@
     .img-logo{
         height: 55px;
     }
+}
+
+
+
+
+/* DATATABLE */
+
+#tabla_filter > label > input{
+    height: 30px;
+    width: 80%;
+}
+
+#tabla_length{
+    display: none;
 }

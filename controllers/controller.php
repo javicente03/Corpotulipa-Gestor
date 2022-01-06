@@ -33,7 +33,7 @@ class ControllersSuperuser{
     // Crear Departamentos y enlistar
     public function departamentos($router){
         include('backend/bd.php');
-        $sql="SELECT * FROM departamento";
+        $sql="SELECT * FROM departamento ORDER BY siglas ASC";
         $proceso=$bd->query($sql);
         return include("frontend/superuser/crear_departamento.php");
     }
@@ -56,7 +56,7 @@ class ControllersSuperuser{
     // Crear Cargos y enlistar
     public function cargos($router){
         include('backend/bd.php');
-        $sql="SELECT * FROM cargo";
+        $sql="SELECT * FROM cargo ORDER BY cargo ASC";
         $proceso=$bd->query($sql);
         return include("frontend/superuser/crear_cargos.php");
     }
@@ -78,7 +78,7 @@ class ControllersSuperuser{
     // Crear Permisos y enlistar
     public function permisos($router){
         include('backend/bd.php');
-        $sql="SELECT * FROM permisos INNER JOIN cargo ON permisos.cargo_id = cargo.cargo_id";
+        $sql="SELECT * FROM permisos P INNER JOIN cargo C ON P.cargo_id = C.cargo_id ORDER BY accion ASC";
         $proceso=$bd->query($sql);
         $sql1="SELECT * FROM cargo";
         $proceso1=$bd->query($sql1);

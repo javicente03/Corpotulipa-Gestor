@@ -94,7 +94,7 @@ include("frontend/modularizacion/menu.php");
 </div>
 
 <div class="container section">
-    <h5 class="title">Usuarios Existentes</h5>
+    <h5 class="title title-table">Usuarios Existentes</h5>
     <table id="tabla" class="striped responsive-table z-depth-3 centered">
         <thead class="table-head">
             <th>Nombres</th>
@@ -136,7 +136,28 @@ include("frontend/modularizacion/menu.php");
 <script src="frontend/js/jquery-3.6.0.min.js"></script>
 <script src="frontend/js/materialize.min.js"></script>
 <script src="frontend/js/elementos-materialize.js"></script>
+<script src="frontend/js/datatables.min.js"></script>
+
 <script>
+    $(document).ready(function() {
+        $('#tabla').DataTable({
+            "language": {
+                "lengthMenu": "Display _MENU_ records per page",
+                "zeroRecords": "No hay data registrada",
+                "info": "Total: _MAX_ resultados",
+                "infoEmpty": "No hay coincidencias",
+                "infoFiltered": "",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        }); 
+    });
+                
     function s(i) {
         if (i == 1) {
             document.getElementById("other").disabled = true

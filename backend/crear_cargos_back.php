@@ -14,26 +14,18 @@ if($rango!="" && $nombre!=""){
             $sql1="INSERT INTO cargo (rango,cargo) VALUES ('$rango','$nombre')";
             $proceso1=$bd->query($sql1);
             if($proceso1){
-                $sql2 = "SELECT cargo_id FROM cargo ORDER BY cargo_id DESC LIMIT 1";
-                $proceso2=$bd->query($sql2);
-                $data =  $proceso2->fetch_assoc();
-                $json = json_encode(array('id' => $data['cargo_id'], 'texto' => 'ok'));
-                echo $json;
+                echo "ok";
             } else {
-                $json = json_encode(array('texto' => '¡Oh no, ocurrió un error inesperado!'));
-                echo $json;
+                echo "¡Oh no, ocurrió un error inesperado!";
             }
         } else {
-            $json = json_encode(array('texto' => 'Este cargo ya existe'));
-            echo $json;
+            echo "Este cargo ya existe";
         }
     } else {
-        $json = json_encode(array('texto' => 'El rango debe ser numérico'));
-        echo $json;
+        echo "El rango debe ser numérico";
     }
 } else {
-    $json = json_encode(array('texto' => 'Debe completar todos los campos'));
-    echo $json;
+    echo "Debe completar todos los campos";
 }
 } else {
     header("Location: ../404");
