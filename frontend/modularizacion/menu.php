@@ -36,7 +36,20 @@ if (!isset($router))
     <div id="box-notify" class="box-notify">
         <h6 style="font-weight: bold;text-align: center;color:white;">Notificaciones</h6>
         <div id="scroll-notify" style="width: 100%;display: flex;flex-wrap: wrap;height: 300px;">
-            <ul class="collection" id="ul-notify" style="width: 100%s;">
+            <ul class="collection" id="ul-notify" style="width: 100%;">
+                <li class="collection-item" id="preloader-notify">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
             

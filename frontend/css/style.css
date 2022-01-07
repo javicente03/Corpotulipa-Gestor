@@ -98,6 +98,8 @@
 /* NOTIFICACIONES */
 
 .box-notify{
+    border-radius: 1em;
+    border: 2px solid #040729;
     margin-top:5px;
     width: 350px; 
     height: 300px;
@@ -105,11 +107,32 @@
     background: linear-gradient(90deg, rgba(9,9,121,1) 25%, rgba(2,0,36,1) 100%);
     position:fixed;
     display:none;
+    z-index: 99999999;
+}
+
+.box-notify::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+.box-notify::-webkit-scrollbar:horizontal{
+    display: none;
+}
+  
+.box-notify::-webkit-scrollbar-track {
+    background: #040729;        /* color of the tracking area */
+    border-radius: 1em;
+}
+  
+.box-notify::-webkit-scrollbar-thumb {
+    background-color: #1a237e;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 1px solid #040729;  /* creates padding around scroll thumb */
+    
 }
 
 .enlace-notificacion{
     color: black;
 }
+
 
 .notificacion-color:hover{
     background-color: rgb(179, 177, 177) !important;
@@ -120,7 +143,7 @@
 }
 
 .texto-notificacion{
-    width: 100%;
+    width: 90%;
 }
 
 .fecha-notificacion{
@@ -132,6 +155,11 @@
     font-weight: bold;
 }
 
+#preloader-notify{
+    height: 90%;
+    display: flex;
+    justify-content: center;
+}
 
 /* DATATABLE */
 
