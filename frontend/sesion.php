@@ -20,6 +20,8 @@ include("frontend/modularizacion/menu.php");
         echo "No";
 
     ?></h1>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <script src="frontend/js/jquery-3.6.0.min.js"></script>
 <script src="frontend/js/materialize.min.js"></script>
 <script src="frontend/js/elementos-materialize.js"></script>

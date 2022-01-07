@@ -818,6 +818,16 @@ switch ($router->getController()) {
             header("Location: login");
         break;
 
+    /*********************** NOTIFICACIONES ***************************/
+    case 'notificaciones':
+        if(isset($_SESSION['id'])) {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                include("backend/notificaciones.php");
+            }
+        } else
+            header("Location: login");
+        break;
+
 
     default:
         include("frontend/404.php"); //Pagina de error 404 Page Not Found
