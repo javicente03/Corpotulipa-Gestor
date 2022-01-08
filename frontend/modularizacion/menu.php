@@ -35,7 +35,7 @@ if (!isset($router))
 <div style="width: 100%;display: flex;flex-direction: row-reverse;">
     <div id="box-notify" class="box-notify">
         <h6 style="font-weight: bold;text-align: center;color:white;">Notificaciones</h6>
-        <div id="scroll-notify" style="width: 100%;display: flex;flex-wrap: wrap;height: 300px;">
+        <div id="scroll-notify" class="scroll-notify">
             <ul class="collection" id="ul-notify" style="width: 100%;">
                 <li class="collection-item" id="preloader-notify">
                     <div class="preloader-wrapper big active">

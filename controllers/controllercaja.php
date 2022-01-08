@@ -21,7 +21,8 @@ class ControllersCaja{
 
     public function aceptarSolCc($router){
         include("backend/bd.php");
-        $sql = "SELECT * FROM solicitud_cc INNER JOIN usuario ON solicitud_cc.id_usuario = usuario.id WHERE aprobado = false";
+        $sql = "SELECT * FROM solicitud_cc S INNER JOIN usuario U ON S.id_usuario = U.id
+                INNER JOIN perfil P ON U.id=P.id_usuario WHERE aprobado = false";
         $ejecutar = $bd->query($sql);
         return include("frontend/caja_chica/aceptar_sol_cc.php");
     }

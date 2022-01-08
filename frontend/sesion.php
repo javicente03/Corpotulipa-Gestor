@@ -25,6 +25,8 @@ include("frontend/modularizacion/menu.php");
 <script src="frontend/js/jquery-3.6.0.min.js"></script>
 <script src="frontend/js/materialize.min.js"></script>
 <script src="frontend/js/elementos-materialize.js"></script>
+<script src="frontend/js/notificaciones.js"></script>
+
 <?php
 include("frontend/modularizacion/cierre_html.php");
 ?>

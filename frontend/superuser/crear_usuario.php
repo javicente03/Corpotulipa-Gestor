@@ -117,9 +117,9 @@ include("frontend/modularizacion/menu.php");
                     <td><?php echo $usuarios["cargo"] ?></td>
                     <td><?php echo $usuarios["siglas"] ?></td>
                     <td>
-                        <a href="editar_usuario/<?php echo $usuarios["id"]; ?>" 
+                        <a href="editar_usuario/<?php echo $usuarios["id"]; ?>" title="Editar"
                         class="btn btn-flat indigo-text text-darken-4" style="font-weight: bold;">
-                        <i class="material-icons prefix">edit</i>Editar</a>
+                        <i class="material-icons prefix">edit</i></a>
                     </td>
                     <td>
                         <button type="button" id="btn-submit" class="btn indigo darken-4 waves-effect waves-light"
@@ -137,6 +137,7 @@ include("frontend/modularizacion/menu.php");
 <script src="frontend/js/materialize.min.js"></script>
 <script src="frontend/js/elementos-materialize.js"></script>
 <script src="frontend/js/datatables.min.js"></script>
+<script src="frontend/js/notificaciones.js"></script>
 
 <script>
     $(document).ready(function() {

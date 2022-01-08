@@ -78,6 +78,8 @@ include("frontend/modularizacion/menu.php");
 <script src="frontend/js/materialize.min.js"></script>
 <script src="frontend/js/elementos-materialize.js"></script>
 <script src="frontend/js/datatables.min.js"></script>
+<script src="frontend/js/notificaciones.js"></script>
+
 <script>
 
     $(document).ready(function() {

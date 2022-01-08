@@ -15,3 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function(){
     $('.materialboxed').materialbox();
   });
+
+
+$(document).ready(function() {
+    $('#motivo').characterCounter();
+});

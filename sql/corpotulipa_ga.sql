@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-01-2022 a las 03:20:49
+-- Tiempo de generación: 08-01-2022 a las 03:30:24
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -107,16 +107,15 @@ INSERT INTO `bienes_publicos` (`id_bien`, `catalogo`, `codigo`, `tipo`, `organis
 
 CREATE TABLE `caja_chica` (
   `idcc` int(11) NOT NULL,
-  `fondo_actual` decimal(13,2) NOT NULL,
-  `fondo_maximo` int(11) NOT NULL
+  `fondo_actual` decimal(13,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `caja_chica`
 --
 
-INSERT INTO `caja_chica` (`idcc`, `fondo_actual`, `fondo_maximo`) VALUES
-(1, '55.04', 900);
+INSERT INTO `caja_chica` (`idcc`, `fondo_actual`) VALUES
+(1, '55.02');
 
 -- --------------------------------------------------------
 
@@ -135,10 +134,17 @@ CREATE TABLE `cargo` (
 --
 
 INSERT INTO `cargo` (`cargo_id`, `cargo`, `rango`) VALUES
-(1, 'ACT', 1),
+(1, 'act', 1),
 (4, 'Gerente', 2),
 (5, 'Jodedor', 2),
-(6, 'Ardido', 2);
+(8, 'Coño', 10),
+(10, 'Verga', 23),
+(11, 'Personality', 4),
+(12, 'QUIEN SABE', 34),
+(13, 'El puto amo', 100),
+(14, 'eL SSS', 100),
+(15, 'CHANFLE', 90),
+(16, 'ACTP', 100);
 
 -- --------------------------------------------------------
 
@@ -162,7 +168,8 @@ INSERT INTO `departamento` (`departamento_id`, `departamento`, `siglas`, `sede`)
 (2, 'RECURSOS', 'ORH', 'Pueblo Nuevo'),
 (3, 'AVE', 'Nuevo', 'Pueblo Nuevo'),
 (5, 'EL CUARTO', '4TO', 'Pueblo Nuevo'),
-(6, 'EL CUARTO', '4TO', 'Punto Fijo');
+(14, 'Personality', 'ASS', 'Punto Fijo'),
+(15, 'Sexo', 'ASSti', 'Pueblo Nuevo');
 
 -- --------------------------------------------------------
 
@@ -316,8 +323,119 @@ CREATE TABLE `notificaciones` (
 INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`, `link`) VALUES
 (220, 20, 'Has sido invitado a un adiestramiento el día 2022-01-06, pulsa para obtener más información', '2022-01-02', 0, 'ver_adiestramiento/3'),
 (221, 37, 'Has sido invitado a un adiestramiento el día 2022-01-06, pulsa para obtener más información', '2022-01-02', 0, 'ver_adiestramiento/3'),
-(222, 20, 'Tu solicitud de adiestramiento al personal ha sido rechazada. Motivo: Pudrete', '2022-01-02', 0, NULL),
-(223, 20, 'Has sido invitado a un adiestramiento el día 2022-01-10, pulsa para obtener más información', '2022-01-02', 0, 'ver_adiestramiento/2');
+(222, 20, 'Tu solicitud de adiestramiento al personal ha sido rechazada. Motivo: Pudrete', '2022-01-02', 1, NULL),
+(223, 20, 'Has sido invitado a un adiestramiento el día 2022-01-10, pulsa para obtener más información', '2022-01-02', 0, 'ver_adiestramiento/2'),
+(225, 20, 'Texto 1 de Prueba Notificacion 1 PRUEBA 1', '2022-01-07', 0, NULL),
+(226, 20, 'Texto 2 de Prueba Notificacion 2 PRUEBA 2', '2022-01-07', 0, NULL),
+(227, 20, 'Texto 3 de Prueba Notificacion 3 PRUEBA 3', '2022-01-07', 0, NULL),
+(228, 20, 'Texto 4 de Prueba Notificacion 4 PRUEBA 4', '2022-01-07', 0, NULL),
+(229, 20, 'Texto 5 de Prueba Notificacion 5 PRUEBA 5', '2022-01-07', 0, NULL),
+(230, 20, 'Texto 6 de Prueba Notificacion 6 PRUEBA 6', '2022-01-07', 0, NULL),
+(231, 20, 'Texto 7 de Prueba Notificacion 7 PRUEBA 7', '2022-01-07', 0, NULL),
+(232, 20, 'Texto 8 de Prueba Notificacion 8 PRUEBA 8', '2022-01-07', 0, NULL),
+(233, 20, 'Texto 9 de Prueba Notificacion 9 PRUEBA 9', '2022-01-07', 0, NULL),
+(234, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(235, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(236, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(237, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(238, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(239, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(240, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(241, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(242, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(243, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(244, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(245, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(246, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(247, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(248, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(249, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(250, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(251, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(252, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(253, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(254, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(255, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(256, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(257, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(258, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(259, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(260, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(261, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(262, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(263, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(264, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(265, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(266, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(267, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(268, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(269, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(270, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(271, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(272, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(273, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(274, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(275, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(276, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(277, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(278, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(279, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(280, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(281, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(282, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(283, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(284, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(285, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(286, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(287, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(288, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(289, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(290, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(291, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(292, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(293, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(294, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(295, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(296, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(297, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(298, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(299, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(300, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(301, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(302, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(303, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(304, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(305, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(306, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(307, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(308, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(309, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(310, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(311, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(312, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(313, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(314, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(315, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(316, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(317, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(318, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(319, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(320, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(321, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(322, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(323, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(324, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(325, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(326, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, 'sesion'),
+(327, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(328, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(329, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(330, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(331, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
+(332, 20, 'ESTA TIENE QUE SALIR PRIMERO XD', '2022-01-07', 1, NULL),
+(333, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 0, NULL),
+(334, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 1, NULL),
+(335, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -404,7 +522,7 @@ CREATE TABLE `perfil` (
 --
 
 INSERT INTO `perfil` (`id_usuario`, `cedula`, `nombre`, `apellido`, `genero`, `img`, `email_validado`, `fecha_nacimiento`, `cargo_id`, `departamento_id`) VALUES
-(20, '28039751', 'javier', 'gerardo', 'Masculino', 'frontend/img/profile/javileon.jpg', 0, '2000-10-28', 1, 1),
+(20, '28039751', 'javier', 'Gerardo', 'Sayajin', 'frontend/img/profile/javierGerardo.png', 0, '1995-10-28', 1, 1),
 (37, '', 'Maria jesús', 'Cumare Trompiz', 'Femenino', 'frontend/img/profile/maria.jpg', 0, '1999-10-06', 4, 2),
 (44, '19880194', 'Milimar', 'Cumare', 'Prueba', 'frontend/img/profile/none.jpg', 0, '2002-01-03', 1, 1);
 
@@ -426,7 +544,6 @@ CREATE TABLE `permisos` (
 
 INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (13, 'Editar_UT_Caja_Chica', 1),
-(16, 'Editar_UT_Caja_Chica', 6),
 (21, 'Editar_UT_Caja_Chica', 4),
 (22, 'Aceptar_Sol_CC', 1),
 (25, 'Recepcion_Repo_CC', 1),
@@ -446,7 +563,9 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (40, 'Levantar_Inventario', 1),
 (42, 'Solicitud_Adiestramiento', 1),
 (43, 'Revisar_Solicitud_Adiestramiento', 1),
-(44, 'Aprobar_Adiestramiento', 1);
+(44, 'Aprobar_Adiestramiento', 1),
+(45, 'Editar_UT_Caja_Chica', 1),
+(46, 'Aceptar_Sol_CC', 11);
 
 -- --------------------------------------------------------
 
@@ -580,7 +699,14 @@ INSERT INTO `solicitud_cc` (`id_sol_cc`, `id_usuario`, `fecha`, `bs`, `ut_pedido
 (3, 20, '2021-11-21', '220.00', '0.24', 'eee', 1, 1, 1),
 (4, 20, '2021-11-21', '4540.00', '5.04', 'QQQQ', 1, 1, 1),
 (5, 20, '2021-11-22', '4010.00', '4.46', 'LLALALA', 1, 1, 1),
-(6, 20, '2021-12-07', '800.00', '0.89', 'Nueva laptop', 1, 1, 1);
+(6, 20, '2021-12-07', '800.00', '0.89', 'Nueva laptop', 1, 1, 1),
+(7, 20, '2022-01-08', '10000.00', '0.01', 'Quiero pues', 1, 0, 0),
+(11, 20, '2022-01-08', '10000.00', '0.01', 'QUE COÑO', 1, 0, 0),
+(12, 20, '2022-01-08', '10.00', '0.00', 'No se', 0, 0, 0),
+(13, 20, '2022-01-08', '10000.00', '50.00', 'Quien sabe', 0, 0, 0),
+(14, 20, '2022-01-08', '3000.00', '15.00', 'Nojoda', 0, 0, 0),
+(15, 20, '2022-01-08', '0.00', '0.00', 'sdd', 0, 0, 0),
+(16, 20, '2022-01-08', '190.00', '0.95', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -698,7 +824,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `password`, `email`, `status`, `permisos`) VALUES
-(20, '$2y$12$xWahJaj6cKj89gdFJuSmOe3tvndi2KVuHRKsrT/g/ImzgsZYJAdsi', 'javicentego@gmail.com', 'active', 'super'),
+(20, '$2y$12$ewFBV5ixjZejt35vpZ4SXeE438lAbh/FJMH7rKb7NHWhao0jyFeW.', 'javicentego@gmail.com', 'active', 'super'),
 (37, '$2y$12$/FajvxQKj6q5xfkbfrRIIOf3KluvmyFftQlUzHFPi145nMc8puVcm', 'cocolisosleon@gmail.com', 'active', 'basic'),
 (44, '$2y$12$oOOm5MHzyUkh/bPbKOzcAOM4TC4nZbWSGcq/59y5rW9Lf/fX/T.ca', 'lyabasta03@gmail.com', 'active', 'basic');
 
@@ -719,7 +845,7 @@ CREATE TABLE `ut` (
 --
 
 INSERT INTO `ut` (`utid`, `ut`, `cambio_ut`) VALUES
-(1, 900, 900);
+(1, 49, 200);
 
 -- --------------------------------------------------------
 
@@ -984,13 +1110,13 @@ ALTER TABLE `caja_chica`
 -- AUTO_INCREMENT de la tabla `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `cargo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cargo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `departamento`
 --
 ALTER TABLE `departamento`
-  MODIFY `departamento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `departamento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas_cc`
@@ -1026,7 +1152,7 @@ ALTER TABLE `inventario_departamento`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=336;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
@@ -1050,7 +1176,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
@@ -1080,7 +1206,7 @@ ALTER TABLE `reset_password`
 -- AUTO_INCREMENT de la tabla `solicitud_cc`
 --
 ALTER TABLE `solicitud_cc`
-  MODIFY `id_sol_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_sol_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_permiso`

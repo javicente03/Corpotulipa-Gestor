@@ -79,6 +79,8 @@ include("frontend/modularizacion/menu_page.php");
 <script src="../frontend/js/jquery-3.6.0.min.js"></script>
 <script src="../frontend/js/materialize.min.js"></script>
 <script src="../frontend/js/elementos-materialize.js"></script>
+<script src="../frontend/js/notificaciones-page.js"></script>
+
 <script>
     $('#form').submit(function(e) {
         $("#progress").css("display", "block")

@@ -3,8 +3,8 @@ if(isset($router)){
     $bs = trim(addslashes($_POST['bs']));
     $motivo = trim(addslashes($_POST['motivo']));
 
-    if($bs != "" || $motivo != ""){
-        if(is_numeric($bs)){
+    if($bs != "" && $motivo != "" && strlen($motivo)<=2000){
+        if(is_numeric($bs) && $bs>0){
             include("bd.php");
             $sql = "SELECT * FROM ut WHERE utid = 1";
             $ut = ($bd->query($sql))->fetch_assoc();
@@ -22,10 +22,10 @@ if(isset($router)){
                 echo "El monto solicitado es mayor al descrito por el control de caja chica";
             }
         } else {
-            echo "El monto solicitado debe ser numérico";
+            echo "El monto solicitado debe ser numérico y mayor a 0";
         }
     } else {
-        echo "Debe completar todos los datos solicitados";
+        echo "Debe completar todos los datos solicitados correctamente";
     }
 } else {
     header("Location: ../404");

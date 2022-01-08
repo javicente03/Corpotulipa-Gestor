@@ -15,7 +15,7 @@ $("#campana").click(function (e) {
 })
 
 $("#scroll-notify").scroll(function (e) {
-    max = document.getElementById("scroll-notify").scrollHeight - 350
+    max = document.getElementById("box-notify").scrollHeight - 300
 
     if($("#scroll-notify").scrollTop() > document.getElementById("scroll-notify").scrollHeight - 400){
         if(banderaPre){
@@ -55,7 +55,7 @@ window.onload = notificacionesNoLeidas()
 function cargarNotificacion(a) {
     $.ajax({
         type: "POST",
-        url: "notificaciones",
+        url: "../notificaciones",
         data: { anterior: a, cargar:1 },
         enctype: 'application/x-www-form-urlencoded',
         success: function (response) {
@@ -70,8 +70,7 @@ function cargarNotificacion(a) {
 
             try {
                 ul.removeChild(document.getElementById("preloader-notify"))
-            } catch (error) {
-                
+            } catch (error) {   
             }
             primera_vez = false
             let existen = false
@@ -127,7 +126,7 @@ function cargarNotificacion(a) {
 function notificacionesNoLeidas(){
     $.ajax({
         type: "POST",
-        url: "notificaciones",
+        url: "../notificaciones",
         data: {no_leidas:1},
         enctype: 'application/x-www-form-urlencoded',
         success: function (response) {
@@ -140,7 +139,7 @@ function marcarLeida(id){
     console.log("PP"+id)
     $.ajax({
         type: "POST",
-        url: "notificaciones",
+        url: "../notificaciones",
         data: {marcar:1,noti:id},
         enctype: 'application/x-www-form-urlencoded',
         success: function (response) {

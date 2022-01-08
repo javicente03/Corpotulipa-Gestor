@@ -103,26 +103,36 @@
     margin-top:5px;
     width: 350px; 
     height: 300px;
-    overflow: scroll;
+    /* overflow: scroll; */
     background: linear-gradient(90deg, rgba(9,9,121,1) 25%, rgba(2,0,36,1) 100%);
     position:fixed;
     display:none;
     z-index: 99999999;
 }
 
-.box-notify::-webkit-scrollbar {
+.scroll-notify{
+    overflow: scroll;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 250px;
+    padding: 4px;
+    border-radius: 1em;
+}
+
+.scroll-notify::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
 }
-.box-notify::-webkit-scrollbar:horizontal{
+.scroll-notify::-webkit-scrollbar:horizontal{
     display: none;
 }
   
-.box-notify::-webkit-scrollbar-track {
+.scroll-notify::-webkit-scrollbar-track {
     background: #040729;        /* color of the tracking area */
     border-radius: 1em;
 }
   
-.box-notify::-webkit-scrollbar-thumb {
+.scroll-notify::-webkit-scrollbar-thumb {
     background-color: #1a237e;    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 1px solid #040729;  /* creates padding around scroll thumb */
@@ -156,7 +166,7 @@
 }
 
 #preloader-notify{
-    height: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -169,5 +179,18 @@
 }
 
 #tabla_length{
+    display: none;
+}
+
+.scroll-td{
+    overflow: scroll;
+    max-width: 100%;
+    max-height: 150px;
+}
+
+.scroll-notify::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+.scroll-td::-webkit-scrollbar:horizontal{
     display: none;
 }
