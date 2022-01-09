@@ -1,45 +1,47 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+include("frontend/modularizacion/encabezado_html.php");
+if (!isset($router))
+    header("Location: ../../404");
+include("frontend/modularizacion/menu.php");
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORPOTULIPA - Solicitud de Reposición de Caja Chica</title>
-</head>
-
-<body>
-    <table>
-            <thead>
-                <thead>
-                    <tr>
-                        <th>Número de Reposición</th>
-                        <th>Fecha</th>
-                        <th>Fondo CC <span>(Para ese momento)</span></th>
-                        <th></th>
-                    </tr>
-                </thead>
+<div class="container section">
+    <div class="row">
+        <h5 class="title">Solicitud de reposición de caja chica</h5>
+        <table class="stripped responsive-table z-depth-3 centered">
+            <thead class="table-head">
+                <th>Número de Reposición</th>
+                <th>Fecha</th>
+                <th>Fondo CC <span>(Para ese momento)</span></th>
+                <th></th>
             </thead>
             <tbody>
-            <?php
-                while($data = $solicitudes->fetch_assoc()){
+                <?php
+                while ($data = $solicitudes->fetch_assoc()) {
                 ?>
-                <tr>
-                    <td><?php echo $data['id_solicitud_repo_cc'] ?></td>
-                    <td><?php echo $data['fecha'] ?></td>
-                    <td><?php echo $data['fondo_momento'] ?></td>
-                    <td><a href="../recepcion_repo_cc/<?php echo $data['id_solicitud_repo_cc'] ?>">Revisar</a></td>
-                </tr>
-            <?php } ?>
+                    <tr>
+                        <td><?php echo $data['id_solicitud_repo_cc'] ?></td>
+                        <td><?php echo $data['fecha'] ?></td>
+                        <td><?php echo $data['fondo_momento'] ?></td>
+                        <td><a class="btn btn-flat" href="recepcion_repo_cc/<?php echo $data['id_solicitud_repo_cc'] ?>"><i class="material-icons left">visibility</i>Revisar</a></td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
-        
-        <p>Fondo Actual: <?php echo $cc['fondo_actual'] ?></p>
+        <div style="display: flex;justify-content: center;">
+            <div class="cont-caja-chica">
+                <h4 class="title" style="text-align: center;">Fondo Actual de Caja Chica</h4>
+                <h3 class="title" style="text-align: center;"><?php echo $cc['fondo_actual'] ?> <small>UT</small></h3>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script src="frontend/js/jquery-3.6.0.min.js"></script>
-    <script>
+<script src="frontend/js/jquery-3.6.0.min.js"></script>
+<script src="frontend/js/materialize.min.js"></script>
+<script src="frontend/js/elementos-materialize.js"></script>
+<script src="frontend/js/notificaciones.js"></script>
 
-    </script>
-</body>
-
-</html>
+<?php
+include("frontend/modularizacion/cierre_html.php");
+?>

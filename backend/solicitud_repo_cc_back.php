@@ -27,7 +27,7 @@ if(isset($router)){
             }
             echo "ok";
         } else {
-            echo "Dato incorrecto";
+            echo "Clave inválida";
         }
     } else {
         echo "Debe ingresar su clave de usuario para confirmar";

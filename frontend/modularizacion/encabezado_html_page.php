@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../frontend/css/materialize.min.css">
     <link rel="stylesheet" href="../frontend/css/style.css">
+    <link rel="stylesheet" href="../frontend/css/datatables.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>CORPOTULIPA - Iniciar Sesión</title>
 </head>

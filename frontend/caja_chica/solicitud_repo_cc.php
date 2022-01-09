@@ -1,142 +1,122 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+include("frontend/modularizacion/encabezado_html.php");
+if (!isset($router))
+    header("Location: ../../404");
+include("frontend/modularizacion/menu.php");
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORPOTULIPA - Solicitud de Reposición de Caja Chica</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="frontend/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">edit</i>
-                <label for="nro"> Nro. Reposición</label>
-                <input type="text" id="nro">
-            </div>
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">event</i>
-                <label for="mes">Mes</label>
-                <input type="text" id="mes">
-            </div>
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">date_range</i>
-                <label for="fecha">Fecha de emisión de la relación</label>
-                <input type="text" id="fecha">
-            </div>
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">grain</i>
-                <label for="monto">Monto base del fondo</label>
-                <input type="text" id="monto">
-            </div>
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">library_books</i>
-                <label for="factura_number">Nro. Comprobantes y facturas</label>
-                <input type="text" id="factura_number">
-            </div>
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">account_balance_wallet</i>
-                <label for="factura_number">Total desembolso</label>
-                <input type="text" id="factura_number">
-            </div>
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">account_balance</i>
-                <label for="factura_number">Efectivo en caja</label>
-                <input type="text" id="factura_number">
-            </div>
-            <div class="col s12 m4 input-field">
-                <i class="material-icons prefix">check</i>
-                <label for="factura_number">Comprobación</label>
-                <input type="text" id="factura_number">
-            </div>
-        </div>
-
-        <table>
-            <thead>
-                <thead>
-                    <tr>
-                        <th>Solicitante</th>
-                        <th>Bs</th>
-                        <th>UT</th>
-                        <th>Unidad</th>
-                        <th>Fecha</th>
-                        <th>Motivo</th>
-                    </tr>
-                </thead>
-            </thead>
-            <tbody>
+<div class="container section">
+    <table class="stripped responsive-table z-depth-3 centered">
+        <thead class="table-head">
+            <th>Solicitante</th>
+            <th>Unidad</th>
+            <th>Fecha</th>
+            <th>Bs</th>
+            <th>UT</th>
+        </thead>
+        <tbody>
             <?php
-                while($data = $solicitudes->fetch_assoc()){
-                ?>
+            while ($data = $solicitudes->fetch_assoc()) {
+                $totalBs += $data['bs'];
+                $totalUT += $data['ut_pedido'];
+            ?>
                 <tr>
-                    <td><?php echo $data['nombre']." ".$data['apellido'] ?></td>
-                    <td><?php echo $data['bs'] ?></td>
-                    <td><?php echo $data['ut_pedido'] ?></td>
+                    <td><?php echo $data['nombre'] . " " . $data['apellido'] ?></td>
                     <td><?php echo $data['departamento'] ?></td>
                     <td><?php echo $data['fecha'] ?></td>
-                    <td><?php echo $data['motivo'] ?></td>
+                    <td><?php echo $data['bs'] ?></td>
+                    <td><?php echo $data['ut_pedido'] ?></td>
                 </tr>
             <?php } ?>
-            </tbody>
-        </table>
-        
-        <p>Fondo Actual: <?php echo $cc['fondo_actual'] ?></p>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="indigo darken-4 white-text"><b>Total:</b></td>
+                <td class="indigo darken-4 white-text"><b><?php echo $totalBs ?></b></td>
+                <td class="indigo darken-4 white-text"><b><?php echo $totalUT ?></b></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: flex;justify-content: center;">
+        <div class="cont-caja-chica">
+            <h4 class="title" style="text-align: center;">Fondo Actual de Caja Chica</h4>
+            <h3 class="title" style="text-align: center;"><?php echo $cc['fondo_actual'] ?> <small>UT</small></h3>
+        </div>
+    </div>
+    <p style="text-align: center; background-color: gray; padding: 10px;border-radius: 1em;font-weight: bold;color:black;margin:10px 0;">
+        <i class="material-icons left">error</i>
+        Aquí estarán cargadas todas las solicitudes de caja chica que hayan sido validadas con su(s) factura(s) a partir
+        de la última reposición realizada.
+    </p>
+
+    <div class="row cont-crear">
         <form id="form">
-            <input type="text" name="clave">
-            <input type="hidden" name="monto" value="<?php echo $cc['fondo_actual'] ?>">
-            <button type="submit">Enviar</button>
+            <h5 class="title">Solicitar Reposición de Caja Chica</h5>
+            <div class="col s12 m6 input-field">
+                <i class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
+                <input type="password" name="clave" id="clave">
+                <label for="clave">Ingrese su clave de seguridad</label>
+            </div>
+            <div class="col s12 m6 input-field">
+                <input type="hidden" name="monto" value="<?php echo $cc['fondo_actual'] ?>">
+                <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
+                <div class="progress indigo darken-4" id="progress" style="display: none;">
+                    <div class="indeterminate"></div>
+                </div>
+            </div>
         </form>
     </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="frontend/js/materialize.min.js"></script>
-    <script src="frontend/js/jquery-3.6.0.min.js"></script>
-    <script>
+<script src="frontend/js/jquery-3.6.0.min.js"></script>
+<script src="frontend/js/materialize.min.js"></script>
+<script src="frontend/js/elementos-materialize.js"></script>
+<script src="frontend/js/notificaciones.js"></script>
+<script src="frontend/js/datatables.min.js"></script>
 
-        //Inicializacion de datepicker
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.datepicker');
-            var instances = M.Datepicker.init(elems,
-                options = {
-                    defaultDate: new Date(2021, 1, 3),
-                    setDefaultDate: true
+<script>
+    function visualizar() {
+        var pass = document.getElementById("clave");
+        var icon = document.getElementById("icon-password");
+
+        if (pass.getAttribute("type", "password") == "password") {
+            pass.setAttribute("type", "text")
+            icon.innerHTML = "visibility_off"
+        } else {
+            pass.setAttribute("type", "password")
+            icon.innerHTML = "visibility"
+        }
+    }
+
+    $('#form').submit(function(e) {
+        $("#progress").css("display", "block")
+        $("#btn-submit").prop('disabled', true)
+        $("#btn-submit").css('background', 'gray')
+        var formData = new FormData(document.getElementById("form"));
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: 'solicitud_repo_cc',
+            data: formData,
+            enctype: 'application/x-www-form-urlencoded',
+            processData: false, // tell jQuery not to process the data
+            contentType: false,
+            success: function(response) {
+                if (response == "ok" || response.substring(0, 15) == "<!DOCTYPE html>") {
+                    location.href = ""
+                } else {
+                    M.toast({
+                        html: response,
+                        classes: 'rounded red'
+                    })
+                    $("#progress").css("display", "none")
+                    $("#btn-submit").prop('disabled', false)
+                    $("#btn-submit").css('background', '#1a237e')
                 }
-            );
+            }
         });
-
-        //Inicializacion de select
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems, options);
-        });
-
-        $('#form').submit(function(e) {
-            var formData = new FormData(document.getElementById("form"));
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: 'solicitud_repo_cc',
-                data: formData,
-                enctype:'application/x-www-form-urlencoded',
-                processData: false,  // tell jQuery not to process the data
-                contentType: false,
-                success: function(response)
-                {
-                    if(response=="ok" || response.substring(0, 15) == "<!DOCTYPE html>"){
-                        location.href=""
-                    } else {
-                        alert(response)
-                    }
-                }
-            });
-        });
-    </script>
-</body>
-
-</html>
+    });
+</script>
+<?php
+include("frontend/modularizacion/cierre_html.php");
+?>

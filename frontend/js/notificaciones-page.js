@@ -15,9 +15,11 @@ $("#campana").click(function (e) {
 })
 
 $("#scroll-notify").scroll(function (e) {
-    max = document.getElementById("box-notify").scrollHeight - 300
+    max = document.getElementById("scroll-notify").scrollHeight - 500
+    console.log($("#scroll-notify").scrollTop())
+    console.log(document.getElementById("scroll-notify").scrollHeight)
 
-    if($("#scroll-notify").scrollTop() > document.getElementById("scroll-notify").scrollHeight - 400){
+    if($("#scroll-notify").scrollTop() > max){
         if(banderaPre){
             banderaPre = false 
             var ul = document.getElementById("ul-notify"),

@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+include("frontend/modularizacion/encabezado_html_page.php");
+if (!isset($router))
+    header("Location: ../../404");
+include("frontend/modularizacion/menu_page.php");
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORPOTULIPA - Solicitud de Reposición de Caja Chica</title>
-</head>
-
-<body>
-    <table>
-            <thead>
-                <thead>
-                    <tr>
+<div class="container section">
+    <div class="row">
+        <h5 class="title title-table">Solicitudes de caja chica relacionadas</h5>
+        <table id="tabla" class="stripped responsive-table z-depth-3 centered">
+            <thead class="table-head">
                         <th>Fecha</th>
                         <th>Bs</span></th>
                         <th>UT</th>
@@ -20,8 +17,6 @@
                         <th>Facturas</th>
                         <th>Total Bs</th>
                         <th>Total UT</th>
-                    </tr>
-                </thead>
             </thead>
             <tbody>
             <?php
@@ -33,7 +28,7 @@
                     <td><?php echo $data['fecha'] ?></td>
                     <td><?php echo $data['bs'] ?></td>
                     <td><?php echo $data['ut_pedido'] ?></td>
-                    <td><?php echo $data['motivo'] ?></td>
+                    <td><div class="scroll-td"><?php echo $data['motivo'] ?></div></td>
                     <td><button onclick="facturas(<?php echo $data['id_sol_cc'] ?>)">Facturas</button</td>
                     <td></td>
                     <td></td>
@@ -51,13 +46,34 @@
                 </tr>
             </tbody>
         </table>
+        <div style="display: flex;justify-content: center;">
+            <div class="cont-caja-chica">
+                <h4 class="title" style="text-align: center;">Fondo Actual de Caja Chica</h4>
+                <h3 class="title" style="text-align: center;"><?php echo $cc['fondo_actual'] ?> <small>UT</small></h3>
+            </div>
+        </div>
+        <div class="row">
+            <form id="form">
+                <h5 class="title">Aprobar Solicitud</h5>
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
+                    <input type="text" name="clave" id="clave">
+                    <label for="clave">Ingrese su clave de seguridad</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input type="hidden" name="id" value="<?php echo $router->getParam() ?>">
+                    <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
+                    <div class="progress indigo darken-4" id="progress" style="display: none;">
+                    <div class="indeterminate"></div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
         
-        <p>Fondo Actual: <?php echo $cc['fondo_actual'] ?></p>
-        <form id="form">
-            <input type="text" name="clave">
-            <input type="hidden" name="id" value="<?php echo $router->getParam() ?>">
-            <button type="submit">Enviar</button>
-        </form>
+            
         <form id="form2">
             <input type="text" name="clave">
             <input type="text" name="motivo">
@@ -71,12 +87,47 @@
             <input type="hidden" name="id" value="<?php echo $router->getParam() ?>">
             <button type="submit">Enviar</button>
         </form>
-        <br><br><br><br><br>
         <div id="imgs">
         </div>
                     
-    <script src="../frontend/js/jquery-3.6.0.min.js"></script>
+        <script src="../frontend/js/jquery-3.6.0.min.js"></script>
+        <script src="../frontend/js/materialize.min.js"></script>
+        <script src="../frontend/js/elementos-materialize.js"></script>
+        <script src="../frontend/js/notificaciones-page.js"></script>
+        <script src="../frontend/js/datatables.min.js"></script>
+
     <script>
+        $(document).ready(function() {
+            $('#tabla').DataTable({
+                "language": {
+                    "lengthMenu": "Display _MENU_ records per page",
+                    "zeroRecords": "No hay data registrada",
+                    "info": "Total: _MAX_ resultados",
+                    "infoEmpty": "No hay coincidencias",
+                    "infoFiltered": "",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            }); 
+        });
+
+        function visualizar() {
+            var pass = document.getElementById("clave");
+            var icon = document.getElementById("icon-password");
+
+            if (pass.getAttribute("type", "password") == "password") {
+                pass.setAttribute("type", "text")
+                icon.innerHTML = "visibility_off"
+            } else {
+                pass.setAttribute("type", "password")
+                icon.innerHTML = "visibility"
+            }
+        }
         function facturas(id){
             event.preventDefault();
             $.ajax({
@@ -133,6 +184,6 @@
             });
         });
     </script>
-</body>
-
-</html>
+<?php
+include("frontend/modularizacion/cierre_html.php");
+?>

@@ -24,12 +24,14 @@ class ControllersCaja{
         $sql = "SELECT * FROM solicitud_cc S INNER JOIN usuario U ON S.id_usuario = U.id
                 INNER JOIN perfil P ON U.id=P.id_usuario WHERE aprobado = false";
         $ejecutar = $bd->query($sql);
+        $cc = ($bd->query("SELECT * FROM caja_chica WHERE idcc = 1"))->fetch_assoc();
         return include("frontend/caja_chica/aceptar_sol_cc.php");
     }
 
     public function validarSolCc($router){
         include("backend/bd.php");        
-        $sql = "SELECT * FROM solicitud_cc INNER JOIN usuario ON solicitud_cc.id_usuario = usuario.id WHERE efectuado = true AND validado = false";
+        $sql = "SELECT * FROM solicitud_cc S INNER JOIN usuario U ON S.id_usuario = U.id
+                INNER JOIN perfil P ON U.id=P.id_usuario WHERE efectuado = true AND validado = false";
         $ejecutar = $bd->query($sql);
         return include("frontend/caja_chica/validar_sol_cc.php");
     }
@@ -55,6 +57,8 @@ class ControllersCaja{
             $sql = "SELECT * FROM solicitud_cc INNER JOIN usuario ON solicitud_cc.id_usuario = usuario.id INNER JOIN perfil ON usuario.id = perfil.id_usuario LEFT JOIN departamento ON perfil.departamento_id = departamento.departamento_id WHERE validado = true";
         $solicitudes = $bd->query($sql);
         $cc = ($bd->query("SELECT * FROM caja_chica WHERE idcc = 1"))->fetch_assoc();
+        $totalBs = 0;
+        $totalUT = 0;
         return include("frontend/caja_chica/solicitud_repo_cc.php");
     }
 

@@ -2,6 +2,7 @@ var primera_vez = true;
 var anterior = 0;
 var banderaPre = false;
 var bandera = false;
+
 $("#campana").click(function (e) {
     if ($("#box-notify").css("display") == 'none') {
         $("#box-notify").css("display", 'block')
@@ -15,9 +16,9 @@ $("#campana").click(function (e) {
 })
 
 $("#scroll-notify").scroll(function (e) {
-    max = document.getElementById("scroll-notify").scrollHeight - 350
+    max = document.getElementById("scroll-notify").scrollHeight - 500
 
-    if($("#scroll-notify").scrollTop() > document.getElementById("scroll-notify").scrollHeight - 400){
+    if($("#scroll-notify").scrollTop() > max){
         if(banderaPre){
             banderaPre = false 
             var ul = document.getElementById("ul-notify"),

@@ -80,9 +80,22 @@
     font-weight: bold;
 }
 
+.cont-caja-chica{
+    margin: 20px;
+    width: 50%;
+    border-radius: 1em;
+    border:#040729 solid 5px;
+    padding: 10px;
+    box-shadow: black 4px 4px 4px;
+}
+
 @media (max-width:670px) {
     .title-table{
         margin-bottom: 0;
+    }
+
+    .cont-caja-chica{
+        width: 100%;
     }
 }
 
@@ -102,7 +115,7 @@
     border: 2px solid #040729;
     margin-top:5px;
     width: 350px; 
-    height: 300px;
+    height: 500px;
     /* overflow: scroll; */
     background: linear-gradient(90deg, rgba(9,9,121,1) 25%, rgba(2,0,36,1) 100%);
     position:fixed;
@@ -115,8 +128,8 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    height: 250px;
-    padding: 4px;
+    height: 450px;
+    padding-left: 8px;
     border-radius: 1em;
 }
 
