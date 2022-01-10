@@ -12,7 +12,7 @@ include("frontend/modularizacion/menu.php");
             <thead class="table-head">
                 <th>Número de Reposición</th>
                 <th>Fecha</th>
-                <th>Fondo CC <span>(Para ese momento)</span></th>
+                <th>Fondo CC <small>(Para ese momento)</small></th>
                 <th></th>
             </thead>
             <tbody>

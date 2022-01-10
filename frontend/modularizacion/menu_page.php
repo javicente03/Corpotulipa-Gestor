@@ -2,6 +2,7 @@
 if (!isset($router))
     header("Location: ../../404");
 ?>
+<div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper navcolor">
         <div class="contenedor-nav">
@@ -29,6 +30,7 @@ if (!isset($router))
         </div>
     </div>
 </nav>
+</div>
 
 <div style="width: 100%;display: flex;flex-direction: row-reverse;">
     <div id="box-notify" class="box-notify">

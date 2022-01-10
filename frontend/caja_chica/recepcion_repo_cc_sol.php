@@ -26,7 +26,7 @@ include("frontend/modularizacion/menu_page.php");
                         <td><?php echo $data['fecha'] ?></td>
                         <td><?php echo $data['nombre'] . " " . $data['apellido'] ?></td>
                         <td><button class="btn btn-flat" onclick="facturas(<?php echo $data['id_sol_cc'] ?>)">
-                                <i class="material-icons left">collections</i>Facturas</button< /td>
+                                <i class="material-icons left">collections</i>Facturas</button></td>
                         <td><?php echo $data['bs'] ?></td>
                         <td><?php echo $data['ut_pedido'] ?></td>
                     </tr>
@@ -34,9 +34,9 @@ include("frontend/modularizacion/menu_page.php");
                 <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td><?php echo $bs ?></td>
-                    <td><?php echo $ut ?></td>
+                    <td class="indigo darken-4 white-text"><b>Totales:</b></td>
+                    <td class="indigo darken-4 white-text"><b><?php echo $bs ?></b></td>
+                    <td class="indigo darken-4 white-text"><b><?php echo $ut ?></b></td>
                 </tr>
             </tbody>
         </table>
@@ -71,7 +71,7 @@ include("frontend/modularizacion/menu_page.php");
         <div class="row" id="rechazar" style="display: none;">
         <p class="parrafo"><i class="material-icons left">error</i>
             Por favor ingresa el cargo del solicitante de reposición 
-                para la caja chica, se enviará a este una notificación conteniendo 
+                para la caja chica, se enviará a este una notificación expresando 
                 el motivo del rechazo.</p>
             <form id="form2">
                 <h5 class="title">Rechazar Solicitud</h5>
@@ -81,8 +81,9 @@ include("frontend/modularizacion/menu_page.php");
                     <label for="clave2">Ingrese su clave de seguridad</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input type="text" name="motivo" id="motivo">
                     <label for="motivo">Motivo del rechazo</label>
+                    <textarea name="motivo" id="motivo" data-length="230" class="materialize-textarea"></textarea>
+                    <span class="helper-text" data-error="El motivo del rechazo no puede exceder los 230 carácteres" data-success=""></span>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">widgets</i>
