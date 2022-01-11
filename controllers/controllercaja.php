@@ -125,7 +125,9 @@ class ControllersCaja{
         $cargos = $bd->query("SELECT * FROM cargo");
         $cc = ($bd->query("SELECT * FROM caja_chica WHERE idcc = 1"))->fetch_assoc();
         if(!empty($router->getParam())){ //Si posee algun parametro cargara la solicitud correspondiente
-            $solicitudes =  $bd->query("SELECT * FROM relacion_solicitud_cc INNER JOIN solicitud_cc ON relacion_solicitud_cc.id_sol_cc = solicitud_cc.id_sol_cc WHERE id_solicitud_repo_cc = ".$router->getParam());
+            $solicitudes =  $bd->query("SELECT * FROM relacion_solicitud_cc RS INNER JOIN solicitud_cc S ON RS.id_sol_cc = S.id_sol_cc 
+                            INNER JOIN usuario U ON S.id_usuario = U.id INNER JOIN perfil P ON 
+                            U.id=P.id_usuario WHERE id_solicitud_repo_cc = ".$router->getParam());
             if($solicitudes->num_rows > 0){
                 $bs = 0;
                 $ut = 0;
@@ -142,11 +144,13 @@ class ControllersCaja{
         $cargos = $bd->query("SELECT * FROM cargo");
         $cc = ($bd->query("SELECT * FROM caja_chica WHERE idcc = 1"))->fetch_assoc();
         if(!empty($router->getParam())){ //Si posee algun parametro cargara la solicitud correspondiente
-            $solicitudes =  $bd->query("SELECT * FROM relacion_solicitud_cc INNER JOIN solicitud_cc ON relacion_solicitud_cc.id_sol_cc = solicitud_cc.id_sol_cc WHERE id_solicitud_repo_cc = ".$router->getParam());
+            $solicitudes =  $bd->query("SELECT * FROM relacion_solicitud_cc RS INNER JOIN solicitud_cc S ON RS.id_sol_cc = S.id_sol_cc 
+                            INNER JOIN usuario U ON S.id_usuario = U.id INNER JOIN perfil P ON 
+                            U.id=P.id_usuario WHERE id_solicitud_repo_cc = ".$router->getParam());
             if($solicitudes->num_rows > 0){
                 $bs = 0;
                 $ut = 0;
-                return include("frontend/caja_chica/contador_repo_cc_sol.php");
+                return include("frontend/caja_chica/gerencia_repo_cc_sol.php");
             }
         } else{
             $solicitudes =  $bd->query("SELECT * FROM solicitud_repo_cc WHERE custodio = true AND cuentadante = true AND coordinador = true AND analista = true AND contador = true AND gerente = false");
