@@ -19,7 +19,7 @@ if(isset($router)){
                 $ultima = $bd->query("UPDATE solicitud_repo_cc SET gerente = true WHERE id_solicitud_repo_cc = ".$_POST['id']);
             echo "ok";
         } else {
-            echo "Dato incorrecto";
+            echo "Clave de seguridad inválida";
         }
     } else {
         echo "Debe ingresar su clave de usuario para confirmar";

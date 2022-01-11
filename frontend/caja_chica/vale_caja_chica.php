@@ -77,7 +77,7 @@ include("frontend/modularizacion/menu.php");
                     <?php } ?>
                 </tbody>
             </table>
-            <p style="text-align: center; background-color: gray; padding: 10px;border-radius: 1em;font-weight: bold;color:black;margin:10px 0;">
+            <p class="parrafo">
                 <i class="material-icons left">error</i>
                 Debes esperar que tus solicitudes hayan sido aprobadas para cargar las facturas correpondientes</p>
         </div>

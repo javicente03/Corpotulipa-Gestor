@@ -43,7 +43,7 @@ include("frontend/modularizacion/menu.php");
             <h3 class="title" style="text-align: center;"><?php echo $cc['fondo_actual'] ?> <small>UT</small></h3>
         </div>
     </div>
-    <p style="text-align: center; background-color: gray; padding: 10px;border-radius: 1em;font-weight: bold;color:black;margin:10px 0;">
+    <p class="parrafo">
         <i class="material-icons left">error</i>
         Aquí estarán cargadas todas las solicitudes de caja chica que hayan sido validadas con su(s) factura(s) a partir
         de la última reposición realizada.

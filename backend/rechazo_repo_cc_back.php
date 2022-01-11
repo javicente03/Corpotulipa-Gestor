@@ -17,10 +17,10 @@ if(isset($router)){
             }
             echo "ok";
         } else {
-            echo "Dato incorrecto";
+            echo "Clave de seguridad inválida";
         }
     } else {
-        echo "Debe ingresar su clave de usuario para confirmar";
+        echo "Debe completar todos los datos solicitados";
     }
 } else {
     header("Location: ../404");
