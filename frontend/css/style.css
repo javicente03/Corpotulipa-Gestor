@@ -91,7 +91,7 @@
     margin-bottom: -50px;
 }
 
-#form>.input-field>label{
+.input-field>label{
     font-weight: bold;
 }
 

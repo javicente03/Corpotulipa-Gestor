@@ -4,26 +4,37 @@ class ControllersMueble{
     public function incorporarMueble($router){
         include("backend/bd.php");
         $departamentos = $bd->query("SELECT * FROM departamento");
-        $usuarios = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario");
+        $usuarios = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario 
+                                LEFT JOIN cargo C ON P.cargo_id=C.cargo_id");
         return include("frontend/bienes_publicos/incorporacion_bien.php");
     }
 
     public function generarNota($router){
         include("backend/bd.php");
-        $bien = ($bd->query("SELECT * FROM bienes_publicos B INNER JOIN departamento D ON B.departamento_id = D.departamento_id WHERE id_bien = ".$router->getParam()))->fetch_assoc();
-        $usuarios = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario");
-        $usuarios2 = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario");
-        $usuarios3 = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario");
+        if (!empty($router->getParam())){
+            $bien = ($bd->query("SELECT * FROM bienes_publicos B INNER JOIN departamento D ON B.departamento_id = D.departamento_id
+                                LEFT JOIN usuario U ON B.responsable=U.id INNER JOIN perfil P ON U.id = P.id_usuario 
+                                WHERE id_bien = ".$router->getParam()))->fetch_assoc();
+            $usuarios = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario");
+            $usuarios2 = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario");
+            $usuarios3 = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id = P.id_usuario");
 
-        if($bien)
-            return include("frontend/bienes_publicos/generar_nota_entrega.php");
-        else
-            header("Location: ../404");
+            if($bien)
+                return include("frontend/bienes_publicos/generar_nota_entrega.php");
+            else
+                header("Location: ../404");
+        } else {
+            $bienes = $bd->query("SELECT * FROM verificacion_bienes V INNER JOIN bienes_publicos B
+                                LEFT JOIN usuario U ON B.responsable=U.id INNER JOIN perfil P ON U.id = P.id_usuario
+                                ON V.id_bien=B.id_bien WHERE user1 IS NULL OR user2 IS NULL OR user3 IS NULL");
+
+            return include("frontend/bienes_publicos/bienes_sin_nota.php");
+        }
     }
 
     public function verificarBien($router){
         include("backend/bd.php");
-        $bien = ($bd->query("SELECT * FROM verificacion_bienes V INNER JOIN bienes_publicos B ON V.id_bien=B.id_bien INNER JOIN departamento D ON B.departamento_id=D.departamento_id WHERE x = ".$router->getParam()))->fetch_assoc();
+        $bien = ($bd->query("SELECT * FROM verificacion_bienes V INNER JOIN bienes_publicos B ON V.id_bien=B.id_bien INNER JOIN departamento D ON B.departamento_id=D.departamento_id WHERE V.id_bien = ".$router->getParam()))->fetch_assoc();
 
         if($bien){
             $revision=False;

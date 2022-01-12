@@ -484,10 +484,7 @@ switch ($router->getController()) {
             $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
             if ($query->num_rows > 0) { //Si hay al menos un resultado el permiso esta dado a este cargo en referencia a esta acción
                 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                    if (!empty($router->getParam())) //Revisa que haya algun parametro
-                        $controlmueble->generarNota($router); //llama la funcion del controlador
-                    else
-                        header("Location: ../404");
+                    $controlmueble->generarNota($router); //llama la funcion del controlador
                 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     include("backend/generar_nota_entrega_back.php");
                 }

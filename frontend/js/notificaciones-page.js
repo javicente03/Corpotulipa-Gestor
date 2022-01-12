@@ -112,7 +112,7 @@ function cargarNotificacion(a) {
                 }
 
                 if(e.link !=null){
-                    enlace.href = e.link
+                    enlace.href = "../"+e.link
                 }
                 anterior++
             });
