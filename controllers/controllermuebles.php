@@ -34,7 +34,10 @@ class ControllersMueble{
 
     public function verificarBien($router){
         include("backend/bd.php");
-        $bien = ($bd->query("SELECT * FROM verificacion_bienes V INNER JOIN bienes_publicos B ON V.id_bien=B.id_bien INNER JOIN departamento D ON B.departamento_id=D.departamento_id WHERE V.id_bien = ".$router->getParam()))->fetch_assoc();
+        $bien = ($bd->query("SELECT * FROM verificacion_bienes V INNER JOIN bienes_publicos B ON V.id_bien=B.id_bien 
+                            LEFT JOIN usuario U ON B.responsable=U.id INNER JOIN perfil P ON U.id = P.id_usuario
+                            INNER JOIN departamento D ON B.departamento_id=D.departamento_id 
+                            WHERE V.id_bien = ".$router->getParam()))->fetch_assoc();
 
         if($bien){
             $revision=False;
@@ -56,7 +59,7 @@ class ControllersMueble{
     public function misBienes($router){
         include("backend/bd.php");
         if(empty($router->getParam())){
-            $bienes = $bd->query("SELECT * FROM bienes_publicos WHERE responsable = ".$_SESSION["id"]." AND existente = true");
+            $bienes = $bd->query("SELECT * FROM bienes_publicos B LEFT JOIN (SELECT * FROM prestamo_bien ORDER BY id_prestamo_bien ASC) AS P ON B.id_bien=P.id_bien WHERE B.responsable = ".$_SESSION["id"]." AND existente = true GROUP BY B.id_bien");
             return include("frontend/bienes_publicos/mis_bienes.php");
         } else {
             $bien = ($bd->query("SELECT * FROM bienes_publicos WHERE id_bien = ".$router->getParam())->fetch_assoc());
@@ -64,6 +67,15 @@ class ControllersMueble{
                 header("Location: ../404");
             if($bien["responsable"] != $_SESSION["id"])
                 header("Location: ../404");
+            
+            $prestado = ($bd->query("SELECT *, DATE_ADD(fecha_prestamo, INTERVAL duracion DAY) 
+                                    FROM prestamo_bien T LEFT JOIN usuario U ON T.solicitante=U.id
+                                    LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON
+                                    P.departamento_id=D.departamento_id WHERE T.id_bien=".$router->getParam().
+                                    " ORDER BY id_prestamo_bien 
+                                    DESC LIMIT 1"))->fetch_assoc();
+            if($prestado)
+                $fecha = $prestado["DATE_ADD(fecha_prestamo, INTERVAL duracion DAY)"];
             return include("frontend/bienes_publicos/mi_bien.php");
         }
     }

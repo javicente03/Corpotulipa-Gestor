@@ -93,7 +93,7 @@ include("frontend/modularizacion/menu_page.php");
             enctype: 'application/x-www-form-urlencoded',
             success: function(response) {
                 if (response == "ok" || response.substring(0, 15) == "<!DOCTYPE html>") {
-                    location.href = "";
+                    location.href = "../generar_nota_entrega";
                 } else {
                     M.toast({
                         html: response,

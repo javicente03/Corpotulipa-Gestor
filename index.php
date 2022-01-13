@@ -492,7 +492,7 @@ switch ($router->getController()) {
                 header("Location: ../404");
             }
         } else
-            header("Location: ../login");
+            header("Location: login");
         break;
 
     case 'verificar_bien':

@@ -1,43 +1,67 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORPOTULIPA - Incorporación de Muebles e Inmuebles</title>
-</head>
-<body>
-    <?php
-        if(!isset($router))
-            header("Location: ../404");
-    ?>
-    <table>
-        <thead>
-            <th>Nombre del Bien</th>
-            <th>Código</th>
-            <th>Tipo</th>
-            <th></th>
-        </thead>
-        <tbody>
-        <?php
-            while ($bien = $bienes->fetch_assoc()) {
-        ?>
-            <tr>
-                <td><?php echo $bien["nombre_bien"] ?></td>
-                <td><?php echo $bien["codigo"] ?></td>
-                <td><?php echo $bien["tipo"] ?></td>
-                <td><a href="mis_bienes/<?php echo $bien["id_bien"] ?>">Revisar</a></td>
-                
-            </tr>
-        <?php
+<?php
+include("frontend/modularizacion/encabezado_html.php");
+if (!isset($router))
+    header("Location: ../../404");
+include("frontend/modularizacion/menu.php");
+?>
+
+<div class="container section">
+    <div class="row">
+        <h5 class="title title-table">Bienes a tu responsabilidad</h5>
+        <table id="tabla" class="striped z-depth-3 centered responsive-table">
+            <thead class="table-head">
+                <th>Nombre del Bien</th>
+                <th>Código</th>
+                <th>Tipo</th>
+                <th>fecha_prestamo</th>
+                <th>Revisar</th>
+            </thead>
+            <tbody>
+                <?php
+                while ($bien = $bienes->fetch_assoc()) {
+                ?>
+                    <tr>
+                        <td><?php echo $bien["nombre_bien"] ?></td>
+                        <td><?php echo $bien["codigo"] ?></td>
+                        <td><?php echo $bien["tipo"] ?></td>
+                        <td><?php echo $bien["motivo"] ?></td>
+                        <td><a class="btn btn-flat" href="mis_bienes/<?php echo $bien["id_bien"] ?>">
+                                <i class="material-icons">visibility</i></a></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="frontend/js/jquery-3.6.0.min.js"></script>
+<script src="frontend/js/materialize.min.js"></script>
+<script src="frontend/js/elementos-materialize.js"></script>
+<script src="frontend/js/notificaciones.js"></script>
+<script src="frontend/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#tabla').DataTable({
+            "language": {
+                "lengthMenu": "Display _MENU_ records per page",
+                "zeroRecords": "No hay data registrada",
+                "info": "Total: _MAX_ resultados",
+                "infoEmpty": "No hay coincidencias",
+                "infoFiltered": "",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
             }
-        ?>
-        </tbody>
-    </table>
-    
-   
-    <script src="frontend/js/jquery-3.6.0.min.js"></script>
-    <script>
-    </script>
+        }); 
+    });
+</script>
 </body>
+
 </html>

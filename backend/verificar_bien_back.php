@@ -19,7 +19,7 @@ if(isset($router)){
             } else 
                 echo "Incorporación inválida";
         } else {
-            echo "Dato incorrecto";
+            echo "Clave de seguridad inválida";
         }
     } else
         echo "Debe ingresar la clave";
