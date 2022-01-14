@@ -13,7 +13,6 @@ include("frontend/modularizacion/menu.php");
                 <th>Nombre del Bien</th>
                 <th>Código</th>
                 <th>Tipo</th>
-                <th>fecha_prestamo</th>
                 <th>Revisar</th>
             </thead>
             <tbody>
@@ -24,7 +23,6 @@ include("frontend/modularizacion/menu.php");
                         <td><?php echo $bien["nombre_bien"] ?></td>
                         <td><?php echo $bien["codigo"] ?></td>
                         <td><?php echo $bien["tipo"] ?></td>
-                        <td><?php echo $bien["motivo"] ?></td>
                         <td><a class="btn btn-flat" href="mis_bienes/<?php echo $bien["id_bien"] ?>">
                                 <i class="material-icons">visibility</i></a></td>
                     </tr>
@@ -62,6 +60,6 @@ include("frontend/modularizacion/menu.php");
         }); 
     });
 </script>
-</body>
-
-</html>
+<?php
+include("frontend/modularizacion/cierre_html.php");
+?>

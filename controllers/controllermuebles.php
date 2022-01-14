@@ -59,7 +59,11 @@ class ControllersMueble{
     public function misBienes($router){
         include("backend/bd.php");
         if(empty($router->getParam())){
-            $bienes = $bd->query("SELECT * FROM bienes_publicos B LEFT JOIN (SELECT * FROM prestamo_bien ORDER BY id_prestamo_bien ASC) AS P ON B.id_bien=P.id_bien WHERE B.responsable = ".$_SESSION["id"]." AND existente = true GROUP BY B.id_bien");
+            // $bienes = $bd->query("SELECT *, MAX(P.fecha_prestamo) FROM bienes_publicos B 
+            //                     LEFT JOIN prestamo_bien P ON B.id_bien=P.id_bien AND P.aprobado = true
+            //                     WHERE B.responsable = ".$_SESSION["id"]." AND existente = true 
+            //                     GROUP BY B.id_bien");
+            $bienes = $bd->query("SELECT * FROM bienes_publicos WHERE responsable = ".$_SESSION["id"]." AND existente = true");
             return include("frontend/bienes_publicos/mis_bienes.php");
         } else {
             $bien = ($bd->query("SELECT * FROM bienes_publicos WHERE id_bien = ".$router->getParam())->fetch_assoc());
@@ -81,6 +85,8 @@ class ControllersMueble{
     }
 
     public function buscarBien($router){
+        include("backend/bd.php");
+        $departamentos = $bd->query("SELECT * FROM departamento");
         return include("frontend/bienes_publicos/busqueda_bien.php");
     }
 
