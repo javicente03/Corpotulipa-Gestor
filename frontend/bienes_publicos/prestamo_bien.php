@@ -30,8 +30,8 @@ include("frontend/modularizacion/menu_page.php");
             <div class="input-field col s12 m6">
                 <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
                 <div class="progress indigo darken-4" id="progress" style="display: none;">
-                        <div class="indeterminate"></div>
-                    </div>
+                    <div class="indeterminate"></div>
+                </div>
             </div>
             <input type="hidden" name="bien" value="<?php echo $bien["id_bien"] ?>">
             <input type="hidden" name="nombre_bien" value="<?php echo $bien["nombre_bien"] ?>">

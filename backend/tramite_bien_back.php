@@ -105,6 +105,7 @@ if(isset($router)){
             if($observacion !=""){
                 $bd->query("INSERT INTO observaciones_prestamo (id_prestamo_bien,texto) VALUES ('$prestamo','$observacion')");
             }
+            echo "ok";
         } else
             echo "Clave inválida";
     } else
