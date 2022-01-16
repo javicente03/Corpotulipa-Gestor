@@ -75,7 +75,7 @@ include("frontend/modularizacion/menu_page.php");
                     <h6><b>Departamento: <?php echo $prestado["departamento"] ?></b></h6>
                 </div>
                 <div class="col s12 m4 blue lighten-5" style="border: 2px solid black;">
-                    <h6><b>Fecha prestamo: <?php echo $prestado["fecha_prestamo"] ?></b></h6>
+                    <h6><b>Fecha prestamo: <?php echo $prestado["fecha_tramite"] ?></b></h6>
                 </div>
                 <div class="col s12 m4 blue lighten-5" style="border: 2px solid black;">
                     <h6><b>Fecha Fin: <?php echo $fecha ?></b></h6>
@@ -117,7 +117,7 @@ include("frontend/modularizacion/menu_page.php");
                     <i class="material-icons prefix">edit</i>
                     <textarea name="descripcion" data-length="5000" class="materialize-textarea validate" id="descripcion" required></textarea>
                     <label for="descripcion">Exprese el motivo del reporte</label>
-                    <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 5000 carácteres" data-success=""></span>
+                    <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 5000 caracteres" data-success=""></span>
                 </div>
                 <div class="input-field col s12 m6">
                     <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>

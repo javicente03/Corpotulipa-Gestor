@@ -9,13 +9,15 @@ if (isset($router)) {
                                 bienes_publicos B LEFT JOIN usuario U ON B.responsable=U.id LEFT JOIN 
                                 perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON 
                                 B.departamento_id=D.departamento_id WHERE MATCH (nombre_bien) 
-                                AGAINST ('$bien') AND responsable IS NOT NULL ORDER BY puntuacion DESC");
+                                AGAINST ('$bien') AND responsable IS NOT NULL AND existente=true
+                                ORDER BY puntuacion DESC");
     } else {
         $resultados = $bd->query("SELECT *, MATCH (nombre_bien) AGAINST ('$bien') AS puntuacion FROM 
                                 bienes_publicos B LEFT JOIN usuario U ON B.responsable=U.id LEFT JOIN 
                                 perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON 
                                 B.departamento_id=D.departamento_id WHERE MATCH (nombre_bien) 
-                                AGAINST ('$bien') AND B.departamento_id=$dep AND responsable IS NOT NULL ORDER BY puntuacion DESC");
+                                AGAINST ('$bien') AND B.departamento_id=$dep AND responsable IS NOT NULL 
+                                AND existente=true ORDER BY puntuacion DESC");
     }
 
 

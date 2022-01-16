@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-01-2022 a las 03:30:24
+-- Tiempo de generación: 16-01-2022 a las 04:44:56
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -88,8 +88,8 @@ CREATE TABLE `bienes_publicos` (
 --
 
 INSERT INTO `bienes_publicos` (`id_bien`, `catalogo`, `codigo`, `tipo`, `organismo`, `denoOrga`, `departamento_id`, `denoDepa`, `dependencia`, `denoUsu`, `nombre_bien`, `descripcion`, `catastro`, `valor`, `fecha_incorporacion`, `incorporado_por`, `responsable`, `existente`) VALUES
-(1, '', 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, '9.00', NULL, 20, 20, 1),
-(2, '', 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'Mueble 2', 'KMKMKM', 0, '90.00', '2021-12-07', 20, 20, 0),
+(1, '', 'OAF-21-1', 'Inmueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'mueble 2', '', 99, '9.00', NULL, 20, 37, 1),
+(2, '', 'OAF-21-2', 'Mueble', 'Probando2', 'Aja2', 1, 'Pues2', 'CLICK2', 'SUPUTA', 'El mueble xd', 'KMKMKM', 0, '90.00', '2021-12-07', 20, 20, 1),
 (3, '', 'ORH-21-3', 'Inmueble', 'KAM', 'KAM', 1, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.04', NULL, 20, 20, 0),
 (4, '', 'OAF-21-4', 'Mueble', 'Probando', 'Aja', 1, 'Pues', 'CLICK', 'SUPUTA', 'CARAJO', 'OSTIA', 0, '90.00', NULL, 20, NULL, 1),
 (5, '', 'OAF-21-5', 'Mueble', 'Cantidad', 'Cantidad', 1, 'Cantidad', 'Cantidad', 'Cantidad', 'Javier v', 'ss', 0, '90.00', '2021-12-12', 20, NULL, 0),
@@ -97,7 +97,14 @@ INSERT INTO `bienes_publicos` (`id_bien`, `catalogo`, `codigo`, `tipo`, `organis
 (10, '', 'ORH-21-7', 'Inmueble', 'KAM', 'KAM', 2, 'KAM', 'KLA', 'AAA', 'KAMSA', 'APALA', 90, '12.00', '2021-12-18', 20, NULL, 1),
 (14, 'coño', 'ORH-21-8', 'Mueble', 'Coño', 'coño', 2, 'coño', 'coño', 'coño', 'coño', 'coño', 0, '900.00', '2021-12-24', 20, 20, 1),
 (15, 'coño', 'OAF-21-9', 'Mueble', 'Nuevecito', 'AAAA', 1, 'coño', 'coño', 'coño', 'coño', 'coño', 0, '80.00', '2021-12-24', 20, 20, 1),
-(16, 'coño', 'OAF-21-16', 'Mueble', 'Codeado', 'codeado', 1, 'coño', 'CLICK', 'SUPUTA', 'Mueble', 'AAAAA', 0, '10.00', '2021-12-24', 20, 20, 1);
+(16, 'coño', 'OAF-21-16', 'Mueble', 'Codeado', 'codeado', 1, 'coño', 'CLICK', 'SUPUTA', 'Mueble que ya no existe', 'AAAAA', 0, '10.00', '2021-12-24', 20, 20, 0),
+(17, 'asderfgh', 'OAF-22-17', 'Mueble', 'Probando', 'xx', 1, 'zzz', 'prrrrrr', 'yyy', 'xdxdxdxddxd', ' oooooooooo ooooooo ooooo \n ooooooooooo oooooooooo ooooooo ooooo ooooo oooooooo oooooo oooooooooo ooooo o \n ooooooo ooooo oooooooooo ooooo o \n ooooooo ooooo oooooooooo ooooo o \n ooooooo ooooo oooooooooo ooooo o \n ooooooo ooooo oooooooooo ooooo o \n ooooooo ooooo oooooooooo ooooo o \n ooooooo ooooo', 0, '10000.00', '2022-01-12', 20, 20, 1),
+(18, NULL, 'OAF-22-12', 'Inmueble', 'AAAA', '', 1, '', 'OOOO', '', 'QUE TE IMPORTA', '', 1000, '990.00', '2022-01-12', 20, 20, 1),
+(19, NULL, 'OAF-22-19', 'Inmueble', 'el nuevo', '', 1, '', 'aas', '', 'pos quien sabe', '', 9000, '892.00', '2022-01-12', 20, 20, 1),
+(20, NULL, 'OAF-22-20', 'Inmueble', 'el nuevo', '', 1, '', 'aas', '', 'pos quien sabe 2', '', 9000, '892000.00', '2022-01-12', 20, 20, 1),
+(21, NULL, 'OAF-22-21', 'Inmueble', 'el nuevo', '', 1, '', 'aas', '', 'pos quien sabe 3', '', 9000, '892000.00', '2022-01-12', 20, 20, 1),
+(22, NULL, 'OAF-22-22', 'Inmueble', 'el nuevo', '', 1, '', 'aas', '', 'pos quien sabe 90', '', 9000, '892000.00', '2022-01-12', 20, 20, 1),
+(24, NULL, 'ORH-22-24', 'Mueble', 'Codeado', 'codeado', 2, 'coño', 'CLICK', 'SUPUTA', 'Mueble nuevecito', 'AAAAA', 0, '10.00', '2022-01-16', 20, 37, 1);
 
 -- --------------------------------------------------------
 
@@ -115,7 +122,7 @@ CREATE TABLE `caja_chica` (
 --
 
 INSERT INTO `caja_chica` (`idcc`, `fondo_actual`) VALUES
-(1, '55.02');
+(1, '4.07');
 
 -- --------------------------------------------------------
 
@@ -194,7 +201,17 @@ INSERT INTO `facturas_cc` (`id_factura_cc`, `id_sol_cc`, `factura`) VALUES
 (4, 3, 'frontend/img/facturas_cc/sol3n3.png'),
 (5, 4, 'frontend/img/facturas_cc/sol4n1.png'),
 (6, 5, 'frontend/img/facturas_cc/sol5n1.png'),
-(7, 6, 'frontend/img/facturas_cc/sol6n1.png');
+(7, 6, 'frontend/img/facturas_cc/sol6n1.png'),
+(8, 7, 'frontend/img/facturas_cc/sol7n1.png'),
+(9, 7, 'frontend/img/facturas_cc/sol7n2.png'),
+(10, 7, 'frontend/img/facturas_cc/sol7n3.png'),
+(11, 7, 'frontend/img/facturas_cc/sol7n4.png'),
+(12, 11, 'frontend/img/facturas_cc/sol11n1.png'),
+(13, 16, 'frontend/img/facturas_cc/sol16n1.png'),
+(14, 13, 'frontend/img/facturas_cc/sol13n1.png'),
+(15, 13, 'frontend/img/facturas_cc/sol13n2.png'),
+(16, 13, 'frontend/img/facturas_cc/sol13n3.png'),
+(17, 15, 'frontend/img/facturas_cc/sol15n1.png');
 
 -- --------------------------------------------------------
 
@@ -378,7 +395,7 @@ INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`
 (275, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (276, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (277, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
-(278, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(278, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
 (279, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (280, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (281, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
@@ -411,12 +428,12 @@ INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`
 (308, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (309, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (310, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
-(311, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(311, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
 (312, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (313, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
 (314, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (315, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
-(316, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
+(316, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
 (317, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (318, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 0, NULL),
 (319, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
@@ -433,9 +450,59 @@ INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`
 (330, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
 (331, 20, 'Texto de Prueba 10 Prueba 10 XDXDXD', '2022-01-07', 1, NULL),
 (332, 20, 'ESTA TIENE QUE SALIR PRIMERO XD', '2022-01-07', 1, NULL),
-(333, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 0, NULL),
+(333, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 1, NULL),
 (334, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 1, NULL),
-(335, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 0, NULL);
+(335, 20, 'La solicitud de dinero por caja chica que enviaste ha sido rechazada', '2022-01-08', 1, NULL),
+(336, 20, 'Rechazo de solicitud de reposición de caja chica #12: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores voluptas hic quos magni laudantium commodi, ratione itaque velit distinctio modi a pariatur necessitatibus minus dolorem rerum aspernatur. Enim, doloremque culpa.\n', '2022-01-11', 1, NULL),
+(337, 44, 'Rechazo de solicitud de reposición de caja chica #12: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores voluptas hic quos magni laudantium commodi, ratione itaque velit distinctio modi a pariatur necessitatibus minus dolorem rerum aspernatur. Enim, doloremque culpa.\n', '2022-01-11', 0, NULL),
+(338, 20, 'Rechazo de solicitud de reposición de caja chica #12: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASDDSDSDKMKMKMKMKMKMKMKMKMKDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', '2022-01-09', 1, NULL),
+(339, 44, 'Rechazo de solicitud de reposición de caja chica #12: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASDDSDSDKMKMKMKMKMKMKMKMKMKDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', '2022-01-09', 0, NULL),
+(340, 20, 'Rechazo de solicitud de reposición de caja chica #12: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores voluptas hic quos magni laudantium commodi, ratione itaque velit distinctio modi a pariatur necessitatibus minus dolorem rerum aspernatur. Enim, doloremque culpa.FF', '2022-01-09', 1, NULL),
+(341, 44, 'Rechazo de solicitud de reposición de caja chica #12: Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores voluptas hic quos magni laudantium commodi, ratione itaque velit distinctio modi a pariatur necessitatibus minus dolorem rerum aspernatur. Enim, doloremque culpa.FF', '2022-01-09', 0, NULL),
+(342, 20, 'Rechazo de solicitud de reposición de caja chica #1: JDSJNJSNDSDSD SDSDNSNDJSNDS DSDS DSDSKDMSKDMSKDSKDNSNDKSNDS DS D SD SD S DSDKSMDKSMDS D SDSKDMSKDMKSDS DSKDNSK DS DSDMKS DSDKSKDSDK SDKSDKS DSMDKS D SDSMDK SDKSD SKD KSD SKD ASOWS WWSFSIF D FSSDKMSKD SD SKDSK DSD S DSID SMDSKMDKSD', '2022-01-09', 0, NULL),
+(343, 44, 'Rechazo de solicitud de reposición de caja chica #1: JDSJNJSNDSDSD SDSDNSNDJSNDS DSDS DSDSKDMSKDMSKDSKDNSNDKSNDS DS D SD SD S DSDKSMDKSMDS D SDSKDMSKDMKSDS DSKDNSK DS DSDMKS DSDKSKDSDK SDKSDKS DSMDKS D SDSMDK SDKSD SKD KSD SKD ASOWS WWSFSIF D FSSDKMSKD SD SKDSK DSD S DSID SMDSKMDKSD', '2022-01-09', 0, NULL),
+(344, 20, 'Rechazo de solicitud de reposición de caja chica #1: kmkmk  kmkmkmkkmk k kmkmkmjbgbhn  hg h g f gggf bb hbvhbh b gfgvgvjhbh nj h h j jk lhbhbhlghgl hbgvrtvcjvg  hbhjbhbjh j hbhjbhjbjh jhbhjbh j hvhkbkmkmk  kmkmkmkkmk k kmkmkmjbgbhn  hg h g f gggf bb hbvhbh b gfgvgvjh kkmkmkmknj j jb', '2022-01-09', 0, NULL),
+(345, 44, 'Rechazo de solicitud de reposición de caja chica #1: kmkmk  kmkmkmkkmk k kmkmkmjbgbhn  hg h g f gggf bb hbvhbh b gfgvgvjhbh nj h h j jk lhbhbhlghgl hbgvrtvcjvg  hbhjbhbjh j hbhjbhjbjh jhbhjbh j hvhkbkmkmk  kmkmkmkkmk k kmkmkmjbgbhn  hg h g f gggf bb hbvhbh b gfgvgvjh kkmkmkmknj j jb', '2022-01-09', 0, NULL),
+(346, 20, 'Rechazo de solicitud de reposición de caja chica #2: dfkfmdkfmdkfmkdmfd fdkfmdkmfkdmfd fdkfmdkmfkdfk dfk dfkd fdmfkmdflmdkfd fdkf d fkd fd fk dkf dkf df dkf dkfdkfmkdfkd fkd fkd kf dkfdkfmodmfkm434m34 3 43 43 434 34 34 3434 34 43 4 34 343434 343 43 43 43 43 434 3 43 434 343 44343444', '2022-01-10', 0, NULL),
+(347, 44, 'Rechazo de solicitud de reposición de caja chica #2: dfkfmdkfmdkfmkdmfd fdkfmdkmfkdmfd fdkfmdkmfkdfk dfk dfkd fdmfkmdflmdkfd fdkf d fkd fd fk dkf dkf df dkf dkfdkfmkdfkd fkd fkd kf dkfdkfmodmfkm434m34 3 43 43 434 34 34 3434 34 43 4 34 343434 343 43 43 43 43 434 3 43 434 343 44343444', '2022-01-10', 0, NULL),
+(348, 20, 'Rechazo de solicitud de reposición de caja chica #5: XD PAPA', '2022-01-11', 0, NULL),
+(349, 44, 'Rechazo de solicitud de reposición de caja chica #5: XD PAPA', '2022-01-11', 0, NULL),
+(350, 20, 'Rechazo de solicitud de reposición de caja chica #5: ASUMAQUINA', '2022-01-11', 0, NULL),
+(351, 44, 'Rechazo de solicitud de reposición de caja chica #5: ASUMAQUINA', '2022-01-11', 0, NULL),
+(352, 20, 'Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 1, 'verificar_bien/17'),
+(353, 44, 'Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 0, 'verificar_bien/17'),
+(354, 37, 'Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 1, 'verificar_bien/17'),
+(355, 20, 'Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 0, 'verificar_bien/2'),
+(356, 20, 'Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 0, 'verificar_bien/2'),
+(357, 20, 'Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 0, 'verificar_bien/2'),
+(358, 44, 'Has sido encargado de revisar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 0, 'verificar_bien/8'),
+(359, 37, 'Has sido encargado de verificar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 1, 'verificar_bien/8'),
+(360, 20, 'Has sido encargado de validar la incorporación de un bien público, ve a la sección correspondiente.', '2022-01-12', 1, 'verificar_bien/8'),
+(361, 20, 'javier Gerardo ha solicitado un prestamo del bien público a su responsabilidad: Mueble 2. Por favor indique si esta procederá.', '2022-01-14', 1, 'revisar_prestamo_bien/77'),
+(362, 20, 'javier Gerardo ha reportado la solicitud de un prestamo del bien público: Mueble 2. Por favor indique si esta procederá.', '2022-01-14', 1, 'revisar_prestamo_bien/78'),
+(364, 20, 'javier Gerardo ha rechazado tu solicitud de prestamo del bien público Mueble 2, motivo: l', '2022-01-15', 1, NULL),
+(365, 20, 'javier Gerardo ha rechazado tu solicitud de prestamo del bien público Mueble 2, motivo: rrtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttrtrrrrrrr', '2022-01-15', 1, NULL),
+(366, 20, 'javier Gerardo ha aceptado tu solicitud de prestamo del bien público Mueble 2', '2022-01-15', 1, NULL),
+(367, 20, 'javier Gerardo ha aceptado tu solicitud de prestamo del bien público Mueble 2', '2022-01-15', 0, NULL),
+(368, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-15', 0, 'movimiento_bienes/77'),
+(369, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-15', 0, 'movimiento_bienes/77'),
+(370, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-15', 0, 'movimiento_bienes/77'),
+(371, 20, 'javier Gerardo ha aceptado tu solicitud de prestamo del bien público Mueble 2', '2022-01-15', 1, NULL),
+(372, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-15', 0, 'movimiento_bienes/78'),
+(373, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-15', 1, 'movimiento_bienes/78'),
+(374, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-15', 1, 'movimiento_bienes/78'),
+(375, 20, 'Maria jesús Cumare Trompiz ha reportado la solicitud de un prestamo del bien público: Mueble. Por favor indique si esta procederá.', '2022-01-16', 1, 'revisar_prestamo_bien/79'),
+(376, 37, 'javier Gerardo ha aceptado tu solicitud de prestamo del bien público Mueble', '2022-01-16', 1, NULL),
+(377, 37, 'Se ha iniciado el tramite de un bien público: Mueble, por favor indique su confirmación', '2022-01-16', 1, 'movimiento_bienes/79'),
+(378, 20, 'Se ha iniciado el tramite de un bien público: Mueble, por favor indique su confirmación', '2022-01-16', 1, 'movimiento_bienes/79'),
+(379, 37, 'Se ha iniciado el tramite de un bien público: Mueble, por favor indique su confirmación', '2022-01-16', 1, 'movimiento_bienes/79'),
+(380, 20, 'Maria jesús Cumare Trompiz ha solicitado un prestamo del bien público a su responsabilidad: Mueble 2. Por favor indique si esta procederá.', '2022-01-16', 1, 'revisar_prestamo_bien/80'),
+(381, 37, 'javier Gerardo ha aceptado tu solicitud de prestamo del bien público Mueble 2', '2022-01-16', 1, NULL),
+(382, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-16', 0, 'movimiento_bienes/80'),
+(383, 20, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-16', 0, 'movimiento_bienes/80'),
+(384, 37, 'Se ha iniciado el tramite de un bien público: Mueble 2, por favor indique su confirmación', '2022-01-16', 0, 'movimiento_bienes/80'),
+(385, 20, 'Maria jesús Cumare Trompiz ha solicitado una prorroga para el prestamo del bien público a su responsabilidad: Mueble 2 (ORH-21-6), por favor indique si dicha solicitud procederá.', '2022-01-16', 0, 'revisar_prestamo_bien/81'),
+(386, 20, 'Maria jesús Cumare Trompiz ha solicitado una prorroga para el prestamo del bien público a su responsabilidad: Mueble 2 (ORH-21-6), por favor indique si dicha solicitud procederá.', '2022-01-16', 0, 'revisar_prestamo_bien/82');
 
 -- --------------------------------------------------------
 
@@ -446,26 +513,33 @@ INSERT INTO `notificaciones` (`id_noti`, `id_usuario`, `texto`, `fecha`, `leido`
 CREATE TABLE `observaciones_prestamo` (
   `id_observacion_prestamo` int(11) NOT NULL,
   `id_prestamo_bien` int(11) DEFAULT NULL,
-  `texto` varchar(5000) COLLATE utf8_unicode_ci NOT NULL
+  `texto` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `observaciones_prestamo`
 --
 
-INSERT INTO `observaciones_prestamo` (`id_observacion_prestamo`, `id_prestamo_bien`, `texto`) VALUES
-(1, NULL, 'ALAVERGA SHI'),
-(2, NULL, 'PAPA'),
-(3, NULL, 'JODASU'),
-(4, NULL, 'JABANES'),
-(5, NULL, 'QEU'),
-(6, NULL, 'PAPS'),
-(7, NULL, 'PAPS'),
-(8, 74, 'JODAFUE'),
-(9, 74, 'HIJOLE'),
-(10, 74, 'AUJ'),
-(11, 74, 'AUJ'),
-(12, 76, 'VEREMOS');
+INSERT INTO `observaciones_prestamo` (`id_observacion_prestamo`, `id_prestamo_bien`, `texto`, `id_usuario`) VALUES
+(1, NULL, 'ALAVERGA SHI', NULL),
+(2, NULL, 'PAPA', NULL),
+(3, NULL, 'JODASU', NULL),
+(4, NULL, 'JABANES', NULL),
+(5, NULL, 'QEU', NULL),
+(6, NULL, 'PAPS', NULL),
+(7, NULL, 'PAPS', NULL),
+(8, 74, 'JODAFUE', NULL),
+(9, 74, 'HIJOLE', NULL),
+(10, 74, 'AUJ', NULL),
+(11, 74, 'AUJ', NULL),
+(12, 76, 'VEREMOS', NULL),
+(13, 78, 'Jodete jakjslks', NULL),
+(14, 78, 'XDXDXD', NULL),
+(15, 79, 'SISA', NULL),
+(16, 79, 'JAKAKSJA XD', 37),
+(17, 79, 'achuuu', 20),
+(18, 79, 'ayayayao', 37);
 
 -- --------------------------------------------------------
 
@@ -544,7 +618,6 @@ CREATE TABLE `permisos` (
 
 INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (13, 'Editar_UT_Caja_Chica', 1),
-(21, 'Editar_UT_Caja_Chica', 4),
 (22, 'Aceptar_Sol_CC', 1),
 (25, 'Recepcion_Repo_CC', 1),
 (26, 'Coordinacion_Repo_CC', 1),
@@ -554,7 +627,6 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (31, 'Incorporacion_Muebles', 1),
 (32, 'Generar_Nota', 1),
 (33, 'Prestar_Bien_Publico', 1),
-(34, 'Editar_UT_Caja_Chica', 1),
 (35, 'Movimiento_Bienes', 1),
 (36, 'Reporte_Bien', 1),
 (37, 'Desincorporar_Bien', 1),
@@ -565,7 +637,11 @@ INSERT INTO `permisos` (`permiso_id`, `accion`, `cargo_id`) VALUES
 (43, 'Revisar_Solicitud_Adiestramiento', 1),
 (44, 'Aprobar_Adiestramiento', 1),
 (45, 'Editar_UT_Caja_Chica', 1),
-(46, 'Aceptar_Sol_CC', 11);
+(46, 'Aceptar_Sol_CC', 11),
+(47, 'Editar_UT_Caja_Chica', 1),
+(48, 'Editar_UT_Caja_Chica', 1),
+(49, 'Editar_UT_Caja_Chica', 1),
+(50, 'Prestar_Bien_Publico', 4);
 
 -- --------------------------------------------------------
 
@@ -583,6 +659,13 @@ CREATE TABLE `persona_juridica` (
   `persona_responsable` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `telefono_contacto` varchar(11) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `persona_juridica`
+--
+
+INSERT INTO `persona_juridica` (`id_presona_juridica`, `id_prestamo_bien`, `razon_social`, `rif`, `direccion_fiscal`, `telefono_fijo`, `persona_responsable`, `telefono_contacto`) VALUES
+(4, 78, 'Jodete', '28039751', 'Jodete más', '04246089787', 'Jodete el doble', '04246089788');
 
 -- --------------------------------------------------------
 
@@ -607,9 +690,15 @@ CREATE TABLE `prestamo_bien` (
 --
 
 INSERT INTO `prestamo_bien` (`id_prestamo_bien`, `id_bien`, `solicitante`, `fecha_prestamo`, `aprobado`, `rechazado`, `tramitado`, `duracion`, `motivo`) VALUES
-(74, 2, 20, '2021-12-16', 1, 0, 1, 20, 'JAJAJAJAJA'),
-(75, 2, 20, '2021-12-16', 0, 0, 0, 23, 'qaj'),
-(76, 3, 20, '2021-12-17', 1, 0, 1, 90, 'AUCHHHHH');
+(74, 16, 20, '2021-12-16', 1, 0, 1, 20, 'JAJAJAJAJA'),
+(75, 16, 20, '2021-12-20', 0, 0, 0, 23, 'qaj'),
+(76, 16, 20, '2021-12-17', 1, 0, 1, 92, 'z'),
+(77, 8, 20, '2022-01-14', 1, 0, 1, 10000, 'kk'),
+(78, 8, 37, '2022-01-14', 1, 0, 1, 200, 'chingue a su madre'),
+(79, 16, 37, '2022-01-16', 1, 0, 1, 100, 'Chupala'),
+(80, 8, 37, '2022-01-14', 1, 0, 1, 1, 'Chingada'),
+(81, 8, 37, '2022-01-16', 0, 0, 0, 1000, 'NECESITO Y PUNTO'),
+(82, 8, 37, '2022-01-16', 0, 0, 0, 1000, 'NECESITO Y PUNTO');
 
 -- --------------------------------------------------------
 
@@ -631,7 +720,12 @@ INSERT INTO `relacion_solicitud_cc` (`id_solicitud_repo_cc`, `id_sol_cc`) VALUES
 (2, 3),
 (2, 4),
 (3, 5),
-(4, 6);
+(4, 6),
+(5, 11),
+(5, 16),
+(12, 11),
+(12, 13),
+(12, 16);
 
 -- --------------------------------------------------------
 
@@ -657,7 +751,10 @@ CREATE TABLE `reporte_bien` (
 
 INSERT INTO `reporte_bien` (`id_reporte_bien`, `id_bien`, `motivo_reporte`, `descripcion_reporte`, `reporte_tramitado`, `desincorporado`, `fecha_desincorporacion`, `img1`, `img2`) VALUES
 (2, 2, 'Extravío', 'Atraco', 1, 1, '2021-12-20', NULL, NULL),
-(12, 5, 'Desuso', 'Quien sabe', 1, 1, '2021-12-27', 'frontend/img/bienes/bien_5_1.png', 'frontend/img/bienes/bien_5_2.png');
+(12, 5, 'Desuso', 'Quien sabe', 1, 1, '2021-12-27', 'frontend/img/bienes/bien_5_1.png', 'frontend/img/bienes/bien_5_2.png'),
+(13, 16, 'Extravío', 'M.toast({\r\n                        html: response,\r\n                        classes: \'rounded red\'\r\n                    })\r\n                    $(\"#progress\").css(\"display\", \"none\")\r\n                    $(\"#btn-submit\").prop(\'disabled\', false)\r\n                    $(\"#btn-submit\").css(\'background\', \'#1a237e\')M.toast({\r\n                        html: response,\r\n                        classes: \'rounded red\'\r\n                    })\r\n                    $(\"#progress\").css(\"display\", \"none\")\r\n                    $(\"#btn-submit\").prop(\'disabled\', false)\r\n                    $(\"#btn-submit\").css(\'background\', \'#1a237e\')M.toast({\r\n                        html: response,\r\n                        classes: \'rounded red\'\r\n                    })\r\n                    $(\"#progress\").css(\"display\", \"none\")\r\n                    $(\"#btn-submit\").prop(\'disabled\', false)\r\n                    $(\"#btn-submit\").css(\'background\', \'#1a237e\')M.toast({\r\n                        html: response,\r\n                        classes: \'rounded red\'\r\n                    })\r\n                    $(\"#progress\").css(\"display\", \"none\")\r\n                    $(\"#btn-submit\").prop(\'disabled\', false)\r\n                    $(\"#btn-submit\").css(\'background\', \'#1a237e\')', 0, 0, NULL, NULL, NULL),
+(14, 16, 'Hurto', 'jhj', 0, 0, NULL, NULL, NULL),
+(15, 16, 'Robo', 'pUDRETE', 0, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -700,13 +797,13 @@ INSERT INTO `solicitud_cc` (`id_sol_cc`, `id_usuario`, `fecha`, `bs`, `ut_pedido
 (4, 20, '2021-11-21', '4540.00', '5.04', 'QQQQ', 1, 1, 1),
 (5, 20, '2021-11-22', '4010.00', '4.46', 'LLALALA', 1, 1, 1),
 (6, 20, '2021-12-07', '800.00', '0.89', 'Nueva laptop', 1, 1, 1),
-(7, 20, '2022-01-08', '10000.00', '0.01', 'Quiero pues', 1, 0, 0),
-(11, 20, '2022-01-08', '10000.00', '0.01', 'QUE COÑO', 1, 0, 0),
+(7, 20, '2022-01-08', '10000.00', '0.01', 'Quiero pues', 1, 1, 1),
+(11, 20, '2022-01-10', '10000.00', '0.01', 'QUE COÑO', 1, 1, 1),
 (12, 20, '2022-01-08', '10.00', '0.00', 'No se', 0, 0, 0),
-(13, 20, '2022-01-08', '10000.00', '50.00', 'Quien sabe', 0, 0, 0),
+(13, 20, '2022-01-10', '10000.00', '50.00', 'Quien sabe', 1, 1, 1),
 (14, 20, '2022-01-08', '3000.00', '15.00', 'Nojoda', 0, 0, 0),
-(15, 20, '2022-01-08', '0.00', '0.00', 'sdd', 0, 0, 0),
-(16, 20, '2022-01-08', '190.00', '0.95', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere cumque nisi, itaque aut, necessitatibus temporibus aspernatur dolorum, sunt quis vitae quasi minima. Ad labore rerum minima illum accusamus sint soluta?', 0, 0, 0);
+(15, 20, '2022-01-09', '0.00', '0.00', 'sdd', 1, 1, 1),
+(16, 20, '2022-01-11', '190.00', '0.95', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, odit. Quod minima sint consectetur distinctio ipsam natus voluptates, cum at hic aspernatur et adipisci animi. Officia dignissimos rerum earum molestias!\n            Nemo recusandae sunt quis atque. Similique commodi atque sint sequi quo sit perspiciatis id tenetur, nobis doloremque! Deserunt quisquam et eum veniam inventore, quibusdam at vel quaerat hic nulla magni.\n            Repellat, placeat sit. Aliquam, nobis. A voluptatibus explicabo reprehenderit sint. Ea, libero laboriosam totam sapiente quod reprehenderit aliquid delectus ullam corrupti, eius, labore maxime commodi! Harum iste impedit vero assumenda?\n            Quasi harum repellendus culpa iusto molestias non corporis cupiditate porro dolore libero. Nostrum minus fugit nisi quae vitae voluptate veniam cupiditate nesciunt et, fuga, commodi iste. Consectetur excepturi fugit nesciunt?\n            Obcaecati laboriosam ab quas mollitia consequatur! Odit cum inventore velit tempore est in optio praesentium accusamus, mollitia possimus doloribus sit quia quae vero atque modi beatae sed, voluptate ipsam ab!\n            Doloribus cum vel explicabo nostrum officia consequatur minus harum odit, voluptates minima eos? Pariatur aperiam quaerat minima perferendis laudantium officia corrupti, temporibus ex, impedit dolores animi qui autem ratione ullam.\n            Quasi dolores consequuntur voluptate deleniti maiores error eos neque expedita aut at nam impedit magnam cumque a molestiae quaerat labore, vel natus dolorum officiis voluptatum facere earum esse sit. Eligendi.\n            Nam facilis voluptates possimus nisi doloremque reiciendis eum. Harum quidem ipsam eum rerum laborum tenetur aspernatur commodi perferendis modi saepe doloribus ullam explicabo, magnam sunt alias expedita repudiandae et fugiat?\n            Nulla cumque ipsa ea nesciunt, enim quis totam molestias similique nemo repellat maxime mollitia eius deserunt inventore? Suscipit qu', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -764,9 +861,11 @@ CREATE TABLE `solicitud_repo_cc` (
 
 INSERT INTO `solicitud_repo_cc` (`id_solicitud_repo_cc`, `fecha`, `fondo_momento`, `custodio`, `cuentadante`, `coordinador`, `analista`, `contador`, `gerente`) VALUES
 (1, '2021-11-20', '65.67', 1, 1, 0, 0, 0, 0),
-(2, '2021-11-21', '60.39', 1, 1, 0, 0, 0, 0),
+(2, '2021-11-21', '60.39', 1, 1, 1, 0, 0, 0),
 (3, '2021-12-06', '55.04', 1, 1, 1, 1, 1, 1),
-(4, '2021-12-09', '55.04', 1, 1, 1, 0, 0, 0);
+(4, '2021-12-09', '55.04', 1, 1, 1, 0, 0, 0),
+(5, '2022-01-09', '54.07', 1, 1, 1, 1, 1, 1),
+(12, '2022-01-11', '4.07', 1, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -801,9 +900,11 @@ CREATE TABLE `tramite_bienes` (
 --
 
 INSERT INTO `tramite_bienes` (`id_tramite_bien`, `id_prestamo_bien`, `tipo`, `activo`, `concepto`, `analista`, `coordinador`, `entregado`, `recibido`, `analista2`, `coordinador2`, `entregado2`, `recibido2`, `user1`, `user2`, `user3`, `user4`, `fecha_tramite`, `fecha_fin_tramite`) VALUES
-(2, NULL, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 37, 20, '2021-12-09', '2021-12-11'),
-(6, 74, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 20, 20, '2021-12-17', '2021-12-17'),
-(7, 76, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 20, 20, '2021-12-17', '2021-12-18');
+(2, NULL, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 37, 20, '2021-12-09', '2022-01-15'),
+(6, 74, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 20, 20, '2021-12-17', '2022-01-15'),
+(7, 76, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 20, 20, '2021-12-17', '2022-01-15'),
+(11, 78, 'Interno', 1, 'Traslado', 1, 1, 1, 1, 1, 1, 1, 1, 20, 37, 20, 37, '2022-01-16', '2022-01-16'),
+(12, 80, 'Interno', 1, 'Prestamo', 1, 0, 0, 0, 0, 0, 0, 0, 20, 20, 20, 37, '2022-01-16', NULL);
 
 -- --------------------------------------------------------
 
@@ -870,14 +971,18 @@ CREATE TABLE `verificacion_bienes` (
 
 INSERT INTO `verificacion_bienes` (`x`, `id_bien`, `revisado`, `verificado`, `validado`, `user1`, `user2`, `user3`) VALUES
 (1, 1, 1, 1, 0, 20, 37, NULL),
-(2, 2, 0, 0, 0, NULL, NULL, NULL),
+(2, 2, 0, 0, 0, 20, 20, 20),
 (3, 3, 0, 0, 0, NULL, NULL, NULL),
 (4, 4, 0, 0, 0, 20, 20, 37),
 (5, 5, 1, 1, 0, 20, 20, 37),
-(8, 8, 0, 0, 0, NULL, NULL, NULL),
-(9, 8, 0, 0, 0, NULL, NULL, NULL),
+(8, 8, 0, 1, 1, 44, 37, 20),
+(9, 8, 0, 1, 1, 44, 37, 20),
 (10, 15, 0, 0, 0, NULL, NULL, NULL),
-(11, 16, 0, 0, 0, NULL, NULL, NULL);
+(11, 16, 0, 0, 0, NULL, NULL, NULL),
+(12, 17, 0, 0, 0, 20, 44, 37),
+(15, 20, 0, 0, 0, NULL, NULL, NULL),
+(16, 21, 0, 0, 0, NULL, NULL, NULL),
+(17, 22, 0, 0, 0, NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -898,6 +1003,8 @@ ALTER TABLE `bienes_publicos`
   ADD KEY `departamento_id` (`departamento_id`),
   ADD KEY `incorporado_por` (`incorporado_por`),
   ADD KEY `responsable` (`responsable`);
+ALTER TABLE `bienes_publicos` ADD FULLTEXT KEY `nombre_bien` (`nombre_bien`);
+ALTER TABLE `bienes_publicos` ADD FULLTEXT KEY `descripcion` (`descripcion`);
 
 --
 -- Indices de la tabla `caja_chica`
@@ -916,6 +1023,7 @@ ALTER TABLE `cargo`
 --
 ALTER TABLE `departamento`
   ADD PRIMARY KEY (`departamento_id`);
+ALTER TABLE `departamento` ADD FULLTEXT KEY `siglas` (`siglas`);
 
 --
 -- Indices de la tabla `facturas_cc`
@@ -969,7 +1077,8 @@ ALTER TABLE `notificaciones`
 --
 ALTER TABLE `observaciones_prestamo`
   ADD PRIMARY KEY (`id_observacion_prestamo`),
-  ADD KEY `id_prestamo_bien` (`id_prestamo_bien`);
+  ADD KEY `id_prestamo_bien` (`id_prestamo_bien`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `participante_adiestramiento`
@@ -1098,7 +1207,7 @@ ALTER TABLE `adiestramiento`
 -- AUTO_INCREMENT de la tabla `bienes_publicos`
 --
 ALTER TABLE `bienes_publicos`
-  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `caja_chica`
@@ -1122,7 +1231,7 @@ ALTER TABLE `departamento`
 -- AUTO_INCREMENT de la tabla `facturas_cc`
 --
 ALTER TABLE `facturas_cc`
-  MODIFY `id_factura_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_factura_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `induccion`
@@ -1152,13 +1261,13 @@ ALTER TABLE `inventario_departamento`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=336;
+  MODIFY `id_noti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=387;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones_prestamo`
 --
 ALTER TABLE `observaciones_prestamo`
-  MODIFY `id_observacion_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_observacion_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `participante_adiestramiento`
@@ -1176,25 +1285,25 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `persona_juridica`
 --
 ALTER TABLE `persona_juridica`
-  MODIFY `id_presona_juridica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_presona_juridica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo_bien`
 --
 ALTER TABLE `prestamo_bien`
-  MODIFY `id_prestamo_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id_prestamo_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `reporte_bien`
 --
 ALTER TABLE `reporte_bien`
-  MODIFY `id_reporte_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_reporte_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_password`
@@ -1218,13 +1327,13 @@ ALTER TABLE `solicitud_permiso`
 -- AUTO_INCREMENT de la tabla `solicitud_repo_cc`
 --
 ALTER TABLE `solicitud_repo_cc`
-  MODIFY `id_solicitud_repo_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_solicitud_repo_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tramite_bienes`
 --
 ALTER TABLE `tramite_bienes`
-  MODIFY `id_tramite_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_tramite_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -1236,7 +1345,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `verificacion_bienes`
 --
 ALTER TABLE `verificacion_bienes`
-  MODIFY `x` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `x` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
@@ -1301,7 +1410,8 @@ ALTER TABLE `notificaciones`
 -- Filtros para la tabla `observaciones_prestamo`
 --
 ALTER TABLE `observaciones_prestamo`
-  ADD CONSTRAINT `observaciones_prestamo_ibfk_1` FOREIGN KEY (`id_prestamo_bien`) REFERENCES `prestamo_bien` (`id_prestamo_bien`) ON DELETE SET NULL ON UPDATE SET NULL;
+  ADD CONSTRAINT `observaciones_prestamo_ibfk_1` FOREIGN KEY (`id_prestamo_bien`) REFERENCES `prestamo_bien` (`id_prestamo_bien`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `observaciones_prestamo_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Filtros para la tabla `participante_adiestramiento`

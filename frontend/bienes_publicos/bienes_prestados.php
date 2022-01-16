@@ -1,54 +1,79 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORPOTULIPA - Prestamo de Muebles e Inmuebles</title>
-</head>
-<body>
-    <?php
-        if(!isset($router))
-            header("Location: ../404");
-    ?>
-    <table>
-        <thead>
-            <th>Nombre del Bien</th>
-            <th>Código</th>
-            <th>Responsable</th>
-            <th>Fecha del Prestamo</th>
-            <th>Duración</th>
-            <th>Restantes</th>
-            <th></th>
-        </thead>
-        <tbody>
-        <?php
-            while ($prestamo = $prestamos->fetch_assoc()) {
-                $date = date("Y-m-d");
-                $tramite = date_create($prestamo["fecha_tramite"]);
-                $date = date_create($date);
-                $interval = date_diff($tramite, $date);
-                $transcurridos = $interval->format('%a');
-                $restante = $prestamo["duracion"] - $transcurridos;
-        ?>
-            <tr>
-                <td><?php echo $prestamo["nombre_bien"] ?></td>
-                <td><?php echo $prestamo["codigo"] ?></td>
-                <td><?php echo $prestamo["nombre"]." ".$prestamo["apellido"] ?></td>
-                <td><?php echo $prestamo["fecha_tramite"] ?></td>
-                <td><?php echo $prestamo["duracion"] ?></td>
-                <td><?php echo $restante ?></td>
-                <td><a href="bienes_prestados/<?php echo $prestamo["id_tramite_bien"] ?>">Revisar</a></td>
-            </tr>
-        <?php
+<?php
+include("frontend/modularizacion/encabezado_html.php");
+if (!isset($router))
+    header("Location: ../../404");
+include("frontend/modularizacion/menu.php");
+?>
+
+<div class="container section">
+    <div class="row">
+        <h5 class="title title-table">Bienes prestados actualmente</h5>
+        <table id="tabla" class="striped responsive-table centered blue lighten-5">
+            <thead class="table-head">
+                <th>Nombre del Bien</th>
+                <th>Código</th>
+                <th>Responsable</th>
+                <th>Fecha del Prestamo</th>
+                <th>Duración</th>
+                <th>Días Restantes</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <?php
+                while ($prestamo = $prestamos->fetch_assoc()) {
+                    $date = date("Y-m-d");
+                    $tramite = date_create($prestamo["fecha_tramite"]);
+                    $date = date_create($date);
+                    $interval = date_diff($tramite, $date);
+                    $transcurridos = $interval->format('%a');
+                    $restante = $prestamo["duracion"] - $transcurridos;
+                ?>
+                    <tr>
+                        <td><?php echo $prestamo["nombre_bien"] ?></td>
+                        <td><?php echo $prestamo["codigo"] ?></td>
+                        <td><?php echo $prestamo["nombre"] . " " . $prestamo["apellido"] ?></td>
+                        <td><?php echo $prestamo["fecha_tramite"] ?></td>
+                        <td><?php echo $prestamo["duracion"] ?></td>
+                        <td><?php echo $restante ?></td>
+                        <td><a class="btn btn-flat" href="bienes_prestados/<?php echo $prestamo["id_tramite_bien"] ?>">
+                                <i class="material-icons">visibility</i></a></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<script src="frontend/js/jquery-3.6.0.min.js"></script>
+<script src="frontend/js/materialize.min.js"></script>
+<script src="frontend/js/elementos-materialize.js"></script>
+<script src="frontend/js/notificaciones.js"></script>
+<script src="frontend/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#tabla').DataTable({
+            "language": {
+                "lengthMenu": "Display _MENU_ records per page",
+                "zeroRecords": "No hay data registrada",
+                "info": "Total: _MAX_ resultados",
+                "infoEmpty": "No hay coincidencias",
+                "infoFiltered": "",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
             }
-        ?>
-        </tbody>
-    </table>
-    
-   
-    <script src="frontend/js/jquery-3.6.0.min.js"></script>
-    <script>
-    </script>
-</body>
-</html>
+        });
+    });
+</script>
+<?php
+include("frontend/modularizacion/cierre_html.php");
+?>

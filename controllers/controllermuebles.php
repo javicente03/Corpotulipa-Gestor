@@ -77,14 +77,19 @@ class ControllersMueble
             if ($bien["responsable"] != $_SESSION["id"])
                 header("Location: ../404");
 
-            $prestado = ($bd->query("SELECT *, DATE_ADD(fecha_prestamo, INTERVAL duracion DAY) 
-                                    FROM prestamo_bien T LEFT JOIN usuario U ON T.solicitante=U.id
+            // $prestado = ($bd->query("SELECT *, DATE_ADD(fecha_prestamo, INTERVAL duracion DAY) 
+            //                         FROM prestamo_bien T LEFT JOIN usuario U ON T.solicitante=U.id
+            //                         LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON
+            //                         P.departamento_id=D.departamento_id WHERE T.id_bien=" . $router->getParam() .
+            //                         " ORDER BY id_prestamo_bien DESC LIMIT 1"))->fetch_assoc();
+            $prestado = ($bd->query("SELECT *, DATE_ADD(TB.fecha_tramite, INTERVAL T.duracion DAY) 
+                                    FROM tramite_bienes TB LEFT JOIN prestamo_bien T ON TB.id_prestamo_bien=T.id_prestamo_bien 
+                                    LEFT JOIN usuario U ON T.solicitante=U.id
                                     LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D ON
                                     P.departamento_id=D.departamento_id WHERE T.id_bien=" . $router->getParam() .
-                " ORDER BY id_prestamo_bien 
-                                    DESC LIMIT 1"))->fetch_assoc();
+                                    " AND TB.fecha_fin_tramite IS NULL ORDER BY T.id_prestamo_bien DESC LIMIT 1"))->fetch_assoc();
             if ($prestado)
-                $fecha = $prestado["DATE_ADD(fecha_prestamo, INTERVAL duracion DAY)"];
+                $fecha = $prestado["DATE_ADD(TB.fecha_tramite, INTERVAL T.duracion DAY)"];
             return include("frontend/bienes_publicos/mi_bien.php");
         }
     }
@@ -213,15 +218,13 @@ class ControllersMueble
 
             return include("frontend/bienes_publicos/bienes_prestados.php");
         } else {
-            $prestamo = ($bd->query("SELECT * FROM tramite_bienes R LEFT JOIN prestamo_bien T ON
+            $prestamo = ($bd->query("SELECT *, DATE_ADD(fecha_tramite, INTERVAL duracion DAY) FROM tramite_bienes R LEFT JOIN prestamo_bien T ON
                                     R.id_prestamo_bien=T.id_prestamo_bien LEFT JOIN bienes_publicos B ON 
                                     T.id_bien=B.id_bien LEFT JOIN usuario U ON B.responsable=U.id 
                                     LEFT JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
                                     ON P.departamento_id=D.departamento_id 
-                                    WHERE id_tramite_bien = " . $router->getParam()))->fetch_assoc();
+                                    WHERE fecha_fin_tramite IS NULL AND id_tramite_bien = " . $router->getParam()))->fetch_assoc();
             if (!$prestamo)
-                header("Location: ../404");
-            if ($prestamo["fecha_fin_tramite"] != null)
                 header("Location: ../404");
             return include("frontend/bienes_publicos/bien_prestado.php");
         }

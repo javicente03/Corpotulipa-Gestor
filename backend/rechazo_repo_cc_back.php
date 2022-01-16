@@ -21,7 +21,7 @@ if(isset($router)){
                 echo "Clave de seguridad inválida";
             }
         } else
-            echo "El motivo del rechazo no puede exceder los 230 carácteres";
+            echo "El motivo del rechazo no puede exceder los 230 caracteres";
     } else {
         echo "Debe completar todos los datos solicitados";
     }

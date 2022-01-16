@@ -61,7 +61,7 @@ include("frontend/modularizacion/menu_page.php");
             <div class="input-field col s12 m6">
                 <textarea name="observacion" class="materialize-textarea validate" data-length="5000" id="observacion"></textarea>
                 <label for="observacion">¿Tiene alguna observación?</label>
-                <span class="helper-text" data-error="Este dato no debe exceder los 5000 carácteres" data-success=""></span>
+                <span class="helper-text" data-error="Este dato no debe exceder los 5000 caracteres" data-success=""></span>
             </div>
             <div class="input-field col s12">
                 <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>

@@ -88,7 +88,7 @@ include("frontend/modularizacion/menu.php");
                 <div class="col s12 m6 input-field">
                     <textarea class="materialize-textarea validate" data-length="2000" id="descripcion" name="descripcion"></textarea>
                     <label for="descripcion">* Descripción del bien</label>
-                    <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 2000 carácteres" data-success=""></span>
+                    <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 2000 caracteres" data-success=""></span>
                 </div>
             </div>
             <!-- Inmuebles -->

@@ -20,7 +20,7 @@ include("frontend/modularizacion/menu_page.php");
             <div class="input-field col s12 m6">
                 <textarea name="motivo" id="motivo" data-length="2000" required class="materialize-textarea validate"></textarea>
                 <label for="motivo">Indique su solicitud</label>
-                <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 2000 carácteres" data-success=""></span>
+                <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 2000 caracteres" data-success=""></span>
             </div>
             <div class="input-field col s12 m6">
                 <input type="number" name="duracion" id="duracion" class="validate" required>

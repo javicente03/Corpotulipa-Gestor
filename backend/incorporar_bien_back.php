@@ -40,7 +40,7 @@ if (isset($router)) {
                         else
                             echo "¡Oh no! Ha ocurrido un error";
                     } else
-                        echo "La descripción no debe exceder los 2000 carácteres";
+                        echo "La descripción no debe exceder los 2000 caracteres";
                 } else {
                     echo "El valor debe ser numérico";
                 }

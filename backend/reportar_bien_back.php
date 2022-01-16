@@ -21,7 +21,7 @@ if (isset($router)) {
                 } else
                     echo "Clave inválida";
             } else
-                echo "La descripción del reporte no debe exceder los 5000 carácteres";
+                echo "La descripción del reporte no debe exceder los 5000 caracteres";
         } else {
             echo "Debe ingresar todos los datos correspondientes";
         }

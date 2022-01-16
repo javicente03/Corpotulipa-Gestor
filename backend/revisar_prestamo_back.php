@@ -22,7 +22,7 @@ if (isset($router)) {
                 $notificacion = $bd->query("INSERT INTO notificaciones (id_usuario,texto,fecha) VALUES ('$solicitante','$texto','$date')");
                 echo "ok";
             } else
-                echo "Este dato es obligatorio y no debe exceder los 250 carácteres";
+                echo "Este dato es obligatorio y no debe exceder los 250 caracteres";
         }
     } else
         echo "Debe seleccionar una opción";

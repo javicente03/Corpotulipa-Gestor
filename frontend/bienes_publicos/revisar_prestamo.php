@@ -61,7 +61,7 @@ include("frontend/modularizacion/menu_page.php");
             <div class="col s12 m6 input-field">
                 <textarea name="motivo" data-length="250" class="materialize-textarea validate" id="motivo" disabled></textarea>
                 <label for="motivo">Motivo del rechazo</label>
-                <span class="helper-text" data-error="Este dato es obligatorio y no debe exceder los 250 carácteres" data-success=""></span>
+                <span class="helper-text" data-error="Este dato es obligatorio y no debe exceder los 250 caracteres" data-success=""></span>
             </div>
             <div class="input-field col s12">
                 <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>

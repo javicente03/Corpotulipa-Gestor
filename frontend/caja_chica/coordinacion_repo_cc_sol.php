@@ -83,7 +83,7 @@ include("frontend/modularizacion/menu_page.php");
                 <div class="input-field col s12 m6">
                     <label for="motivo">Motivo del rechazo</label>
                     <textarea name="motivo" id="motivo" data-length="230" class="materialize-textarea"></textarea>
-                    <span class="helper-text" data-error="El motivo del rechazo no puede exceder los 230 carácteres" data-success=""></span>
+                    <span class="helper-text" data-error="El motivo del rechazo no puede exceder los 230 caracteres" data-success=""></span>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">widgets</i>

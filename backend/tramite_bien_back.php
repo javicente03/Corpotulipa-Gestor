@@ -37,10 +37,7 @@ if(isset($router)){
                                                             ON T.id_bien=B.id_bien WHERE id_prestamo_bien = $prestamo"))->fetch_assoc();
                         $solicitante = ($bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id=P.id_usuario LEFT JOIN departamento D 
                                                     ON P.departamento_id=D.departamento_id WHERE id = ".$prestamoResponsable["solicitante"]))->fetch_assoc();
-                        
-                        $len = ($bd->query("SELECT * FROM bienes_publicos"))->num_rows;
-                        $len = ($len+1);
-                        $codigoNuevo = $solicitante["siglas"]."-".$year."-".$len;
+                                                
                         $organismoU = $prestamoResponsable['organismo'];
                         $tipoU = $prestamoResponsable['tipo'];
                         $denoOrgaU = $prestamoResponsable['denoOrga'];
@@ -54,9 +51,14 @@ if(isset($router)){
                         $solicitanteU = $solicitante['id'];
                         $valorU = $prestamoResponsable['valor'];
                         $catastroU = $prestamoResponsable['catastro'];
-                        $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor,catastro) 
-                                                VALUES ('$codigoNuevo','$tipoU','$organismoU','$denoOrgaU','$depId','$denoDepaU','$dependenciaU',
+                        $bd->query("UPDATE bienes_publicos SET existente = false WHERE id_bien = ".$prestamoResponsable['id_bien']);
+                        $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor,catastro) 
+                                                VALUES ('','$tipoU','$organismoU','$denoOrgaU','$depId','$denoDepaU','$dependenciaU',
                                                         '$denoUsuU','$muebleU','$descripcionU','$date','$incorpoU', '$solicitanteU','$valorU','$catastroU')");
+                        $anterior = ($bd->query("SELECT * FROM bienes_publicos ORDER BY id_bien DESC LIMIT 1")->fetch_assoc());
+                        $anterior_id = $anterior["id_bien"];
+                        $codigo = $solicitante["siglas"] . "-" . $year . "-" . $anterior_id;
+                        $bd->query("UPDATE bienes_publicos SET codigo = '$codigo' WHERE id_bien = $anterior_id");
 
                         // $updateResponsable = $bd->query("UPDATE bienes_publicos SET responsable=".$tramite["user4"].
                                                         // ", codigo='$codigoNuevo' WHERE id_bien = ".$prestamoResponsable["id_bien"]);
@@ -103,7 +105,7 @@ if(isset($router)){
             }
 
             if($observacion !=""){
-                $bd->query("INSERT INTO observaciones_prestamo (id_prestamo_bien,texto) VALUES ('$prestamo','$observacion')");
+                $bd->query("INSERT INTO observaciones_prestamo (id_prestamo_bien,texto,id_usuario) VALUES ('$prestamo','$observacion','".$_SESSION["id"]."')");
             }
             echo "ok";
         } else
