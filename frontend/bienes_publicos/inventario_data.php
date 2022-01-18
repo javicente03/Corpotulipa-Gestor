@@ -81,6 +81,9 @@ if ($inventario["aprobado"] && $inventario["fecha_fin_inventario"] == null) {
                 </div>
                 <div class="col s12 m6 input-field">
                     <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
+                    <div class="progress indigo darken-4" id="progress" style="display: none;">
+                        <div class="indeterminate"></div>
+                    </div>
                 </div>
                 <input type="hidden" name="inventario" value="<?php echo $id_data ?>">
             </form>

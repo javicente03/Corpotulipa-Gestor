@@ -5,7 +5,8 @@ class ControllersRecursos
     public function crearInduccion($router)
     {
         include("backend/bd.php");
-        $usuarios = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id=P.id_usuario");
+        $usuarios = $bd->query("SELECT * FROM usuario U INNER JOIN perfil P ON U.id=P.id_usuario 
+                                LEFT JOIN cargo C ON P.cargo_id=C.cargo_id");
         $array = array();
 
         while ($usuario = $usuarios->fetch_assoc()) {
