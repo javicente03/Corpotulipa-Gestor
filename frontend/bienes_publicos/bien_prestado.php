@@ -21,31 +21,31 @@ $restante = $prestamo["duracion"] - $transcurridos;
         <div class="col s12 blue lighten-3 center" style="border: 2px solid black;">
             <h6><b>Nombre: <?php echo $prestamo["nombre_bien"] ?></b><h6>
         </div>
-        <div class="col s12 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 blue lighten-5 " style="border: 2px solid black;">
             <h6><b>Motivo: <?php echo $prestamo["motivo"] ?></b><h6>
         </div>
-        <div class="col s12 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 blue lighten-5" style="border: 2px solid black;">
             <h6><b>Concepto: <?php echo $prestamo["concepto"] ?></b><h6>
         </div>
-        <div class="col s12 m5 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 m5 blue lighten-5" style="border: 2px solid black;">
             <h6><b>Nombre del Responsable: <?php echo $prestamo["nombre"] . " " . $prestamo["apellido"] ?></b><h6>
         </div>
-        <div class="col s12 m6 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
             <h6><b><?php echo $prestamo["departamento"] ?></b><h6>
         </div>
-        <div class="col s12 m1 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 m1 blue lighten-5" style="border: 2px solid black;">
             <h6><b><?php echo $prestamo["siglas"] ?></b><h6>
         </div>
-        <div class="col s12 m6 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
             <h6><b>Fecha del Tramite: <?php echo $prestamo["fecha_tramite"] ?></b><h6>
         </div>
-        <div class="col s12 m6 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
             <h6><b>Duración: <?php echo $prestamo["duracion"] ?> días</b><h6>
         </div>
-        <div class="col s12 m6 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
             <h6><b>Restante: <?php echo $restante ?> días</b><h6>
         </div>
-        <div class="col s12 m6 blue lighten-5 centered" style="border: 2px solid black;">
+        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
             <h6><b>Fecha final: <?php echo $prestamo["DATE_ADD(fecha_tramite, INTERVAL duracion DAY)"] ?></b><h6>
         </div>
     </div>

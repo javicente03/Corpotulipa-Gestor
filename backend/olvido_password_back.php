@@ -18,7 +18,7 @@ if(isset($router)){
                 $proceso1 = $bd->query($sql1);
                 $asunto = "Corpotulipa Resetee su contrasena";
                 include("email/enviar-mail.php");
-                $sendMail = sendMail($email,$asunto,0,0,0,$code);
+                $sendMail = sendMail($email,$asunto,0,0,$code);
                 if($sendMail)
                     echo "ok";
             } else {

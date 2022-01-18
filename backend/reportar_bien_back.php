@@ -14,7 +14,7 @@ if (isset($router)) {
                     $bien = ($bd->query("SELECT * FROM bienes_publicos WHERE id_bien = $id_bien AND responsable = " . $_SESSION["id"]))->fetch_assoc();
                     if ($bien) {
                         $reporte = $bd->query("INSERT INTO reporte_bien (id_bien,motivo_reporte,descripcion_reporte) 
-                    VALUES ('$id_bien','$motivo','$descripcion')");
+                                                VALUES ('$id_bien','$motivo','$descripcion')");
                         echo "ok";
                     } else
                         echo "Este elemento no está a su cargo";

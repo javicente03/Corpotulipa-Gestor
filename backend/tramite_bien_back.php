@@ -39,6 +39,7 @@ if(isset($router)){
                                                     ON P.departamento_id=D.departamento_id WHERE id = ".$prestamoResponsable["solicitante"]))->fetch_assoc();
                                                 
                         $organismoU = $prestamoResponsable['organismo'];
+                        $catalogoU = $prestamoResponsable['catalogo'];
                         $tipoU = $prestamoResponsable['tipo'];
                         $denoOrgaU = $prestamoResponsable['denoOrga'];
                         $depId = $solicitante['departamento_id'];
@@ -52,8 +53,8 @@ if(isset($router)){
                         $valorU = $prestamoResponsable['valor'];
                         $catastroU = $prestamoResponsable['catastro'];
                         $bd->query("UPDATE bienes_publicos SET existente = false WHERE id_bien = ".$prestamoResponsable['id_bien']);
-                        $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor,catastro) 
-                                                VALUES ('','$tipoU','$organismoU','$denoOrgaU','$depId','$denoDepaU','$dependenciaU',
+                        $bd->query("INSERT INTO bienes_publicos (codigo,catalogo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor,catastro) 
+                                                VALUES ('','$catalogoU','$tipoU','$organismoU','$denoOrgaU','$depId','$denoDepaU','$dependenciaU',
                                                         '$denoUsuU','$muebleU','$descripcionU','$date','$incorpoU', '$solicitanteU','$valorU','$catastroU')");
                         $anterior = ($bd->query("SELECT * FROM bienes_publicos ORDER BY id_bien DESC LIMIT 1")->fetch_assoc());
                         $anterior_id = $anterior["id_bien"];

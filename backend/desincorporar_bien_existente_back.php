@@ -6,7 +6,7 @@ if(isset($router)){
         $usuario = ($bd->query("SELECT * FROM usuario WHERE id = ".$_SESSION['id']))->fetch_assoc();
         if(password_verify($clave, $usuario['password'])){
             $motivo = trim(addslashes($_POST["motivo"]));
-            if($motivo != ""){
+            if($motivo != "" && strlen($motivo) <= 5000){
                 if(strstr($_FILES["img1"]["type"],"image") && strstr($_FILES["img2"]["type"],"image")){
                     $bien = ($bd->query("SELECT * FROM bienes_publicos WHERE id_bien = ".$_POST["bien"]))->fetch_assoc();
                     if($bien){
@@ -33,6 +33,8 @@ if(isset($router)){
                             
                             $bd->query("INSERT INTO reporte_bien (id_bien,motivo_reporte,descripcion_reporte,reporte_tramitado,img1,img2) 
                             VALUES ('".$bien["id_bien"]."','Desuso','$motivo',true,'$name1','$name2')");
+
+                            echo "ok";
                         } else
                             echo "Error al subir los archivos";    
                     } else
@@ -41,7 +43,7 @@ if(isset($router)){
                 } else 
                     echo "Solo debe subir imágenes";
             } else
-                echo "Debe ingresar un motivo";
+                echo "Debe ingresar un motivo y este no debe exceder los 5000 caracteres";
         } else
             echo "Clave inválida";
     } else

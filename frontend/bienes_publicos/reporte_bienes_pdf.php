@@ -39,7 +39,7 @@ if($clave != ""){
         $pdf->setFont('Arial', '', 10);
         $pdf->Cell(190,5,'ORGANISMO: '.$bien["organismo"],1, true,'L');
         $pdf->Cell(190,5,utf8_decode('Denominación: '.$bien["denoOrga"]),1, true,'L');
-        $pdf->Cell(190,5,'UNIDAD ADMINISTRADORA: '.$bien["departamento"]." (".$bien["siglas"].")",1, true,'L');
+        $pdf->Cell(190,5, utf8_decode('UNIDAD ADMINISTRADORA: '.$bien["departamento"].' ('.$bien["siglas"].')'),1, true,'L');
         $pdf->Cell(40,5,utf8_decode('Código: '.$bien["codigo"]),1,0,'L',0);  // cell with left and right borders
         $pdf->Cell(150,5,utf8_decode('Denominación: '.$bien["denoDepa"]),1,0,'L',0);
         $pdf->Cell(190,5,' ','',0,'L',0);   // empty cell with left,top, and right borders

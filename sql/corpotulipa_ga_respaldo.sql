@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2022 a las 03:29:10
+-- Tiempo de generación: 17-01-2022 a las 03:32:29
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `corpotulipa_ga`
+-- Base de datos: `corpotulipa_ga_respaldo`
 --
 
 -- --------------------------------------------------------

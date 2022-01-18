@@ -2,7 +2,7 @@
 include("frontend/modularizacion/encabezado_html.php");
 if (!isset($router))
     header("Location: ../404");
-include("frontend/modularizacion/menu.php");
+// include("frontend/modularizacion/menu.php");
 ?>
 <div class="container section">
     <div class="row cont-crear">

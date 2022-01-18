@@ -1,7 +1,6 @@
 <?php
 if(isset($router)){
     $clave = trim(addslashes($_POST["clave"]));
-    $motivo = trim(addslashes($_POST["motivo"]));
     $user = $_SESSION["id"];
     if(!isset($_POST["accion"])){
         echo "Debe seleccionar una acción";
@@ -15,12 +14,13 @@ if(isset($router)){
                 $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
                 $solicitante = $ultimo["solicitante"];
                 if($accion == "Rechazar"){
+                    $motivo = trim(addslashes($_POST["motivo"]));
                     if($motivo !=""){
                         $rechazar = $bd->query("UPDATE inventario SET rechazado = true,
                                                 razon_rechazo = '$motivo', respuesta = '$user'
                                                 WHERE id_inventario = ".$ultimo["id_inventario"]);
                         $texto = "Ha sido rechazada tu solicitud más reciente de toma de inventario. Revisa el motivo.";
-                        $link = "programar_inventario";
+                        $link = "programar_inventario/".$ultimo["id_inventario"];
                         $bd->query("INSERT INTO notificaciones (id_usuario,texto,fecha,link) 
                                     VALUES ('$solicitante','$texto','$date','$link')");
                         echo "ok";

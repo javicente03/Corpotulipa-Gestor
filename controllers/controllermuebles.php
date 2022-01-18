@@ -237,8 +237,8 @@ class ControllersMueble
             $reportes = $bd->query("SELECT * FROM reporte_bien R 
                                     LEFT JOIN bienes_publicos B ON R.id_bien = B.id_bien
                                     LEFT JOIN usuario U ON B.responsable=U.id 
-                                    LEFT JOIN perfil P ON U.id=P.id_usuario");
-            include("frontend/bienes_publicos/reportes_bienes.php");
+                                    LEFT JOIN perfil P ON U.id=P.id_usuario WHERE reporte_tramitado=false");
+            return include("frontend/bienes_publicos/reportes_bienes.php");
         } else {
             include("backend/bd.php");
 
@@ -254,7 +254,7 @@ class ControllersMueble
                 header("Location: ../404");
             $analista = ($bd->query("SELECT * FROM usuario U LEFT JOIN perfil P ON 
                     U.id=P.id_usuario INNER JOIN cargo C ON P.cargo_id=C.cargo_id WHERE id = " . $bien["incorporado_por"]))->fetch_assoc();
-            include("frontend/bienes_publicos/bien_faltante.php");
+            return include("frontend/bienes_publicos/bien_faltante.php");
         }
     }
 
@@ -267,7 +267,7 @@ class ControllersMueble
                                     LEFT JOIN usuario U ON B.responsable=U.id 
                                     LEFT JOIN perfil P ON U.id=P.id_usuario WHERE reporte_tramitado = true
                                     AND desincorporado = false");
-            include("frontend/bienes_publicos/desincorporacion_bienes.php");
+            return include("frontend/bienes_publicos/desincorporacion_bienes.php");
         } else {
             include("backend/bd.php");
 
@@ -277,27 +277,36 @@ class ControllersMueble
             LEFT JOIN perfil P ON U.id=P.id_usuario 
             INNER JOIN departamento D ON P.departamento_id =D.departamento_id
             INNER JOIN cargo C ON P.cargo_id=C.cargo_id
-            WHERE id_reporte_bien = " . $router->getParam()))->fetch_assoc();
+            WHERE desincorporado=false AND id_reporte_bien = " . $router->getParam()))->fetch_assoc();
 
             if (!$bien)
                 header("Location: ../404");
 
-            include("frontend/bienes_publicos/desincorporar_bien.php");
+            return include("frontend/bienes_publicos/desincorporar_bien.php");
         }
     }
 
     public function programarInventario($router)
     {
         include("backend/bd.php");
-        $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
-        include("frontend/bienes_publicos/programar_inventario.php");
+        if(empty($router->getParam())){
+            $ultimo = ($bd->query("SELECT * FROM inventario I LEFT JOIN usuario U ON I.solicitante=U.id
+            LEFT JOIN perfil P ON U.id=P.id_usuario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
+            return include("frontend/bienes_publicos/programar_inventario.php");
+        } else {
+            $inventario = ($bd->query("SELECT * FROM inventario WHERE rechazado=true AND id_inventario =".$router->getParam()))->fetch_assoc();
+            if(!$inventario)
+                header("Location: ../404");
+            return include("frontend/bienes_publicos/programar_inventario.php");
+        }
+        
     }
 
     public function aprobarInventario($router)
     {
         include("backend/bd.php");
         $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
-        include("frontend/bienes_publicos/aprobar_inventario.php");
+        return include("frontend/bienes_publicos/aprobar_inventario.php");
     }
 
     public function levantarInventario($router)
@@ -315,7 +324,7 @@ class ControllersMueble
                 WHERE existente =true AND D.departamento_id = " . $_SESSION["departamento_id"]);
         }
 
-        include("frontend/bienes_publicos/levantar_inventario.php");
+        return include("frontend/bienes_publicos/levantar_inventario.php");
     }
 
     public function dataInventario($router)
@@ -332,14 +341,14 @@ class ControllersMueble
             $data = $bd->query("SELECT * FROM inventario_data ID LEFT JOIN bienes_publicos B
                 ON ID.id_bien = B.id_bien WHERE id_inventario_departamento = $id_data");
 
-            include("frontend/bienes_publicos/inventario_data.php");
+            return include("frontend/bienes_publicos/inventario_data.php");
         } else {
             $ultimo = ($bd->query("SELECT * FROM inventario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
             if ($ultimo["aprobado"] && $ultimo["fecha_fin_inventario"] == null) {
                 $inventarios = $bd->query("SELECT * FROM inventario_departamento I LEFT JOIN departamento D
                     ON I.departamento_id = D.departamento_id WHERE id_inventario = " . $ultimo["id_inventario"]);
             }
-            include("frontend/bienes_publicos/inventarios_data.php");
+            return include("frontend/bienes_publicos/inventarios_data.php");
         }
     }
 
