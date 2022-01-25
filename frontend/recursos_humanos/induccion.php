@@ -94,6 +94,6 @@ if ($induccion["fecha_respuesta"] == null) {
         });
     });
 </script>
-</body>
-
-</html>
+<?php
+include("frontend/modularizacion/cierre_html.php");
+?>

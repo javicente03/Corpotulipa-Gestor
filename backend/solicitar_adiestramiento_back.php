@@ -21,7 +21,7 @@ if(isset($router)){
                                 DESC LIMIT 1"))->fetch_assoc();
                     foreach ($array as list($a,$b,$c)) {
                         $bd->query("INSERT INTO participante_adiestramiento 
-                            (participante,nivel_actual,nivel_requerido,id_adiestramiento) 
+                            (participante,nivel_requerido,nivel_actual,id_adiestramiento) 
                             VALUES('$a','$b','$c','".$ultimo["id_adiestramiento"]."')");
                     }
                     echo "ok";

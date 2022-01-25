@@ -773,12 +773,17 @@ switch ($router->getController()) {
 
     case 'solicitar_adiestramiento':
         if (isset($_SESSION['id'])) {
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $controlrecursos->solicitudAdiestramiento($router); //llama la funcion del controlador
-            } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                include("backend/solicitar_adiestramiento_back.php");
-            }
-        } else
+            $sql = "SELECT * FROM permisos WHERE accion = 'Revisar_Solicitud_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if ($query->num_rows > 0) {
+                if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                    $controlrecursos->solicitudAdiestramiento($router); //llama la funcion del controlador
+                } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    include("backend/solicitar_adiestramiento_back.php");
+                }
+            } else
+                header("Location: 404");
+        }else
             header("Location: login");
         break;
 

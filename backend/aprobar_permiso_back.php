@@ -18,10 +18,13 @@ if(isset($router)){
                             $bd->query("UPDATE solicitud_permiso SET aprobado=true,fecha_respuesta='$hoy',
                                         remunerado='$remuneracion',observacion='$observacion'
                                         WHERE id_solicitud_permiso = $id");
-                            $texto = "Ha sido aprobado tu solicitud de permiso laboral del día ".$permiso["fecha_solicitud"].". ".$observacion;
+                            if($remuneracion)
+                                $texto = "Ha sido aprobado tu solicitud de permiso laboral del día ".$permiso["fecha_solicitud"].". Observación: ".$observacion.". Remunerado";
+                            else
+                                $texto = "Ha sido aprobado tu solicitud de permiso laboral del día ".$permiso["fecha_solicitud"].". Observación: ".$observacion.". No Remunerado";
                             $bd->query("INSERT INTO notificaciones (id_usuario,texto,fecha)
                                         VALUES ('".$permiso["id_usuario"]."','$texto','$hoy')");
-                            echo "Si";
+                            echo "ok";
                         } else
                             echo "Debe completar todos los datos solicitados";
                     } else {
@@ -31,7 +34,7 @@ if(isset($router)){
                         $texto = "Ha sido rechazada tu solicitud de permiso laboral del día ".$permiso["fecha_solicitud"].". ".$observacion;
                         $bd->query("INSERT INTO notificaciones (id_usuario,texto,fecha)
                                     VALUES ('".$permiso["id_usuario"]."','$texto','$hoy')");
-                        echo "Si";
+                        echo "ok";
                     }
                 } else
                     echo "No existe esta solicitud";
