@@ -5,7 +5,10 @@ if (!isset($router))
 include("frontend/modularizacion/menu_page.php");
 ?>
 
-<div class="container section">
+<div class="row">
+    <?php include("frontend/modularizacion/lateral_page.php") ?>
+    <div class="col m12 l9 contenido-principal">
+<div class="section">
     <div class="row">
         <h5 class="title">Solicitudes de caja chica relacionadas</h5>
         <table id="tabla" class="stripped responsive-table z-depth-3 centered">
@@ -107,6 +110,7 @@ include("frontend/modularizacion/menu_page.php");
         </div>
     </div>
 </div>
+    </div></div>
 
 <script src="../frontend/js/jquery-3.6.0.min.js"></script>
 <script src="../frontend/js/materialize.min.js"></script>

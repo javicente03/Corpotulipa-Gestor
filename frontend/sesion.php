@@ -6,7 +6,11 @@ if (!isset($router))
     header("Location: ../404");
 include("frontend/modularizacion/menu.php");
 ?>
-<h1><?php
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+
+    <div class="col m12 l9 contenido-principal">
+    <h1><?php
     echo $_SESSION['nombre'] . " " . $_SESSION['apellido'] . " " . $_SESSION['email'];
     $ca1 = "javileon03";
     $ca2 = "ojavileon";
@@ -20,6 +24,9 @@ include("frontend/modularizacion/menu.php");
         echo "No";
 
     ?></h1>
+    </div>
+</div>
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <script src="frontend/js/jquery-3.6.0.min.js"></script>

@@ -4,42 +4,46 @@ if (!isset($router))
     header("Location: ../404");
 include("frontend/modularizacion/menu.php");
 ?>
-
-<div class="container section">
-    <div class="row">
-        <div class="col s12">
-            <table id="tabla" class="striped z-depth-3 centered">
-                <thead class="table-head">
-                    <th>Solicitante</th>
-                    <th>Monto en Bs</th>
-                    <th>Unidades Tributarias</th>
-                    <th>Fecha de la solicitud</th>
-                    <th>Motivo</th>
-                    <th>Acción</th>
-                </thead>
-                <tbody>
-                    <?php
-                    while ($data = $ejecutar->fetch_assoc()) {
-                    ?>
-                        <tr>
-                            <td><?php echo $data['nombre'] . " " . $data['apellido'] ?></td>
-                            <td><?php echo $data['bs'] ?></td>
-                            <td><?php echo $data['ut_pedido'] ?></td>
-                            <td><?php echo $data['fecha'] ?></td>
-                            <td>
-                                <div class="scroll-td"><?php echo $data['motivo'] ?></div>
-                            </td>
-                            <td><button class="btn indigo darken-4 waves-effect waves-light" onclick="aceptar(<?php echo $data['id_sol_cc'] ?>)"><i class="material-icons">check</i></button>
-                                <button class="btn pink darken-4 waves-effect waves-light" onclick="descartar(<?php echo $data['id_sol_cc'] ?>)"><i class="material-icons">close</i></button>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <div style="display: flex;justify-content: center;">
-                <div class="cont-caja-chica">
-                    <h4 class="title" style="text-align: center;">Fondo Actual de Caja Chica</h4>
-                    <h3 class="title" style="text-align: center;"><?php echo $cc['fondo_actual'] ?> <small>UT</small></h3>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                    <table id="tabla" class="striped z-depth-3 centered">
+                        <thead class="table-head">
+                            <th>Solicitante</th>
+                            <th>Monto en Bs</th>
+                            <th>Unidades Tributarias</th>
+                            <th>Fecha de la solicitud</th>
+                            <th>Motivo</th>
+                            <th>Acción</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($data = $ejecutar->fetch_assoc()) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $data['nombre'] . " " . $data['apellido'] ?></td>
+                                    <td><?php echo $data['bs'] ?></td>
+                                    <td><?php echo $data['ut_pedido'] ?></td>
+                                    <td><?php echo $data['fecha'] ?></td>
+                                    <td>
+                                        <div class="scroll-td"><?php echo $data['motivo'] ?></div>
+                                    </td>
+                                    <td><button class="btn indigo darken-4 waves-effect waves-light" onclick="aceptar(<?php echo $data['id_sol_cc'] ?>)"><i class="material-icons">check</i></button>
+                                        <button class="btn pink darken-4 waves-effect waves-light" onclick="descartar(<?php echo $data['id_sol_cc'] ?>)"><i class="material-icons">close</i></button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <div style="display: flex;justify-content: center;">
+                        <div class="cont-caja-chica">
+                            <h4 class="title" style="text-align: center;">Fondo Actual de Caja Chica</h4>
+                            <h3 class="title" style="text-align: center;"><?php echo $cc['fondo_actual'] ?> <small>UT</small></h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,7 +63,7 @@ include("frontend/modularizacion/menu.php");
         $('#tabla').DataTable({
             "language": {
                 "lengthMenu": "Display _MENU_ records per page",
-                "zeroRecords": "No hay data registrada",
+                "zeroRecords": "No hay data encontrada",
                 "info": "Total: _MAX_ resultados",
                 "infoEmpty": "No hay coincidencias",
                 "infoFiltered": "",

@@ -3,6 +3,70 @@
     padding: 0;
 }
 
+.contenido-principal{
+    margin-left: 350px !important;
+    padding: 0 50px !important;
+}
+
+.menu-lateral{
+    background-color: rgba(71, 203, 255, 0.1);
+    height: 600px;
+    position: fixed;
+    box-shadow: black 0 1px 2px;
+}
+
+.menu-lateral:hover{
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.menu-lateral::-webkit-scrollbar {
+    width: 4px;               /* width of the entire scrollbar */
+}
+  
+.menu-lateral::-webkit-scrollbar-track {
+    background: #040729;        /* color of the tracking area */
+    border-radius: 1em;
+}
+  
+.menu-lateral::-webkit-scrollbar-thumb {
+    background-color: #1a237e;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 1px solid #040729;  /* creates padding around scroll thumb */
+    
+}
+
+.menu-lateral > ul {
+    margin: 10px;
+    padding: 10px 0;
+}
+
+.menu-lateral > ul > li> a{
+    color: rgba(0,0,0,0.87);
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 32px;
+}
+
+.menu-lateral > ul > li> a > i{
+    transform: translateY(5px);
+}
+
+.menu-lateral > ul > li> a:hover{
+    background-color: red;
+    background-color: rgba(71, 203, 255, 0.2);
+}
+
+@media (max-width: 993px) {
+    .contenido-principal{
+        margin-left: 0 !important;
+        padding: 0px !important;
+    }
+}
+
 .navcolor{
     background: linear-gradient(90deg, rgba(9,9,121,1) 25%, rgba(2,0,36,1) 100%);
 }

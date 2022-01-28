@@ -773,6 +773,7 @@ switch ($router->getController()) {
 
     case 'solicitar_adiestramiento':
         if (isset($_SESSION['id'])) {
+            include("backend/bd.php");
             $sql = "SELECT * FROM permisos WHERE accion = 'Revisar_Solicitud_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
             $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
             if ($query->num_rows > 0) {

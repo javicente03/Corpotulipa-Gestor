@@ -6,102 +6,108 @@ if (!isset($router))
 include("frontend/modularizacion/menu.php")
 ?>
 
-<div class="container section">
-    <div class="row cont-crear">
-        <form id="form">
-            <h5 class="title">Editar Perfil</h5>
-            <div class="input-field col s12 m6">
-                <input type="text" name="nombre" id="nombre" value="<?php echo $_SESSION['nombre'] ?>">
-                <label for="nombre">Nombre</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <input type="text" name="apellido" id="apellido" value="<?php echo $_SESSION['apellido'] ?>">
-                <label for="apellido">Apellido</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <input type="email" name="email" id="email" value="<?php echo $_SESSION['email'] ?>">
-                <label for="email">Correo Electrónico</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <div class="row">
-                    <div class="col s12 m4">
-                        <p>
-                            <label>
-                                <input type="radio" name="genero" id="masculino" value="Masculino" onclick="s(1)" <?php if ($_SESSION['genero'] == 'Masculino') echo "checked" ?>>
-                                <span>Masculino</span>
-                            </label>
-                        </p>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row cont-crear">
+                <form id="form">
+                    <h5 class="title">Editar Perfil</h5>
+                    <div class="input-field col s12 m6">
+                        <input type="text" name="nombre" id="nombre" value="<?php echo $_SESSION['nombre'] ?>">
+                        <label for="nombre">Nombre</label>
                     </div>
-                    <div class="col s12 m4">
-                        <p>
-                            <label>
-                                <input type="radio" name="genero" id="femenino" value="Femenino" onclick="s(1)" <?php if ($_SESSION['genero'] == 'Femenino') echo "checked" ?>>
-                                <span>Femenino</span>
-                            </label>
-                        </p>
+                    <div class="input-field col s12 m6">
+                        <input type="text" name="apellido" id="apellido" value="<?php echo $_SESSION['apellido'] ?>">
+                        <label for="apellido">Apellido</label>
                     </div>
-                    <div class="col s12 m4">
-                        <p>
-                            <label>
-                                <input type="radio" name="genero" id="otro" value="Otro" onclick="s(2)" <?php if ($_SESSION['genero'] != 'Masculino' && $_SESSION['genero'] != 'Femenino') echo "checked" ?>>
-                                <span>Otro</span>
-                            </label>
-                        </p>
+                    <div class="input-field col s12 m6">
+                        <input type="email" name="email" id="email" value="<?php echo $_SESSION['email'] ?>">
+                        <label for="email">Correo Electrónico</label>
                     </div>
-                    <div class="col s12">
-                        <input type="text" name="other" id="other" <?php if ($_SESSION['genero'] != 'Masculino' && $_SESSION['genero'] != 'Femenino') echo "value='" . $_SESSION['genero'] . "'";
-                                                                    else echo "disabled"; ?>>
+                    <div class="input-field col s12 m6">
+                        <div class="row">
+                            <div class="col s12 m4">
+                                <p>
+                                    <label>
+                                        <input type="radio" name="genero" id="masculino" value="Masculino" onclick="s(1)" <?php if ($_SESSION['genero'] == 'Masculino') echo "checked" ?>>
+                                        <span>Masculino</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12 m4">
+                                <p>
+                                    <label>
+                                        <input type="radio" name="genero" id="femenino" value="Femenino" onclick="s(1)" <?php if ($_SESSION['genero'] == 'Femenino') echo "checked" ?>>
+                                        <span>Femenino</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12 m4">
+                                <p>
+                                    <label>
+                                        <input type="radio" name="genero" id="otro" value="Otro" onclick="s(2)" <?php if ($_SESSION['genero'] != 'Masculino' && $_SESSION['genero'] != 'Femenino') echo "checked" ?>>
+                                        <span>Otro</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s12">
+                                <input type="text" name="other" id="other" <?php if ($_SESSION['genero'] != 'Masculino' && $_SESSION['genero'] != 'Femenino') echo "value='" . $_SESSION['genero'] . "'";
+                                                                            else echo "disabled"; ?>>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="file-field input-field col s12 m6">
+                        <div class="btn indigo darken-4">
+                            <span><i class="material-icons">add_a_photo</i></span>
+                            <input type="file" name="img" id="img">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input type="date" name="nacimiento" id="nacimiento" value="<?php echo $_SESSION['birthday'] ?>">
+                    </div>
+                    <div class="col s12 m6" style="display: flex;justify-content: center;">
+                        <img class="materialboxed img-perfil responsive-img" src="<?php echo $_SESSION['img'] ?>" alt="" id="image">
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <button type="submit" class="btn-entrar" id="btn-submit">Editar</button>
+                        <div class="progress indigo darken-4" id="progress" style="display: none;">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="file-field input-field col s12 m6">
-                <div class="btn indigo darken-4">
-                    <span><i class="material-icons">add_a_photo</i></span>
-                    <input type="file" name="img" id="img">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
+            <div class="row" style="border: #040729 solid 3px; padding: 10px;border-radius: 1em;">
+                <form id="form2">
+                    <h5 class="title">Cambie su contraseña</h5>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix" onclick="visualizar()" id="icon-password" style="cursor: pointer;">visibility</i>
+                        <input type="password" name="old" id="old">
+                        <label for="old">Ingrese su Antigua Contraseña</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix" onclick="visualizar()" id="icon-password2" style="cursor: pointer;">visibility</i>
+                        <input type="password" name="new" id="new">
+                        <label for="new">Ingrese su nueva contraseña</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix" onclick="visualizar()" id="icon-password3" style="cursor: pointer;">visibility</i>
+                        <input type="password" name="confirm" id="confirm">
+                        <label for="confirm">Confirme su contraseña</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <button type="submit" class="btn-entrar" id="btn-password">Cambiar</button>
+                    </div>
+                    <div class="progress indigo darken-4" id="progress2" style="display: none;">
+                        <div class="indeterminate"></div>
+                    </div>
+                </form>
             </div>
-            <div class="input-field col s12 m6">
-                <input type="date" name="nacimiento" id="nacimiento" value="<?php echo $_SESSION['birthday'] ?>">
-            </div>
-            <div class="col s12 m6" style="display: flex;justify-content: center;">
-                <img class="materialboxed img-perfil responsive-img" src="<?php echo $_SESSION['img'] ?>" alt="" id="image">
-            </div>
-            <div class="input-field col s12 m6">
-                <button type="submit" class="btn-entrar" id="btn-submit">Editar</button>
-                <div class="progress indigo darken-4" id="progress" style="display: none;">
-                    <div class="indeterminate"></div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="row" style="border: #040729 solid 3px; padding: 10px;border-radius: 1em;">
-        <form id="form2">
-            <h5 class="title">Cambie su contraseña</h5>
-            <div class="input-field col s12 m6">
-                <i class="material-icons prefix" onclick="visualizar()" id="icon-password" style="cursor: pointer;">visibility</i>
-                <input type="password" name="old" id="old">
-                <label for="old">Ingrese su Antigua Contraseña</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <i class="material-icons prefix" onclick="visualizar()" id="icon-password2" style="cursor: pointer;">visibility</i>
-                <input type="password" name="new" id="new">
-                <label for="new">Ingrese su nueva contraseña</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <i class="material-icons prefix" onclick="visualizar()" id="icon-password3" style="cursor: pointer;">visibility</i>
-                <input type="password" name="confirm" id="confirm">
-                <label for="confirm">Confirme su contraseña</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <button type="submit" class="btn-entrar" id="btn-password">Cambiar</button>
-            </div>
-            <div class="progress indigo darken-4" id="progress2" style="display: none;">
-                    <div class="indeterminate"></div>
-            </div>
-        </form>
+            <p class="parrafo">La contraseña solo debe contener letras y números con una longitud de entre 8 y 12 caracteres</p>
+        </div>
     </div>
 </div>
 

@@ -5,26 +5,31 @@ if (!isset($router))
 include("frontend/modularizacion/menu_page.php");
 ?>
 
-<div class="container section">
-    <div class="row cont-crear">
-        <form id="form">
-            <h5 class="title">Editar Cargo</h5>
-            <div class="col s12 m6">
-                <input type="number" name="rango" id="rango" value="<?php echo $rango ?>">
-                <label for="rango">Rango</label>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral_page.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row cont-crear">
+                <form id="form">
+                    <h5 class="title">Editar Cargo</h5>
+                    <div class="col s12 m6">
+                        <input type="number" name="rango" id="rango" value="<?php echo $rango ?>">
+                        <label for="rango">Rango</label>
+                    </div>
+                    <div class="col s12 m6">
+                        <input type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>">
+                        <label for="nombre">Nombre del Cargo</label>
+                    </div>
+                    <div class="col s12">
+                        <input type="hidden" name="id" value="<?php echo $data['cargo_id'] ?>">
+                        <button type="submit" class="btn-entrar" id="btn-submit">Editar</button>
+                        <div class="progress indigo darken-4" id="progress" style="display: none;">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="col s12 m6">
-                <input type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>">
-                <label for="nombre">Nombre del Cargo</label>
-            </div>
-            <div class="col s12">
-                <input type="hidden" name="id" value="<?php echo $data['cargo_id'] ?>">
-                <button type="submit" class="btn-entrar" id="btn-submit">Editar</button>
-                <div class="progress indigo darken-4" id="progress" style="display: none;">
-                    <div class="indeterminate"></div>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 

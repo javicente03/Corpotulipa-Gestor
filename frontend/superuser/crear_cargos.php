@@ -5,50 +5,55 @@ if (!isset($router))
 include("frontend/modularizacion/menu.php");
 ?>
 
-<div class="container section">
-    <div class="row">
-        <form id="form">
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row">
+                <form id="form">
 
-            <h5 class="title">Crear Nuevo Cargo</h5>
-            <div class="col s12 m6 input-field">
-                <input type="number" name="rango" id="rango">
-                <label for="rango">Rango</label>
-            </div>
-            <div class="col s12 m6 input-field">
-                <input type="text" name="nombre" id="nombre">
-                <label for="nombre">Nombre del Cargo</label>
-            </div>
-            <div class="col s12 input-field">
-                <button type="submit" id="btn-submit" class="btn-entrar">Crear</button>
-                <div class="progress indigo darken-4" id="progress" style="display: none;">
-                    <div class="indeterminate"></div>
+                    <h5 class="title">Crear Nuevo Cargo</h5>
+                    <div class="col s12 m6 input-field">
+                        <input type="number" name="rango" id="rango">
+                        <label for="rango">Rango</label>
+                    </div>
+                    <div class="col s12 m6 input-field">
+                        <input type="text" name="nombre" id="nombre">
+                        <label for="nombre">Nombre del Cargo</label>
+                    </div>
+                    <div class="col s12 input-field">
+                        <button type="submit" id="btn-submit" class="btn-entrar">Crear</button>
+                        <div class="progress indigo darken-4" id="progress" style="display: none;">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col s12">
+                    <h5 class="title title-table">Cargos Existentes</h5>
+                    <table id="tabla" class="striped responsive-table z-depth-3 centered">
+                        <thead class="table-head">
+                            <th>Rango</th>
+                            <th>Nombre</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($data = $proceso->fetch_assoc()) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $data["rango"] ?></td>
+                                    <td><b><?php echo $data["cargo"] ?></b></td>
+                                    <td><a href="editar_cargo/<?php echo $data["cargo_id"]; ?>" class="btn btn-flat indigo-text text-darken-4" style="font-weight: bold;">
+                                            <i class="material-icons">edit</i></a></td>
+                                    <td><button type="button" class="btn pink darken-4 waves-effect waves-light" onclick="eliminar(<?php echo $data['cargo_id'] ?>)">
+                                            <i class="material-icons">delete</i></button></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </form>
-        <div class="col s12">
-            <h5 class="title title-table">Cargos Existentes</h5>
-            <table id="tabla" class="striped responsive-table z-depth-3 centered">
-                <thead class="table-head">
-                    <th>Rango</th>
-                    <th>Nombre</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </thead>
-                <tbody>
-                    <?php
-                    while ($data = $proceso->fetch_assoc()) {
-                    ?>
-                        <tr>
-                            <td><?php echo $data["rango"] ?></td>
-                            <td><b><?php echo $data["cargo"] ?></b></td>
-                            <td><a href="editar_cargo/<?php echo $data["cargo_id"]; ?>" class="btn btn-flat indigo-text text-darken-4" style="font-weight: bold;">
-                                    <i class="material-icons">edit</i></a></td>
-                            <td><button type="button" class="btn pink darken-4 waves-effect waves-light" onclick="eliminar(<?php echo $data['cargo_id'] ?>)">
-                                    <i class="material-icons">delete</i></button></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
@@ -65,7 +70,7 @@ include("frontend/modularizacion/menu.php");
         $('#tabla').DataTable({
             "language": {
                 "lengthMenu": "Display _MENU_ records per page",
-                "zeroRecords": "No hay data registrada",
+                "zeroRecords": "No hay data encontrada",
                 "info": "Total: _MAX_ resultados",
                 "infoEmpty": "No hay coincidencias",
                 "infoFiltered": "",
@@ -77,7 +82,7 @@ include("frontend/modularizacion/menu.php");
                     "previous": "Anterior"
                 }
             }
-        }); 
+        });
     });
 
     $('#form').submit(function(e) {

@@ -5,72 +5,77 @@ if (!isset($router))
 include("frontend/modularizacion/menu.php");
 ?>
 
-<div class="container section">
-    <div class="row cont-crear">
-        <h5 class="title">Solicitar Charla de Inducción</h5>
-        <form id="form">
-            <div class="input-field col s12 m6">
-                <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
-                <input type="password" id="clave" name="clave" required>
-                <label for="clave">Ingrese su clave de seguridad</label>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row cont-crear">
+                <h5 class="title">Solicitar Charla de Inducción</h5>
+                <form id="form">
+                    <div class="input-field col s12 m6">
+                        <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
+                        <input type="password" id="clave" name="clave" required>
+                        <label for="clave">Ingrese su clave de seguridad</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input type="date" name="fecha" id="fecha" required>
+                        <label for="fecha">Fecha de la Inducción</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select name="responsable" id="responsable">
+                            <?php
+                            while ($r = $responsables->fetch_assoc()) {
+                                echo "<option data-icon='" . $r["img"] . "' value='" . $r["id"] . "'>" . $r["apellido"] . " " . $r["nombre"] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <label for="responsable">Indique el encargado</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
+                        <div class="progress indigo darken-4" id="progress" style="display: none;">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="input-field col s12 m6">
-                <input type="date" name="fecha" id="fecha" required>
-                <label for="fecha">Fecha de la Inducción</label>
+            <div class="row">
+                <table id="tabla" class="striped responsive-table centered blue lighten-5">
+                    <thead class="table-head">
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Cargo</th>
+                        <th>Invitar</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($array as $key => $value) { ?>
+                            <tr>
+                                <td>
+                                    <?php echo $value["nombre"] ?>
+                                </td>
+                                <td>
+                                    <?php echo $value["apellido"] ?>
+                                </td>
+                                <td>
+                                    <?php echo $value["cargo"] ?>
+                                </td>
+                                <td>
+                                    <p><label>
+                                            <input type="checkbox" class="filled-in" id="user<?php echo $value["id"] ?>" onclick="marcado(<?php echo $value['id'] ?>)">
+                                            <span></span>
+                                        </label></p>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <p class="parrafo"><i class="material-icons left">error</i>Por favor seleccione a los
+                    participantes de la inducción, así como al encargado de realizarla.</p>
             </div>
-            <div class="input-field col s12 m6">
-                <select name="responsable" id="responsable">
-                    <?php
-                    while ($r = $responsables->fetch_assoc()) {
-                        echo "<option data-icon='" . $r["img"] . "' value='" . $r["id"] . "'>" . $r["apellido"] . " " . $r["nombre"] . "</option>";
-                    }
-                    ?>
-                </select>
-                <label for="responsable">Indique el encargado</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
-                <div class="progress indigo darken-4" id="progress" style="display: none;">
-                    <div class="indeterminate"></div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="row">
-        <table id="tabla" class="striped responsive-table centered blue lighten-5">
-            <thead class="table-head">
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Cargo</th>
-                <th>Invitar</th>
-            </thead>
-            <tbody>
-                <?php
-                foreach ($array as $key => $value) { ?>
-                    <tr>
-                        <td>
-                            <?php echo $value["nombre"] ?>
-                        </td>
-                        <td>
-                            <?php echo $value["apellido"] ?>
-                        </td>
-                        <td>
-                            <?php echo $value["cargo"] ?>
-                        </td>
-                        <td>
-                            <p><label>
-                                    <input type="checkbox" class="filled-in" id="user<?php echo $value["id"] ?>" onclick="marcado(<?php echo $value['id'] ?>)">
-                                    <span></span>
-                                </label></p>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-        <p class="parrafo"><i class="material-icons left">error</i>Por favor seleccione a los
-            participantes de la inducción, así como al encargado de realizarla.</p>
+        </div>
     </div>
 </div>
 
@@ -85,7 +90,7 @@ include("frontend/modularizacion/menu.php");
         $('#tabla').DataTable({
             "language": {
                 "lengthMenu": "Display _MENU_ records per page",
-                "zeroRecords": "No hay data registrada",
+                "zeroRecords": "No hay data encontrada",
                 "info": "Total: _MAX_ resultados",
                 "infoEmpty": "No hay coincidencias",
                 "infoFiltered": "",

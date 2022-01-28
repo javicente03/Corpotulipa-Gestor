@@ -59,7 +59,7 @@ include("frontend/modularizacion/menu.php");
         $('#tabla').DataTable({
             "language": {
                 "lengthMenu": "Display _MENU_ records per page",
-                "zeroRecords": "No hay data registrada",
+                "zeroRecords": "No hay data encontrada",
                 "info": "Total: _MAX_ resultados",
                 "infoEmpty": "No hay coincidencias",
                 "infoFiltered": "",

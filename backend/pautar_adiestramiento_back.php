@@ -20,8 +20,8 @@ if(isset($router)){
                     && $telf!="" && isset($_POST["presupuesto"]) && $partida!="" && $recomendaciones!=""){
                     if(is_numeric($costo)){
                         $p = false;
-                    if($_POST["presupuesto"] =="Si")
-                        $p = true;
+                        if($_POST["presupuesto"] =="Si")
+                            $p = true;
 
                         $bd->query("UPDATE adiestramiento SET fecha_adiestramiento='$fecha',
                         institucion='$institucion',lugar_evento='$lugar',duracion='$duracion',

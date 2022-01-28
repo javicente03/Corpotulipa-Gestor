@@ -45,6 +45,8 @@
                 </div>
                 <button type="submit" class="btn-entrar">Enviar</button>
             </form>
+            <p class="parrafo">La contraseña solo debe contener letras y números con una longitud de entre 8 y 12 caracteres</p>
+
         </div>
     </div>
 

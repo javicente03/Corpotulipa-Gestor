@@ -12,162 +12,167 @@ include("frontend/modularizacion/menu.php");
     }
 </style>
 
-<div class="container section">
-    <div class="row cont-crear">
-        <h5 class="title">Solicitar un nuevo proceso de adiestramiento</h5>
-        <form id="form">
-            <h6 class="title">Método de desarrollo de competencia</h6>
-            <div class="input-field col s12 m6">
-                <div class="row">
-                    <div class="col s12 m6">
-                        <p><label>
-                                <input type="radio" name="metodo" id="curso" value="Curso">
-                                <span>Curso</span>
-                            </label></p>
-                    </div>
-                    <div class="col s12 m6">
-                        <p><label>
-                                <input type="radio" name="metodo" id="taller" value="Taller">
-                                <span>Taller</span>
-                            </label></p>
-                    </div>
-                    <div class="col s12 m6">
-                        <p><label>
-                                <input type="radio" name="metodo" id="congreso" value="Congreso">
-                                <span>Congreso</span>
-                            </label></p>
-                    </div>
-                    <div class="col s12 m6">
-                        <p><label>
-                                <input type="radio" name="metodo" id="foro" value="Foro">
-                                <span>Foro</span>
-                            </label></p>
-                    </div>
-                    <div class="col s12 m6">
-                        <p><label>
-                                <input type="radio" name="metodo" id="otros" value="Otros">
-                                <span>Otros</span>
-                            </label></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12">
-                <div class="row">
-                    <h6 class="title" style="text-align: center;">Empleados de su departamento</h6>
-                    <?php
-                    while ($participante = $participantes->fetch_assoc()) { ?>
-                        <div class="col s12">
-                            <hr style="border: 1px dashed #1a237e;">
-
-                            <div class="row" style="margin-top: 20px;">
-                                <div class="col s12">
-                                    <p><label>
-                                            <input class="filled-in" type="checkbox" id="user<?php echo $participante["id"] ?>" onclick="marcado(<?php echo $participante['id'] ?>)">
-                                            <span><?php echo $participante["nombre"] . " " . $participante["apellido"] . " - " . $participante["cargo"] ?></span>
-                                        </label></p>
-                                </div>
-
-                                <div class="col s12 m2">
-                                    <span class="title">Nivel Necesario</span>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="c<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante['id'] ?>,"Conoce")>
-                                            <span>Conoce</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="a<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Aplica")>
-                                            <span>Aplica</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="d<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Domina")>
-                                            <span>Domina</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="av<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Avanzado")>
-                                            <span>Avanzado</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="e<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Experto")>
-                                            <span>Experto</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2"><span class="title">Nivel Actual</span></div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="c1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Conoce")>
-                                            <span>Conoce</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="a1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Aplica")>
-                                            <span>Aplica</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="d1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Domina")>
-                                            <span>Domina</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="av1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Avanzado")>
-                                            <span>Avanzado</span>
-                                        </label></p>
-                                </div>
-                                <div class="col s12 m2">
-                                    <p><label>
-                                            <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="e1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Experto")>
-                                            <span>Experto</span>
-                                        </label></p>
-                                </div>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row cont-crear">
+                <h5 class="title">Solicitar un nuevo proceso de adiestramiento</h5>
+                <form id="form">
+                    <h6 class="title">Método de desarrollo de competencia</h6>
+                    <div class="input-field col s12 m6">
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <p><label>
+                                        <input type="radio" name="metodo" id="curso" value="Curso">
+                                        <span>Curso</span>
+                                    </label></p>
+                            </div>
+                            <div class="col s12 m6">
+                                <p><label>
+                                        <input type="radio" name="metodo" id="taller" value="Taller">
+                                        <span>Taller</span>
+                                    </label></p>
+                            </div>
+                            <div class="col s12 m6">
+                                <p><label>
+                                        <input type="radio" name="metodo" id="congreso" value="Congreso">
+                                        <span>Congreso</span>
+                                    </label></p>
+                            </div>
+                            <div class="col s12 m6">
+                                <p><label>
+                                        <input type="radio" name="metodo" id="foro" value="Foro">
+                                        <span>Foro</span>
+                                    </label></p>
+                            </div>
+                            <div class="col s12 m6">
+                                <p><label>
+                                        <input type="radio" name="metodo" id="otros" value="Otros">
+                                        <span>Otros</span>
+                                    </label></p>
                             </div>
                         </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="row">
+                            <h6 class="title" style="text-align: center;">Empleados de su departamento</h6>
+                            <?php
+                            while ($participante = $participantes->fetch_assoc()) { ?>
+                                <div class="col s12">
+                                    <hr style="border: 1px dashed #1a237e;">
 
-                    <?php
-                    }
-                    ?>
-                </div>
+                                    <div class="row" style="margin-top: 20px;">
+                                        <div class="col s12">
+                                            <p><label>
+                                                    <input class="filled-in" type="checkbox" id="user<?php echo $participante["id"] ?>" onclick="marcado(<?php echo $participante['id'] ?>)">
+                                                    <span><?php echo $participante["nombre"] . " " . $participante["apellido"] . " - " . $participante["cargo"] ?></span>
+                                                </label></p>
+                                        </div>
+
+                                        <div class="col s12 m2">
+                                            <span class="title">Nivel Necesario</span>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="c<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante['id'] ?>,"Conoce")>
+                                                    <span>Conoce</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="a<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Aplica")>
+                                                    <span>Aplica</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="d<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Domina")>
+                                                    <span>Domina</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="av<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Avanzado")>
+                                                    <span>Avanzado</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel1<?php echo $participante["id"] ?>" id="e<?php echo $participante["id"] ?>" onclick=requerido(<?php echo $participante["id"] ?>,"Experto")>
+                                                    <span>Experto</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2"><span class="title">Nivel Actual</span></div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="c1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Conoce")>
+                                                    <span>Conoce</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="a1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Aplica")>
+                                                    <span>Aplica</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="d1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Domina")>
+                                                    <span>Domina</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="av1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Avanzado")>
+                                                    <span>Avanzado</span>
+                                                </label></p>
+                                        </div>
+                                        <div class="col s12 m2">
+                                            <p><label>
+                                                    <input type="radio" class="with-gap" name="nivel2<?php echo $participante["id"] ?>" id="e1<?php echo $participante["id"] ?>" onclick=actual(<?php echo $participante["id"] ?>,"Experto")>
+                                                    <span>Experto</span>
+                                                </label></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input type="text" id="denominacion" name="denominacion">
+                        <label for="denominacion">Denominación</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input type="text" name="meta" id="meta">
+                        <label for="meta">Meta Asociada</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input type="text" name="area" id="area">
+                        <label for="area">Área de Conocimiento</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
+                        <input type="password" name="clave" id="clave">
+                        <label for="clave">Ingrese su clave de seguridad</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <button class="btn-entrar" id="btn-submit" type="submit">Enviar</button>
+                        <div class="progress indigo darken-4" id="progress" style="display: none;">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="input-field col s12 m6">
-                <input type="text" id="denominacion" name="denominacion">
-                <label for="denominacion">Denominación</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <input type="text" name="meta" id="meta">
-                <label for="meta">Meta Asociada</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <input type="text" name="area" id="area">
-                <label for="area">Área de Conocimiento</label>
-            </div>
-            <div class="input-field col s12 m6">
-                <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
-                <input type="password" name="clave" id="clave">
-                <label for="clave">Ingrese su clave de seguridad</label>
-            </div>
-            <div class="input-field col s12">
-                <button class="btn-entrar" id="btn-submit" type="submit">Enviar</button>
-                <div class="progress indigo darken-4" id="progress" style="display: none;">
-                    <div class="indeterminate"></div>
-                </div>
-            </div>
-        </form>
+            <p class="parrafo"><i class="material-icons left">error</i>
+                Debe marcar por cada participante, el nivel actual que este posee y el nivel requerido,
+                luego de indicar esto puede tildar el nombre del funcionario</p>
+
+        </div>
     </div>
-    <p class="parrafo"><i class="material-icons left">error</i>
-        Debe marcar por cada participante, el nivel actual que este posee y el nivel requerido, 
-        luego de indicar esto puede tildar el nombre del funcionario</p>
-
 </div>
 
 

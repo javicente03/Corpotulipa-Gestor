@@ -20,7 +20,8 @@ if(isset($router)){
         if($adiestramiento){
             $bd->query("UPDATE participante_adiestramiento SET pregunta1='$primera',pregunta2='$segunda',
                 pregunta3='$tercera',pregunta4='$cuarta',pregunta5='$quinta',pregunta6='$sexta',pregunta7='$septima',
-                conocimientos_adquiridos='$conocimientos',recomendaciones='$recomendaciones' WHERE id_participante_adiestramiento = 2");
+                conocimientos_adquiridos='$conocimientos',recomendaciones='$recomendaciones' 
+                WHERE id_adiestramiento = ".$_POST["adiestramiento"]." AND participante = ".$_SESSION["id"]);
             echo "ok";
         } else
             echo "Adiestramiento no encontrado";
