@@ -5,39 +5,44 @@ if (!isset($router))
 include("frontend/modularizacion/menu.php");
 ?>
 
-<div class="container section">
-    <div class="row">
-        <h5 class="title title-table">Desincorporación de bienes públicos</h5>
-        <table id="tabla" class="striped responsive-table z-depth-3 centered">
-            <thead class="table-head">
-                <th>Nombre del Bien</th>
-                <th>Código</th>
-                <th>Responsable</th>
-                <th>Causa</th>
-                <th>Descripción de la falta</th>
-                <th>Revisar</th>
-            </thead>
-            <tbody>
-                <?php
-                while ($reporte = $reportes->fetch_assoc()) {
-                ?>
-                    <tr>
-                        <td><?php echo $reporte["nombre_bien"] ?></td>
-                        <td><?php echo $reporte["codigo"] ?></td>
-                        <td><?php echo $reporte["nombre"] . " " . $reporte["apellido"] ?></td>
-                        <td><?php echo $reporte["motivo_reporte"] ?></td>
-                        <td>
-                            <div class="scroll-td" style="width: 350px;"><?php echo $reporte["descripcion_reporte"] ?></div>
-                        </td>
-                        <td><a class="btn btn-flat" href="desincorporacion_bien/<?php echo $reporte["id_reporte_bien"] ?>">
-                                <i class="material-icons">visibility</i></a></td>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="container section">
+            <div class="row">
+                <h5 class="title title-table">Desincorporación de bienes públicos</h5>
+                <table id="tabla" class="striped responsive-table z-depth-3 centered">
+                    <thead class="table-head">
+                        <th>Nombre del Bien</th>
+                        <th>Código</th>
+                        <th>Responsable</th>
+                        <th>Causa</th>
+                        <th>Descripción de la falta</th>
+                        <th>Revisar</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($reporte = $reportes->fetch_assoc()) {
+                        ?>
+                            <tr>
+                                <td><?php echo $reporte["nombre_bien"] ?></td>
+                                <td><?php echo $reporte["codigo"] ?></td>
+                                <td><?php echo $reporte["nombre"] . " " . $reporte["apellido"] ?></td>
+                                <td><?php echo $reporte["motivo_reporte"] ?></td>
+                                <td>
+                                    <div class="scroll-td" style="width: 350px;"><?php echo $reporte["descripcion_reporte"] ?></div>
+                                </td>
+                                <td><a class="btn btn-flat" href="desincorporacion_bien/<?php echo $reporte["id_reporte_bien"] ?>">
+                                        <i class="material-icons">visibility</i></a></td>
 
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

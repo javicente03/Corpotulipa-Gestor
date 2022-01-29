@@ -292,6 +292,7 @@ class ControllersMueble
         if(empty($router->getParam())){
             $ultimo = ($bd->query("SELECT * FROM inventario I LEFT JOIN usuario U ON I.solicitante=U.id
             LEFT JOIN perfil P ON U.id=P.id_usuario ORDER BY id_inventario DESC LIMIT 1")->fetch_assoc());
+            
             return include("frontend/bienes_publicos/programar_inventario.php");
         } else {
             $inventario = ($bd->query("SELECT * FROM inventario WHERE rechazado=true AND id_inventario =".$router->getParam()))->fetch_assoc();

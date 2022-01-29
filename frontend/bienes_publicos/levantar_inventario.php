@@ -12,69 +12,73 @@ if (isset($inventario)) {
         echo "<h5 class='title'>Ya realizó su levantamiento de inventario pautado</h5>";
     else {
 ?>
+        <div class="row">
+            <?php include("frontend/modularizacion/lateral.php") ?>
+            <div class="col m12 l9 contenido-principal">
+                <div class="section">
+                    <div class="row">
+                        <h5 class="title">Levantar Inventario</h5>
+                        <table id="tabla" class="striped responsive-table centered blue lighten-5">
+                            <thead class="table-head">
+                                <th>Código</th>
+                                <th>Número de Identificación</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Valor</th>
+                                <th>Existe</th>
+                            </thead>
+                            <tbody>
+                                <?php
 
-        <div class="container section">
-            <div class="row">
-                <h5 class="title">Levantar Inventario</h5>
-                <table id="tabla" class="striped responsive-table centered blue lighten-5">
-                    <thead class="table-head">
-                        <th>Código</th>
-                        <th>Número de Identificación</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Valor</th>
-                        <th>Existe</th>
-                    </thead>
-                    <tbody>
-                        <?php
+                                $total = 0;
+                                while ($i = $inventario->fetch_assoc()) {
 
-                        $total = 0;
-                        while ($i = $inventario->fetch_assoc()) {
-
-                            $total += $i["valor"];
-                        ?>
-                            <tr style="border-bottom: 1px solid #040729;">
-                                <td><?php echo $i["codigo"] ?></td>
-                                <td><?php echo $i["id_bien"] ?></td>
-                                <td><?php echo $i["nombre_bien"] ?></td>
-                                <td><?php echo $i["descripcion"] ?></td>
-                                <td><?php echo $i["valor"] ?></td>
-                                <td>
-                                    <p><label>
-                                            <input class="filled-in" onchange="marcado(<?php echo $i['id_bien'] ?>)" checked type="checkbox" name="existe<?php echo $i["id_bien"] ?>" id="existe<?php echo $i["id_bien"] ?>">
-                                            <span></span>
-                                        </label></p>
-                                </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="indigo darken-4 white-text" style="border: 2px solid black;"><b>Total:</b></td>
-                        <td class="indigo darken-4 white-text" style="border: 2px solid black;"><b><?php echo $total ?> Bs</b></td>
-                        <td></td>
-                    </tbody>
-                </table>
-                <p class="parrafo"><i class="material-icons left">error</i>
-                    Por favor desmarque todos los bienes materiales que no se encuentren actualmente en su departamento</p>
-            </div>
-            <div class="row cont-crear">
-                <h5 class="title">Realice el levantamiento de inventario</h5>
-                <form id="form">
-                    <div class="input-field col s12 m6">
-                        <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
-                        <input type="password" name="clave" id="clave">
-                        <label for="clave">Ingrese su clave de seguridad</label>
+                                    $total += $i["valor"];
+                                ?>
+                                    <tr style="border-bottom: 1px solid #040729;">
+                                        <td><?php echo $i["codigo"] ?></td>
+                                        <td><?php echo $i["id_bien"] ?></td>
+                                        <td><?php echo $i["nombre_bien"] ?></td>
+                                        <td><?php echo $i["descripcion"] ?></td>
+                                        <td><?php echo $i["valor"] ?></td>
+                                        <td>
+                                            <p><label>
+                                                    <input class="filled-in" onchange="marcado(<?php echo $i['id_bien'] ?>)" checked type="checkbox" name="existe<?php echo $i["id_bien"] ?>" id="existe<?php echo $i["id_bien"] ?>">
+                                                    <span></span>
+                                                </label></p>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="indigo darken-4 white-text" style="border: 2px solid black;"><b>Total:</b></td>
+                                <td class="indigo darken-4 white-text" style="border: 2px solid black;"><b><?php echo $total ?> Bs</b></td>
+                                <td></td>
+                            </tbody>
+                        </table>
+                        <p class="parrafo"><i class="material-icons left">error</i>
+                            Por favor desmarque todos los bienes materiales que no se encuentren actualmente en su departamento</p>
                     </div>
-                    <div class="input-field col s12 m6">
-                        <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
+                    <div class="row cont-crear">
+                        <h5 class="title">Realice el levantamiento de inventario</h5>
+                        <form id="form">
+                            <div class="input-field col s12 m6">
+                                <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
+                                <input type="password" name="clave" id="clave">
+                                <label for="clave">Ingrese su clave de seguridad</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
+                            </div>
+                            <div class="progress indigo darken-4" id="progress" style="display: none;">
+                                <div class="indeterminate"></div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="progress indigo darken-4" id="progress" style="display: none;">
-                        <div class="indeterminate"></div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
 

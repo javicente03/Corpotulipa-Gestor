@@ -5,36 +5,41 @@ if (!isset($router))
 include("frontend/modularizacion/menu.php");
 ?>
 
-<div class="container section">
-    <div class="row">
-        <h5 class="title title-table">Bienes públicos sin nota de entrega</h5>
-        <table id="tabla" class="stripped responsive-table z-depth-3 centered">
-            <thead class="table-head">
-                <th>Fecha de incorporación</th>
-                <th>Código</th>
-                <th>Tipo</th>
-                <th>Nombre</th>
-                <th>Valor</th>
-                <th>Responsable</th>
-                <th>Nota de Entrega</th>
-            </thead>
-            <tbody>
-                <?php
-                while ($b = $bienes->fetch_assoc()) {
-                ?>
-                    <tr>
-                        <td><?php echo $b['fecha_incorporacion'] ?></td>
-                        <td><?php echo $b['codigo'] ?></td>
-                        <td><?php echo $b['tipo'] ?></td>
-                        <td><?php echo $b['nombre_bien'] ?></td>
-                        <td><?php echo $b['valor'] ?></td>
-                        <td><?php echo $b['nombre']." ".$b["apellido"] ?></td>
-                        <td><a class="btn indigo darken-3" href="generar_nota_entrega/<?php echo $b['id_bien'] ?>">
-                                <i class="material-icons">assignment</i></a></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row">
+                <h5 class="title title-table">Bienes públicos sin nota de entrega</h5>
+                <table id="tabla" class="stripped responsive-table z-depth-3 centered">
+                    <thead class="table-head">
+                        <th>Fecha de incorporación</th>
+                        <th>Código</th>
+                        <th>Tipo</th>
+                        <th>Nombre</th>
+                        <th>Valor</th>
+                        <th>Responsable</th>
+                        <th>Nota de Entrega</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($b = $bienes->fetch_assoc()) {
+                        ?>
+                            <tr>
+                                <td><?php echo $b['fecha_incorporacion'] ?></td>
+                                <td><?php echo $b['codigo'] ?></td>
+                                <td><?php echo $b['tipo'] ?></td>
+                                <td><?php echo $b['nombre_bien'] ?></td>
+                                <td><?php echo $b['valor'] ?></td>
+                                <td><?php echo $b['nombre'] . " " . $b["apellido"] ?></td>
+                                <td><a class="btn indigo darken-3" href="generar_nota_entrega/<?php echo $b['id_bien'] ?>">
+                                        <i class="material-icons">assignment</i></a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -60,7 +65,7 @@ include("frontend/modularizacion/menu.php");
                     "previous": "Anterior"
                 }
             }
-        }); 
+        });
     });
 </script>
 <?php

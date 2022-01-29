@@ -5,86 +5,91 @@ if (!isset($router))
 include("frontend/modularizacion/menu_page.php");
 ?>
 
-<div class="container section">
-    <div class="row">
-        <h5 class="title">
-            <a href="../mis_bienes" class="btn btn-flat" title="Regresar"><i class="material-icons">keyboard_return</i></a>
-            Ficha del bien público
-        </h5>
-        <div class="col s12 center blue lighten-3" style="border: 2px solid black;">
-            <h6><b>Nombre: <?php echo $bien["nombre_bien"] ?></b></h6>
-        </div>
-        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
-            <h6><b>Código: <?php echo $bien["codigo"] ?></b></h6>
-        </div>
-        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
-            <h6><b>Código SUDEBIP: <?php echo $bien["catalogo"] ?></b></h6>
-        </div>
-        <div class="col s12 m2 blue lighten-3" style="border: 2px solid black;">
-            <h6><b><?php echo $bien["tipo"] ?></b></h6>
-        </div>
-        <div class="col s12 m8 blue lighten-3" style="border: 2px solid black;">
-            <h6><b>Departamento: <?php echo $_SESSION["departamento"] ?></b></h6>
-        </div>
-        <div class="col s12 m2 blue lighten-3" style="border: 2px solid black;">
-            <h6><b><?php echo $_SESSION["siglas"] ?></b></h6>
-        </div>
-        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
-            <h6><b>Organismo: <?php echo $bien["organismo"] ?></b></h6>
-        </div>
-        <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
-            <h6><b>Dependencia: <?php echo $bien["dependencia"] ?></b></h6>
-        </div>
-        <div class="col s12 m5 blue lighten-5" style="border: 2px solid black;">
-            <h6><b>Fecha de Incorporación: <?php echo $bien["fecha_incorporacion"] ?></b></h6>
-        </div>
-        <div class="col s12 m3 blue lighten-5" style="border: 2px solid black;">
-            <h6><b>Sede: <?php echo $bien["sede"] ?></b></h6>
-        </div>
-        <div class="col s12 m4 blue lighten-5" style="border: 2px solid black;">
-            <h6><b>Valor: <?php echo $bien["valor"] ?> Bs</b></h6>
-        </div>
-    </div>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral_page.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row">
+                <h5 class="title">
+                    <a href="../mis_bienes" class="btn btn-flat" title="Regresar"><i class="material-icons">keyboard_return</i></a>
+                    Ficha del bien público
+                </h5>
+                <div class="col s12 center blue lighten-3" style="border: 2px solid black;">
+                    <h6><b>Nombre: <?php echo $bien["nombre_bien"] ?></b></h6>
+                </div>
+                <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
+                    <h6><b>Código: <?php echo $bien["codigo"] ?></b></h6>
+                </div>
+                <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
+                    <h6><b>Código SUDEBIP: <?php echo $bien["catalogo"] ?></b></h6>
+                </div>
+                <div class="col s12 m2 blue lighten-3" style="border: 2px solid black;">
+                    <h6><b><?php echo $bien["tipo"] ?></b></h6>
+                </div>
+                <div class="col s12 m8 blue lighten-3" style="border: 2px solid black;">
+                    <h6><b>Departamento: <?php echo $_SESSION["departamento"] ?></b></h6>
+                </div>
+                <div class="col s12 m2 blue lighten-3" style="border: 2px solid black;">
+                    <h6><b><?php echo $_SESSION["siglas"] ?></b></h6>
+                </div>
+                <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
+                    <h6><b>Organismo: <?php echo $bien["organismo"] ?></b></h6>
+                </div>
+                <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
+                    <h6><b>Dependencia: <?php echo $bien["dependencia"] ?></b></h6>
+                </div>
+                <div class="col s12 m5 blue lighten-5" style="border: 2px solid black;">
+                    <h6><b>Fecha de Incorporación: <?php echo $bien["fecha_incorporacion"] ?></b></h6>
+                </div>
+                <div class="col s12 m3 blue lighten-5" style="border: 2px solid black;">
+                    <h6><b>Sede: <?php echo $bien["sede"] ?></b></h6>
+                </div>
+                <div class="col s12 m4 blue lighten-5" style="border: 2px solid black;">
+                    <h6><b>Valor: <?php echo $bien["valor"] ?> Bs</b></h6>
+                </div>
+            </div>
 
-    <div class="row cont-crear">
-        <form id="form">
-            <h5 class="title">Desincorporar Bien Público</h5>
-            <div class="col s12 input-field">
-                <textarea name="motivo" id="motivo" class="materialize-textarea" data-length="5000" required></textarea>
-                <label for="motivo">Indique el motivo</label>
-                <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 5000 caracteres" data-success=""></span>
+            <div class="row cont-crear">
+                <form id="form">
+                    <h5 class="title">Desincorporar Bien Público</h5>
+                    <div class="col s12 input-field">
+                        <textarea name="motivo" id="motivo" class="materialize-textarea" data-length="5000" required></textarea>
+                        <label for="motivo">Indique el motivo</label>
+                        <span class="helper-text" data-error="Este dato es requerido y no debe exceder los 5000 caracteres" data-success=""></span>
+                    </div>
+                    <div class="col s12 m6 input-field file-field">
+                        <div class="btn indigo darken-4">
+                            <span><i class="material-icons">add_a_photo</i></span>
+                            <input type="file" name="img1" id="img1">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                    <div class="col s12 m6 input-field file-field">
+                        <div class="btn indigo darken-4">
+                            <span><i class="material-icons">add_a_photo</i></span>
+                            <input type="file" name="img2" id="img2">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                    <div class="col s12 m6 input-field">
+                        <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
+                        <input type="password" name="clave" id="clave">
+                        <label for="clave">Ingrese su clave de seguridad</label>
+                    </div>
+                    <div class="col s12 m6 input-field">
+                        <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
+                        <div class="progress indigo darken-4" id="progress" style="display: none;">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="bien" value="<?php echo $bien["id_bien"] ?>">
+                </form>
             </div>
-            <div class="col s12 m6 input-field file-field">
-                <div class="btn indigo darken-4">
-                    <span><i class="material-icons">add_a_photo</i></span>
-                    <input type="file" name="img1" id="img1">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
-            <div class="col s12 m6 input-field file-field">
-                <div class="btn indigo darken-4">
-                    <span><i class="material-icons">add_a_photo</i></span>
-                    <input type="file" name="img2" id="img2">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
-            <div class="col s12 m6 input-field">
-                <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
-                <input type="password" name="clave" id="clave">
-                <label for="clave">Ingrese su clave de seguridad</label>
-            </div>
-            <div class="col s12 m6 input-field">
-                <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
-                <div class="progress indigo darken-4" id="progress" style="display: none;">
-                    <div class="indeterminate"></div>
-                </div>
-            </div>
-            <input type="hidden" name="bien" value="<?php echo $bien["id_bien"] ?>">
-        </form>
+        </div>
     </div>
 </div>
 

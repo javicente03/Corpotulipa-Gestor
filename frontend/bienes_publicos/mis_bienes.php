@@ -5,32 +5,37 @@ if (!isset($router))
 include("frontend/modularizacion/menu.php");
 ?>
 
-<div class="container section">
-    <div class="row">
-        <h5 class="title title-table">Bienes a tu responsabilidad</h5>
-        <table id="tabla" class="striped z-depth-3 centered responsive-table">
-            <thead class="table-head">
-                <th>Nombre del Bien</th>
-                <th>Código</th>
-                <th>Tipo</th>
-                <th>Revisar</th>
-            </thead>
-            <tbody>
-                <?php
-                while ($bien = $bienes->fetch_assoc()) {
-                ?>
-                    <tr>
-                        <td><?php echo $bien["nombre_bien"] ?></td>
-                        <td><?php echo $bien["codigo"] ?></td>
-                        <td><?php echo $bien["tipo"] ?></td>
-                        <td><a class="btn btn-flat" href="mis_bienes/<?php echo $bien["id_bien"] ?>">
-                                <i class="material-icons">visibility</i></a></td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <div class="section">
+            <div class="row">
+                <h5 class="title title-table">Bienes a tu responsabilidad</h5>
+                <table id="tabla" class="striped z-depth-3 centered responsive-table">
+                    <thead class="table-head">
+                        <th>Nombre del Bien</th>
+                        <th>Código</th>
+                        <th>Tipo</th>
+                        <th>Revisar</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($bien = $bienes->fetch_assoc()) {
+                        ?>
+                            <tr>
+                                <td><?php echo $bien["nombre_bien"] ?></td>
+                                <td><?php echo $bien["codigo"] ?></td>
+                                <td><?php echo $bien["tipo"] ?></td>
+                                <td><a class="btn btn-flat" href="mis_bienes/<?php echo $bien["id_bien"] ?>">
+                                        <i class="material-icons">visibility</i></a></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -57,7 +62,7 @@ include("frontend/modularizacion/menu.php");
                     "previous": "Anterior"
                 }
             }
-        }); 
+        });
     });
 </script>
 <?php
