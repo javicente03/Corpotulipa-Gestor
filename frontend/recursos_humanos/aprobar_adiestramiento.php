@@ -70,7 +70,7 @@ include("frontend/modularizacion/menu_page.php");
                     <div class="col s12 m6 input-field">
                         <i id="icon" class="material-icons prefix" onclick="visualizar()" style="cursor: pointer;">visibility</i>
                         <input type="password" id="clave" name="clave">
-                        <label for="clave">Clave</label>
+                        <label for="clave">Ingrese su clave de seguridad</label>
                     </div>
                     <div class="col s12 m6 input-field">
                         <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>

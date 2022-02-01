@@ -18,10 +18,10 @@ include("frontend/modularizacion/menu_page.php");
                 <div class="col s12 m5 blue lighten-3 center" style="border: 2px solid black;">
                     <h6><b>Nombre: <?php echo $bien["nombre_bien"] ?></b></h6>
                 </div>
-                <div class="col s12 m4 blue lighten-3" style="border: 2px solid black;">
+                <div class="col s12 m5 blue lighten-3" style="border: 2px solid black;">
                     <h6><b>Fecha de incorporación: <?php echo $bien["fecha_incorporacion"] ?></b></h6>
                 </div>
-                <div class="col s12 m3 blue lighten-5" style="border: 2px solid black;">
+                <div class="col s12 m2 blue lighten-5" style="border: 2px solid black;">
                     <h6><b><?php echo $bien["motivo_reporte"] ?></b></h6>
                 </div>
                 <div class="col s12 blue lighten-5" style="border: 2px solid black;">

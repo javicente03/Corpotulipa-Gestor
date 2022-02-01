@@ -25,7 +25,7 @@ include("frontend/modularizacion/menu.php");
                         <select name="responsable" id="responsable">
                             <?php
                             while ($r = $responsables->fetch_assoc()) {
-                                echo "<option data-icon='" . $r["img"] . "' value='" . $r["id"] . "'>" . $r["apellido"] . " " . $r["nombre"] . "</option>";
+                                echo "<option data-icon='" . $r["img"] . "' value='" . $r["id"] . "'>" . $r["nombre"] . " " . $r["apellido"] . "</option>";
                             }
                             ?>
                         </select>

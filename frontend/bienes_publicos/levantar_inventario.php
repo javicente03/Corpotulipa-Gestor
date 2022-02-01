@@ -3,18 +3,20 @@ include("frontend/modularizacion/encabezado_html.php");
 if (!isset($router))
     header("Location: ../../404");
 include("frontend/modularizacion/menu.php");
-
-if (isset($inventario)) {
-    $realizado = ($bd->query("SELECT * FROM inventario_departamento 
-                        WHERE id_inventario = " . $ultimo["id_inventario"] .
-        " AND gerente = " . $_SESSION["id"]))->fetch_assoc();
-    if ($realizado)
-        echo "<h5 class='title'>Ya realizó su levantamiento de inventario pautado</h5>";
-    else {
 ?>
-        <div class="row">
-            <?php include("frontend/modularizacion/lateral.php") ?>
-            <div class="col m12 l9 contenido-principal">
+<div class="row">
+    <?php include("frontend/modularizacion/lateral.php") ?>
+    <div class="col m12 l9 contenido-principal">
+        <?php
+        if (isset($inventario)) {
+            $realizado = ($bd->query("SELECT * FROM inventario_departamento 
+                        WHERE id_inventario = " . $ultimo["id_inventario"] .
+                " AND gerente = " . $_SESSION["id"]))->fetch_assoc();
+            if ($realizado)
+                echo "<h5 class='title'>Ya realizó su levantamiento de inventario pautado</h5>";
+            else {
+        ?>
+
                 <div class="section">
                     <div class="row">
                         <h5 class="title">Levantar Inventario</h5>
@@ -79,14 +81,16 @@ if (isset($inventario)) {
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
 
-<?php
-    }
-} else
-    echo "<h5 class='title'>No hay inventarios pendientes</h5>";
-?>
+
+        <?php
+            }
+        } else
+            echo "<h5 class='title'>No hay inventarios pendientes</h5>";
+        ?>
+    </div>
+</div>
+
 <script src="frontend/js/jquery-3.6.0.min.js"></script>
 <script src="frontend/js/materialize.min.js"></script>
 <script src="frontend/js/elementos-materialize.js"></script>

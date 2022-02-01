@@ -3,13 +3,15 @@ include("frontend/modularizacion/encabezado_html.php");
 if (!isset($router))
     header("Location: ../../404");
 include("frontend/modularizacion/menu.php");
-
+?>
+<div class="row">
+        <?php include("frontend/modularizacion/lateral.php") ?>
+        <div class="col m12 l9 contenido-principal">
+<?php
 if (isset($inventarios)) {
 ?>
 
-    <div class="row">
-        <?php include("frontend/modularizacion/lateral.php") ?>
-        <div class="col m12 l9 contenido-principal">
+    
             <div class="section">
                 <div class="row">
                     <h5 class="title">Inventario</h5>

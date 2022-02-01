@@ -33,15 +33,15 @@ $restante = $prestamo["duracion"] - $transcurridos;
                     <h6><b>Concepto: <?php echo $prestamo["concepto"] ?></b>
                         <h6>
                 </div>
-                <div class="col s12 m5 blue lighten-5" style="border: 2px solid black;">
+                <div class="col s12 blue lighten-5" style="border: 2px solid black;">
                     <h6><b>Nombre del Responsable: <?php echo $prestamo["nombre"] . " " . $prestamo["apellido"] ?></b>
                         <h6>
                 </div>
-                <div class="col s12 m6 blue lighten-5" style="border: 2px solid black;">
+                <div class="col s12 m10 blue lighten-5" style="border: 2px solid black;">
                     <h6><b><?php echo $prestamo["departamento"] ?></b>
                         <h6>
                 </div>
-                <div class="col s12 m1 blue lighten-5" style="border: 2px solid black;">
+                <div class="col s12 m2 blue lighten-5" style="border: 2px solid black;">
                     <h6><b><?php echo $prestamo["siglas"] ?></b>
                         <h6>
                 </div>

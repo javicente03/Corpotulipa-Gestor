@@ -1,11 +1,8 @@
 <?php
 if (isset($router)) {
     $organismo = trim(addslashes($_POST['organismo']));
-    $denoOrga = trim(addslashes($_POST['denoOrga']));
     $departamento = trim(addslashes($_POST['departamento']));
-    $denoDepa = trim(addslashes($_POST['denoDepa']));
     $dependencia = trim(addslashes($_POST['dependencia']));
-    $denoUsu = trim(addslashes($_POST['denoUsu']));
     $mueble = trim(addslashes($_POST['mueble']));
     $descripcion = trim(addslashes($_POST['descripcion']));
     $catastro = trim(addslashes($_POST['catastro']));
@@ -29,7 +26,7 @@ if (isset($router)) {
                     if(strlen($descripcion) <= 2000){
                         include("bd.php");
                         $siglas = ($bd->query("SELECT * FROM departamento WHERE departamento_id = $departamento"))->fetch_assoc();
-                        $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,catalogo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor) VALUES ('','$catalogo','Mueble','$organismo','$denoOrga','$departamento','$denoDepa','$dependencia','$denoUsu','$mueble','$descripcion','$date','$user', '$responsable','$valor')");
+                        $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,catalogo,tipo,organismo,departamento_id,dependencia,nombre_bien,descripcion,fecha_incorporacion,incorporado_por,responsable,valor) VALUES ('','$catalogo','Mueble','$organismo','$departamento','$dependencia','$mueble','$descripcion','$date','$user', '$responsable','$valor')");
                         $anterior = ($bd->query("SELECT * FROM bienes_publicos ORDER BY id_bien DESC LIMIT 1")->fetch_assoc());
                         $anterior_id = $anterior["id_bien"];
                         $codigo = $siglas["siglas"] . "-" . $year . "-" . $anterior_id;
@@ -55,7 +52,7 @@ if (isset($router)) {
                 if (is_numeric($valor) && is_numeric($catastro)) {
                     include("bd.php");
                     $siglas = ($bd->query("SELECT * FROM departamento WHERE departamento_id = $departamento"))->fetch_assoc();
-                    $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,denoOrga,departamento_id,denoDepa,dependencia,denoUsu,nombre_bien,catastro,valor,fecha_incorporacion,incorporado_por,responsable) VALUES ('','Inmueble','$organismo','$denoOrga','$departamento','$denoDepa','$dependencia','$denoUsu','$inmueble','$catastro','$valor','$date','$user','$responsable')");
+                    $insertar = $bd->query("INSERT INTO bienes_publicos (codigo,tipo,organismo,departamento_id,dependencia,nombre_bien,catastro,valor,fecha_incorporacion,incorporado_por,responsable) VALUES ('','Inmueble','$organismo','$departamento','$dependencia','$inmueble','$catastro','$valor','$date','$user','$responsable')");
                     $anterior = ($bd->query("SELECT * FROM bienes_publicos ORDER BY id_bien DESC LIMIT 1")->fetch_assoc());
                     $anterior_id = $anterior["id_bien"];
                     $codigo = $siglas["siglas"] . "-" . $year . "-" . $anterior_id;

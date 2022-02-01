@@ -8,7 +8,7 @@ include("frontend/modularizacion/menu.php");
 <div class="row">
     <?php include("frontend/modularizacion/lateral.php") ?>
     <div class="col m12 l9 contenido-principal">
-        <div class="container section">
+        <div class="section">
             <div class="row">
                 <h5 class="title title-table">Desincorporación de bienes públicos</h5>
                 <table id="tabla" class="striped responsive-table z-depth-3 centered">

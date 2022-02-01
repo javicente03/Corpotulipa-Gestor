@@ -34,32 +34,20 @@ include("frontend/modularizacion/menu.php");
                         <span class="helper-text" data-error="Este dato es requerido" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input type="text" id="denoOrga" name="denoOrga">
-                        <label for="denoOrga">Denominación de la Organización</label>
-                    </div>
-                    <div class="input-field col s12 m6">
                         <select name="departamento" id="departamento">
                             <?php
                             while ($departamento = $departamentos->fetch_assoc()) {
                                 $id = $departamento["departamento_id"];
-                                echo "<option value='$id'>" . $departamento['siglas'] . "</option>";
+                                echo "<option value='$id'>" . $departamento['siglas'] ." - ". $departamento["departamento"] . "</option>";
                             }
                             ?>
                         </select>
                         <label id="departamento">* Departamento al que será entregado</label>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input type="text" id="denoDepa" name="denoDepa">
-                        <label for="denoDepa">Denominación del Departamento</label>
-                    </div>
-                    <div class="input-field col s12 m6">
                         <input type="text" id="dependencia" name="dependencia" required class="validate">
                         <label for="dependencia">* Dependencia Usuaria</label>
                         <span class="helper-text" data-error="Este dato es requerido" data-success=""></span>
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <input type="text" id="denoUsu" name="denoUsu">
-                        <label for="denoUsu">Denominación de Usuario</label>
                     </div>
                     <div class="input-field col s12 m6">
                         <input type="number" id="valor" name="valor" required class="validate">

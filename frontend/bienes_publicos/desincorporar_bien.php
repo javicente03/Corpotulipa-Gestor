@@ -8,7 +8,7 @@ include("frontend/modularizacion/menu_page.php");
 <div class="row">
     <?php include("frontend/modularizacion/lateral_page.php") ?>
     <div class="col m12 l9 contenido-principal">
-        <div class="container section">
+        <div class="section">
             <div class="row">
                 <h5 class="title">
                     <a href="../desincorporacion_bien" class="btn btn-flat" title="Regresar"><i class="material-icons">keyboard_return</i></a>

@@ -12,7 +12,7 @@ include("frontend/modularizacion/menu.php");
             <div class="row cont-crear">
                 <form id="form">
                     <h5 class="title">Solicitar Permiso Laboral</h5>
-                    <h6 class="title">Ingrese el tipo de solicitud</h6>
+                    <h6 class="title">Ingrese el motivo de solicitud</h6>
                     <div class="input-field col s12 m6">
                         <div class="row">
                             <div class="col s12 m6">

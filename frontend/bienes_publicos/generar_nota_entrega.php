@@ -19,6 +19,7 @@ include("frontend/modularizacion/menu_page.php");
                                 echo "<option value='" . $usuario['id'] . "'>" . $usuario['nombre'] . "</option>";
                             }
                             ?>
+                            <option value="">Luis Díaz</option>
                         </select>
                         <label for="revisado">Revisado por</label>
                     </div>
@@ -29,6 +30,7 @@ include("frontend/modularizacion/menu_page.php");
                                 echo "<option value='" . $usuario['id'] . "'>" . $usuario['nombre'] . "</option>";
                             }
                             ?>
+                            <option value="">José Pérez</option>
                         </select>
                         <label for="verificado">Verificado Por:</label>
                     </div>
@@ -39,6 +41,7 @@ include("frontend/modularizacion/menu_page.php");
                                 echo "<option value='" . $usuario['id'] . "'>" . $usuario['nombre'] . "</option>";
                             }
                             ?>
+                            <option value="">Jesús Gómez</option>
                         </select>
                         <label for="validado">Validado Por:</label>
                     </div>
