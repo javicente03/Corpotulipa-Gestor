@@ -26,6 +26,13 @@ if($email != "" && $password != ""){
                 $_SESSION['departamento'] = $data['departamento'];
                 $_SESSION['rango'] = $data['rango'];
                 $_SESSION['cargo'] = $data['cargo'];
+                
+                $permisosDelUsuario = $bd->query("SELECT * FROM permisos WHERE cargo_id = ".$data["cargo_id"]);
+
+                while ($row = $permisosDelUsuario->fetch_assoc()) {
+                    $_SESSION[$row["accion"]] = $row["accion"];
+                }
+
                 echo "ok";
             } else{
                 echo "Su usuario se encuentra suspendido";

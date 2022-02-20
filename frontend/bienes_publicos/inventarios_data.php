@@ -31,7 +31,7 @@ if (isset($inventarios)) {
                                     <td><?php echo $i["siglas"] ?></td>
                                     <td><?php echo $i["sede"] ?></td>
                                     <td><?php echo $i["fecha_inventario_dep"] ?></td>
-                                    <td><?php echo $i["verificado"] ?></td>
+                                    <td><?php if($i["verificado"]){echo "Si";}else{echo "No";} ?></td>
                                     <td><a class="btn btn-flat" href="inventario_data/<?php echo $i["id_inventario_departamento"] ?>">
                                             <i class="material-icons">visibility</i></a></td>
                                 </tr>

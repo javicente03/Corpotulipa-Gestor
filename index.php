@@ -738,7 +738,7 @@ switch ($router->getController()) {
     case 'charla_induccion':
         if (isset($_SESSION['id'])) {
             include("backend/bd.php");
-            $sql = "SELECT * FROM permisos WHERE accion = 'RECURSOS_HUMANOS' AND cargo_id =" . $_SESSION['cargo_id'];
+            $sql = "SELECT * FROM permisos WHERE accion = 'Recursos_Humanos' AND cargo_id =" . $_SESSION['cargo_id'];
             $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
             if ($query->num_rows > 0) {
                 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -774,7 +774,7 @@ switch ($router->getController()) {
     case 'solicitar_adiestramiento':
         if (isset($_SESSION['id'])) {
             include("backend/bd.php");
-            $sql = "SELECT * FROM permisos WHERE accion = 'Revisar_Solicitud_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
+            $sql = "SELECT * FROM permisos WHERE accion = 'Solicitud_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
             $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
             if ($query->num_rows > 0) {
                 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -790,11 +790,17 @@ switch ($router->getController()) {
 
     case 'solicitudes_adiestramiento':
         if (isset($_SESSION['id'])) {
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $controlrecursos->solicitudesAdiestramiento($router); //llama la funcion del controlador
-            } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                include("backend/pautar_adiestramiento_back.php");
-            }
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'Revisar_Solicitud_Adiestramiento' AND cargo_id =" . $_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if ($query->num_rows > 0) {
+                if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                    $controlrecursos->solicitudesAdiestramiento($router); //llama la funcion del controlador
+                } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    include("backend/pautar_adiestramiento_back.php");
+                }
+            } else
+                header("Location: 404"); 
         } else
             header("Location: login");
         break;

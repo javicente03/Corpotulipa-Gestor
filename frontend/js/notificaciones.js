@@ -138,7 +138,6 @@ function notificacionesNoLeidas(){
 }
 
 function marcarLeida(id){
-    console.log("PP"+id)
     $.ajax({
         type: "POST",
         url: "notificaciones",
@@ -153,4 +152,41 @@ function marcarLeida(id){
             } 
         }
     })
+}
+
+// function ObtenerNueva() {
+//     $.ajax({
+//         type: "POST",
+//         url: "notificaciones",
+//         data: {marcar:1,noti:id},
+//         enctype: 'application/x-www-form-urlencoded',
+//         success: function (response) {
+//             if(response == "ok"){
+//                 let a = document.getElementById("a"+id);
+//                 let li = document.getElementById("li"+id);
+//                 li.className = "collection-item notificacion-color"
+//                 a.title = ""
+//             } 
+//         }
+//     })
+// }
+
+var socket;
+function init(){
+    socket = new WebSocket("ws://localhost:9000")
+
+    socket.onopen = function(msg) {
+        alert("Welcome - status "+this.readyState);
+    };
+    socket.onmessage = function(msg) {
+        alert("Received: "+msg.data);
+    };
+    socket.onclose = function(msg) {
+        alert("Disconnected - status "+this.readyState);
+    };
+
+    function quit(){ socket.close(); }
+
+    function reconnect(){ quit(); init();}
+
 }

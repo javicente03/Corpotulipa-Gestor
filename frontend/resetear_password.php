@@ -100,10 +100,6 @@
                 icon2.innerHTML = "visibility"
             }
         }
-
-        function patron() {
-            alert("AAA")
-        }
     </script>
 <?php
     include("frontend/modularizacion/cierre_html.php");
