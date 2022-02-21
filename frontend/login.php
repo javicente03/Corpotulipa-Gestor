@@ -58,7 +58,15 @@ if (!isset($router))
                     setTimeout(() => {
                         location.href = "sesion"
                     }, 3000);
-                } else {
+                } else if(response.substring(response.length - 14, response.length) == "Clave inválida") {
+                    M.toast({
+                        html: "Clave inválida",
+                        classes: 'rounded red'
+                    })
+                    $("#progress").css("display", "none")
+                    $("#btn-submit").css("background-color", "#1a237e")
+                    $("#btn-submit").prop("disabled", false)
+                } else{
                     M.toast({
                         html: response,
                         classes: 'rounded red'

@@ -89,6 +89,10 @@
 
         <li><a href="solicitud_permiso">Solicitar Permiso Laboral</a></li>
 
+        <?php if(isset($_SESSION["Ver_Lista_Funcionarios"])){ ?>
+        <li><a href="lista_funcionarios">Funcionarios de tu departamento</a></li>
+        <?php } ?>
+
         <?php if(isset($_SESSION["Solicitud_Adiestramiento"])){ ?>
         <li><a href="solicitar_adiestramiento">Solicitar Taller de Adiestramiento</a></li>
         <?php } ?>

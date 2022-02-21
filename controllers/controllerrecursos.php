@@ -147,4 +147,30 @@ class ControllersRecursos
         } else
             header("Location: 404");
     }
+
+    public function verFuncionarios($router)
+    {
+        include("backend/bd.php");
+        if (!empty($router->getParam())) {
+
+            $funcionario = ($bd->query("SELECT * FROM usuario U LEFT JOIN perfil P ON
+                U.id = P.id_usuario LEFT JOIN cargo C ON P.cargo_id = C.cargo_id LEFT JOIN departamento D
+                ON P.departamento_id = D.departamento_id WHERE id = ".$router->getParam()))->fetch_assoc();
+            
+            if (!$funcionario)
+                header("Location: ../404");
+
+            $permisos = $bd->query("SELECT * FROM solicitud_permiso S LEFT JOIN usuario U ON
+                S.id_usuario = U.id INNER JOIN perfil P ON U.id=P.id_usuario 
+                WHERE S.id_usuario = ".$router->getParam()." ORDER BY id_solicitud_permiso DESC");
+
+            
+            include("frontend/recursos_humanos/ver_funcionario.php");
+        } else{
+            $funcionarios = $bd->query("SELECT * FROM usuario U LEFT JOIN perfil P ON
+                U.id = P.id_usuario LEFT JOIN cargo C ON P.cargo_id = C.cargo_id 
+                WHERE P.departamento_id = ".$_SESSION["departamento_id"]);
+            include("frontend/recursos_humanos/lista_funcionarios.php");
+        }
+    }
 }

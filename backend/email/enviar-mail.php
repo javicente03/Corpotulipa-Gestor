@@ -20,6 +20,14 @@ function sendMail($email,$asunto,$nombre,$apellido,$password){
     } else if($asunto == 'Corpotulipa Resetee su contrasena'){
         $message = file_get_contents('backend/email/templates/reset_password.html'); 
         $message = str_replace('%Token%', $password, $message); 
+    } else if($asunto == 'Corpotulipa - Alerta de ingreso sospechoso en su cuenta'){
+        $message = file_get_contents('backend/email/templates/alerta.html');
+        $Object = new DateTime();
+        $Object->setTimezone(new DateTimeZone('America/Caracas'));
+        $hora = $Object->format("H:i:s");
+        $fecha = $Object->format("Y-m-d");
+        $message = str_replace('%fecha%', $fecha, $message);
+        $message = str_replace('%hora%', $hora, $message);
     }
 // require '../vendor/autoload.php';
 

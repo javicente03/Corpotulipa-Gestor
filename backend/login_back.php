@@ -26,6 +26,8 @@ if($email != "" && $password != ""){
                 $_SESSION['departamento'] = $data['departamento'];
                 $_SESSION['rango'] = $data['rango'];
                 $_SESSION['cargo'] = $data['cargo'];
+                $_SESSION['ult_hora'] = $data['ult_hora'];
+                $_SESSION['ult_fecha'] = $data['ult_fecha'];
                 
                 $permisosDelUsuario = $bd->query("SELECT * FROM permisos WHERE cargo_id = ".$data["cargo_id"]);
 
@@ -33,11 +35,18 @@ if($email != "" && $password != ""){
                     $_SESSION[$row["accion"]] = $row["accion"];
                 }
 
+                $bd->query("UPDATE usuario SET alerta_sospechosa = false WHERE email = '".$data["email"]."'");
                 echo "ok";
             } else{
                 echo "Su usuario se encuentra suspendido";
             }
         } else {
+            if($data['alerta_sospechosa']){
+                $asunto = "Corpotulipa - Alerta de ingreso sospechoso en su cuenta";
+                include("email/enviar-mail.php");
+                $sendMail = sendMail($email,$asunto,0,0,0);
+            }
+            $bd->query("UPDATE usuario SET alerta_sospechosa = true WHERE email = '".$data["email"]."'");
             echo "Clave inválida";
         }
     } else {

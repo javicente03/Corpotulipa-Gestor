@@ -81,8 +81,13 @@ switch ($router->getController()) {
                         $controlsuper->editarUser($router); //llama la funcion del controlador
                     else
                         header("Location: 404");
-                } else if ($_SERVER['REQUEST_METHOD'] == 'POST') //Por post invoca al backend
-                    include("backend/editar_usuario_back.php");
+                } else if ($_SERVER['REQUEST_METHOD'] == 'POST'){ //Por post invoca al backend
+                    if(isset($_POST["usuario_cargo"])){
+                        include("backend/designar_super.php");
+                    } else {
+                        include("backend/editar_usuario_back.php");                        
+                    }
+                }
             } else
                 header("Location: ../404");
         } else
@@ -205,7 +210,6 @@ switch ($router->getController()) {
         } else
             header("Location: login");
         break;
-
 
         /* ************ USUARIO Y PERFIL ************ */
 
@@ -823,6 +827,20 @@ switch ($router->getController()) {
             } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 include("backend/ver_adiestramiento_back.php");
             }
+        } else
+            header("Location: login");
+        break;
+    
+    case 'lista_funcionarios':
+        if (isset($_SESSION['id'])) {
+            include("backend/bd.php");
+            $sql = "SELECT * FROM permisos WHERE accion = 'Ver_Lista_Funcionarios' AND cargo_id =" . $_SESSION['cargo_id'];
+            $query = $bd->query($sql); //Revisa si tiene los permisos correspondientes en la tabla permisos
+            if ($query->num_rows > 0) {
+                if ($_SERVER['REQUEST_METHOD'] == 'GET') 
+                    $controlrecursos->verFuncionarios($router); //llama la funcion del controlador
+            } else
+                header("Location: 404"); 
         } else
             header("Location: login");
         break;

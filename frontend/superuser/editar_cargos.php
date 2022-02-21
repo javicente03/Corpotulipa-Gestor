@@ -29,6 +29,8 @@ include("frontend/modularizacion/menu_page.php");
                     </div>
                 </form>
             </div>
+            <p class="parrafo"><i class="material-icons left">error</i>Indique Rango 1 si este cargo tiene autorización para aprobar 
+                solicitud de permiso laboral, Rango 2 para el resto del personal</p>
         </div>
     </div>
 </div>

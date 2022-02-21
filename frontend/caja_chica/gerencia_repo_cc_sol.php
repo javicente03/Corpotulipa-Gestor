@@ -64,6 +64,10 @@ include("frontend/modularizacion/menu_page.php");
                             <label for="clave">Ingrese su clave de seguridad</label>
                         </div>
                         <div class="input-field col s12 m6">
+                            <input type="number" name="monto" id="monto">
+                            <label for="monto">Ingrese el monto a reponer (Bs)</label>
+                        </div>
+                        <div class="input-field col s12 m6">
                             <input type="hidden" name="id" value="<?php echo $router->getParam() ?>">
                             <button type="submit" class="btn-entrar" id="btn-submit">Enviar</button>
                             <div class="progress indigo darken-4" id="progress" style="display: none;">

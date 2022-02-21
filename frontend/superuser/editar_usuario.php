@@ -73,6 +73,24 @@ include("frontend/modularizacion/menu_page.php");
                     <input type="hidden" name="id" value="<?php echo $usuario['id_usuario'] ?>">
                 </form>
             </div>
+
+            <!-- PRIVILEGIOS SUPER USUARIO -->
+            <div class="row z-depth-3" style="padding: 10px;">
+                <form id="formAdministrador">
+                    <?php if ($usuario["permisos"] == "super") { ?>
+                        <h5 class="title">Revocar permisos como Administrador Principal</h5>
+                    <?php } else { ?>
+                        <h5 class="title">Designar como Administrador Principal</h5>
+                    <?php } ?>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input type="password" name="password" id="password" placeholder="Ingrese su clave de seguridad">
+                    </div>
+                    <input type="hidden" name="usuario_cargo" value="<?php echo $usuario["id"] ?>">
+                    <input type="hidden" name="token" value="token">
+                    <div class="input-field col s12 m6"><button type="submit" class="btn indigo darken-4"><i class="material-icons">send</i></button></div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -105,6 +123,26 @@ include("frontend/modularizacion/menu_page.php");
             }
         });
     });
+
+    $("#formAdministrador").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+        type: "POST",
+            url: 'editar_usuario',
+            data: $(this).serialize(),
+            enctype: 'application/x-www-form-urlencoded',
+            success: function(response) {
+                if (response == "ok" || response.substring(0, 15) == "<!DOCTYPE html>") {
+                    location.href = ""
+                } else {
+                    M.toast({
+                        html: response,
+                        classes: 'rounded red'
+                    })
+                }
+            }
+        });
+    })
 </script>
 <?php
 include("frontend/modularizacion/cierre_html.php");

@@ -7,7 +7,8 @@ if(isset($router)){
         NoLeidas($router);
     if(isset($_POST["marcar"]))
         MarcarLeida($router);
-    
+    if(isset($_POST["alertas"]))
+        ObtenerNuevas($router);
 } else
     header("Location: ../404");
 
@@ -41,4 +42,20 @@ function MarcarLeida($router){
         echo "ok";
     else
         echo "err";
+}
+
+function ObtenerNuevas($router)
+{
+    include("bd.php");
+    $notificaciones = $bd->query("SELECT * FROM notificaciones 
+        WHERE id_usuario = ".$_SESSION["id"]." AND leido = false
+        ORDER BY id_noti DESC");
+
+    $array = array();
+
+    while ($row = $notificaciones->fetch_assoc()) {
+        array_push($array, $row);
+    }
+
+    echo json_encode($array);
 }

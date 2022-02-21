@@ -6,9 +6,7 @@ $("#campana").click(function (e) {
     if ($("#box-notify").css("display") == 'none') {
         $("#box-notify").css("display", 'block')
         if(primera_vez)
-            setTimeout(() => {
-                cargarNotificacion(0)                
-            }, 3000);
+            cargarNotificacion(0)
     } else {
         $("#box-notify").css("display", 'none')
     }

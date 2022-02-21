@@ -168,6 +168,36 @@
     box-shadow: black 4px 4px 4px;
 }
 
+.lista-permisos{
+    max-height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.lista-permisos > li{
+    font-weight: bold;
+}
+
+.lista-permisos > li:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+.lista-permisos::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+  
+.lista-permisos::-webkit-scrollbar-track {
+    background: #040729;        /* color of the tracking area */
+    border-radius: 1em;
+}
+  
+.lista-permisos::-webkit-scrollbar-thumb {
+    background-color: #1a237e;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 1px solid #040729;  /* creates padding around scroll thumb */
+    
+}
+
 .parrafo{
     text-align: center; 
     background-color: gray; 

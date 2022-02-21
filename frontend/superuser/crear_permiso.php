@@ -34,6 +34,7 @@ include("frontend/modularizacion/menu.php");
                             <option value="Solicitud_Adiestramiento">Solicitar Adiestramiento</option>
                             <option value="Revisar_Solicitud_Adiestramiento">Revisar Solicitudes de Adiestramiento</option>
                             <option value="Aprobar_Adiestramiento">Aprobar Adiestramiento</option>
+                            <option value="Ver_Lista_Funcionarios">Ver Lista de Funcionarios</option>
                         </select>
                     </div>
                     <div class="col s12 m6 input-field">
